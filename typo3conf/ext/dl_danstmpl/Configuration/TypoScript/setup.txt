@@ -1,0 +1,4 @@
+page {
+    includeCSS.css = EXT:dl_danstmpl/Resources/Public/Css/css.css
+    includeJSFooterlibs.js = EXT:dl_danstmpl/Resources/Public/Js/js.js
+}

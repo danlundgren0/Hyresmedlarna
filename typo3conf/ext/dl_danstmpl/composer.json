@@ -1,0 +1,20 @@
+{
+    "name": "danlundgren/dl-danstmpl",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "author": [
+        {
+            "name": "Dan Lundgren",
+            "role": "Developer",
+            "company": "Dan Lundgren"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^8.6.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "DanLundgren\\DlDanstmpl\\": "Classes"
+        }
+    }
+}
