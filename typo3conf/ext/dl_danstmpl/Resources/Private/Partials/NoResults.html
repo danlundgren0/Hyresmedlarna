@@ -1,0 +1,14 @@
+<!--
+	=====================
+	Partials/NoResults.html
+-->
+<div id="kesearch_results">
+	<f:if condition="{conf.showNoResultsText}">
+		<f:then>
+			<f:format.raw>{noResultsText}</f:format.raw>
+		</f:then>
+		<f:else>
+			Inga träffar.
+		</f:else>
+	</f:if>
+</div>

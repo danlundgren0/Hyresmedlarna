@@ -6,9 +6,11 @@ $typo3InstallDir = PATH_site;
 
 return array(
     'BK2K\\BootstrapPackage\\' => array($typo3InstallDir . 'typo3conf/ext/bootstrap_package/Classes'),
+    'DanLundgren\\DlDanstmpl\\' => array($typo3InstallDir . 'typo3conf/ext/dl_danstmpl/Classes'),
     'DmitryDulepov\\Realurl\\' => array($typo3InstallDir . 'typo3conf/ext/realurl/Classes'),
     'EBT\\ExtensionBuilder\\' => array($typo3InstallDir . 'typo3conf/ext/extension_builder/Classes'),
     'GridElementsTeam\\Gridelements\\' => array($typo3InstallDir . 'typo3conf/ext/gridelements/Classes'),
     'Laxap\\BootstrapGrids\\' => array($typo3InstallDir . 'typo3conf/ext/bootstrap_grids/Classes'),
     'PhpParser\\' => array($typo3InstallDir . 'typo3conf/ext/extension_builder/Resources/Private/PHP/PHP-Parser/lib/PhpParser'),
+    'TeaminmediasPluswerk\\KeSearch\\' => array($typo3InstallDir . 'typo3conf/ext/ke_search/Classes'),
 );

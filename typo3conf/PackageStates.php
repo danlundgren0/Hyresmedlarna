@@ -137,6 +137,9 @@ return [
         'extension_builder' => [
             'packagePath' => 'typo3conf/ext/extension_builder/',
         ],
+        'ke_search' => [
+            'packagePath' => 'typo3conf/ext/ke_search/',
+        ],
         'realurl' => [
             'packagePath' => 'typo3conf/ext/realurl/',
         ],

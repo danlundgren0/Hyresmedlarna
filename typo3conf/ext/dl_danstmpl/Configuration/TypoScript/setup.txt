@@ -1,4 +1,33 @@
 page {
     includeCSS.css = EXT:dl_danstmpl/Resources/Public/Css/css.css
     includeJSFooterlibs.js = EXT:dl_danstmpl/Resources/Public/Js/js.js
+    10.partialRootPaths.2 = {$page.fluidtemplate.partialRootPath}
 }
+
+# ==============================================
+# Typoscript configuration for ke_search
+# ==============================================
+plugin.tx_kesearch_pi1 {
+	templateRootPaths.2 = EXT:dl_danstmpl/Resources/Private/Templates
+	partialRootPaths.2 = EXT:dl_danstmpl/Resources/Private/Partials/
+}
+plugin.tx_kesearch_pi2 {
+	templateRootPaths.2 = EXT:dl_danstmpl/Resources/Private/Templates/
+	partialRootPaths.2 = EXT:dl_danstmpl/Resources/Private/Partials/
+}
+
+
+########################################
+# Searchbox Plugin
+########################################
+########################################
+# searchbox pure HTML
+########################################
+lib.searchbox_html = TEXT
+lib.searchbox_html.value (
+<form method="get" id="form_kesearch_searchfield" name="form_kesearch_searchfield">
+  <input type="hidden" name="id" value="55" />  
+  <button class="glyphicon glyphicon-search" aria-hidden="true" type="submit" id="ke_search_searchfield_submit" alt="Find"></button>
+  <input type="text" id="ke_search_searchfield_sword" name="tx_kesearch_pi1[sword]" placeholder="Sök" />  
+</form>
+)

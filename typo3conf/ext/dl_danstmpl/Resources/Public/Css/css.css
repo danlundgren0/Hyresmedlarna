@@ -1,0 +1,19 @@
+[name="tx_kesearch_pi1[sword]"] {
+	padding-left:5px;
+}
+.navbar-top [role="navigation"] {
+	position:relative;
+}
+.searchbox-container {
+	position:absolute;
+	right:0;
+	bottom:0;
+}
+.searchbox-container .glyphicon {
+	color:#000000;
+    background-color: transparent;
+    border: none;
+}
+.pagelevel-0 .searchbox-container .glyphicon {
+	color:#ffffff;
+}

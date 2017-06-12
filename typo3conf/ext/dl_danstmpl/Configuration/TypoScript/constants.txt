@@ -1,0 +1,8 @@
+page.fluidtemplate {
+        ## cat=bootstrap package: advanced/100/100; type=string; label=Layout Root Path: Path to layouts
+        ##layoutRootPath = EXT:bootstrap_package/Resources/Private/Layouts/Page/
+        ## cat=bootstrap package: advanced/100/110; type=string; label=Partial Root Path: Path to partials
+        partialRootPath = EXT:dl_danstmpl/Resources/Private/Partials/Page/
+        ## cat=bootstrap package: advanced/100/120; type=string; label=Template Root Path: Path to templates
+        ##templateRootPath = EXT:bootstrap_package/Resources/Private/Templates/Page/
+}
