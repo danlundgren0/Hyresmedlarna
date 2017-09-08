@@ -1,0 +1,44 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Function</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<switchableControllerActions>
+						<TCEforms>
+							<label>Select function</label>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">Show Realestate</numIndex>
+										<numIndex index="1">Realestate-&gt;show</numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">List Realestate</numIndex>
+										<numIndex index="1">Realestate-&gt;list</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">Create Realestate</numIndex>
+										<numIndex index="1">Realestate-&gt;create</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">Update Realestate</numIndex>
+										<numIndex index="1">Realestate-&gt;update</numIndex>
+									</numIndex>
+									<numIndex index="4">
+										<numIndex index="0">Delete Realestate</numIndex>
+										<numIndex index="1">Realestate-&gt;delete</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

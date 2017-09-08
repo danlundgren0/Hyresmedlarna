@@ -1,0 +1,89 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    232,
+                    84
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": true,
+                    "_default2_new_create": true,
+                    "_default3_edit_update": true,
+                    "_default4_delete": true,
+                    "customActions": []
+                },
+                "name": "Realestate",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": true,
+                    "type": "Entity",
+                    "uid": "87134107735"
+                },
+                "propertyGroup": {
+                    "properties": []
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [],
+        "description": "",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 8.6.0-8.6.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "8.6.0-8.6.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "dl_realestate",
+        "name": "Real Estate",
+        "originalExtensionKey": "dl_realestate",
+        "originalVendorName": "DanLundgren",
+        "persons": [
+            {
+                "company": "Dan Lundgren",
+                "email": "danlundgren0@gmail.com",
+                "name": "Dan Lundgren",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "Realestate=>create,edit,update,delete,new,list,show",
+                    "noncacheableActions": "Realestate=>create,edit,update,delete,new,list,show",
+                    "switchableActions": ""
+                },
+                "key": "realestate",
+                "name": "Realestate"
+            }
+        ],
+        "vendorName": "DanLundgren"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2017-06-13 05:49",
+        "extension_builder_version": "8.6.0",
+        "be_user": " (1)"
+    }
+}

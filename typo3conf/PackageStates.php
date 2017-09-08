@@ -134,6 +134,9 @@ return [
         'dl_danstmpl' => [
             'packagePath' => 'typo3conf/ext/dl_danstmpl/',
         ],
+        'dl_realestate' => [
+            'packagePath' => 'typo3conf/ext/dl_realestate/',
+        ],
         'extension_builder' => [
             'packagePath' => 'typo3conf/ext/extension_builder/',
         ],

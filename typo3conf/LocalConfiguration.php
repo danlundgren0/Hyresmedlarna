@@ -10,12 +10,12 @@ return [
         'Connections' => [
             'Default' => [
                 'charset' => 'utf8',
-                'dbname' => 'hmdev_se',
+                'dbname' => 'hmdev_s',
                 'driver' => 'mysqli',
                 'host' => '127.0.0.1',
                 'password' => 'jFr3wk3jUu',
                 'port' => 3306,
-                'user' => 'hmdev_se',
+                'user' => 'hmdev_s',
             ],
         ],
     ],
@@ -24,6 +24,7 @@ return [
             'bootstrap_grids' => 'a:1:{s:19:"enableGridSimpleRow";s:1:"0";}',
             'bootstrap_package' => 'a:7:{s:16:"disablePageTsRTE";s:1:"0";s:27:"disablePageTsBackendLayouts";s:1:"0";s:20:"disablePageTsTCEMAIN";s:1:"0";s:20:"disablePageTsTCEFORM";s:1:"0";s:30:"disablePageTsTtContentPreviews";s:1:"0";s:36:"disablePageTsNewContentElementWizard";s:1:"0";s:21:"disableLessProcessing";s:1:"0";}',
             'dl_danstmpl' => 'a:0:{}',
+            'dl_realestate' => 'a:0:{}',
             'extension_builder' => 'a:3:{s:15:"enableRoundtrip";s:1:"1";s:15:"backupExtension";s:1:"1";s:9:"backupDir";s:35:"uploads/tx_extensionbuilder/backups";}',
             'gridelements' => 'a:2:{s:20:"additionalStylesheet";s:0:"";s:19:"nestingInListModule";s:1:"0";}',
             'introduction' => 'a:0:{}',

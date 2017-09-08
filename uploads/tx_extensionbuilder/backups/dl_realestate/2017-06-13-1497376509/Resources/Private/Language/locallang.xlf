@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-06-13T17:49:09Z" product-name="dl_realestate">
+		<header/>
+		<body>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate">
+				<source>Realestate</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

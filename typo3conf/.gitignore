@@ -1,0 +1,5 @@
+# Ignore everything in this directory
+AdditionalConfiguration.php
+# Except this file
+!.gitignore
+!index.html
