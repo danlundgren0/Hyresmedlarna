@@ -177,6 +177,16 @@
                             "propertyName": "flag",
                             "propertyType": "Boolean",
                             "uid": "217141805697"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "mail",
+                            "propertyType": "Email",
+                            "uid": "217141865797"
                         }
                     ]
                 },
@@ -298,7 +308,7 @@
                     "addHiddenField": true,
                     "addStarttimeEndtimeFields": true,
                     "aggregateRoot": false,
-                    "categorizable": false,
+                    "categorizable": true,
                     "description": "",
                     "mapToTable": "",
                     "parentClass": "",
@@ -423,13 +433,13 @@
         "emConf": {
             "category": "misc",
             "custom_category": "",
-            "dependsOn": "typo3 => 8.6.0-8.6.99\n",
+            "dependsOn": "typo3 => 8.7.0-8.7.99\n",
             "disableLocalization": false,
             "disableVersioning": false,
             "skipGenerateDocumentationTemplate": false,
             "sourceLanguage": "en",
             "state": "alpha",
-            "targetVersion": "8.6.0-8.6.99",
+            "targetVersion": "8.7.0-8.7.99",
             "version": "0.9"
         },
         "extensionKey": "test_extension",
@@ -451,6 +461,7 @@
                     "noncacheableActions": "",
                     "switchableActions": ""
                 },
+                "description": "Just a simple test plugin",
                 "key": "testplugin",
                 "name": "Test plugin"
             }

@@ -1,0 +1,190 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    232,
+                    84
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": true,
+                    "_default2_new_create": true,
+                    "_default3_edit_update": true,
+                    "_default4_delete": true,
+                    "customActions": []
+                },
+                "name": "Realestate",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": true,
+                    "type": "Entity",
+                    "uid": "87134107735"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "title",
+                            "propertyType": "String",
+                            "uid": "1442198292003"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "type",
+                            "propertyType": "Select",
+                            "uid": "1123839910025"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "teaser",
+                            "propertyType": "String",
+                            "uid": "1191012634657"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "description",
+                            "propertyType": "String",
+                            "uid": "1345278733506"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "99",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "images",
+                            "propertyType": "Image",
+                            "uid": "1322852235484"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "longitude",
+                            "propertyType": "String",
+                            "uid": "493625442612"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "latitude",
+                            "propertyType": "String",
+                            "uid": "1027736925083"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "street",
+                            "propertyType": "String",
+                            "uid": "634926261831"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "postalcode",
+                            "propertyType": "String",
+                            "uid": "81862351880"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "city",
+                            "propertyType": "String",
+                            "uid": "9781220949"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [],
+        "description": "",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 8.6.0-8.6.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "8.6.0-8.6.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "dl_realestate",
+        "name": "Real Estate",
+        "originalExtensionKey": "dl_realestate",
+        "originalVendorName": "DanLundgren",
+        "persons": [
+            {
+                "company": "Dan Lundgren",
+                "email": "danlundgren0@gmail.com",
+                "name": "Dan Lundgren",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "Realestate=>create,update,delete,list,show",
+                    "noncacheableActions": "Realestate=>create,update,delete,list,show",
+                    "switchableActions": "Show Realestate\nRealestate->show;\nList Realestate\nRealestate->list;\nCreate Realestate\nRealestate->create;\nUpdate Realestate\nRealestate->update;\nDelete Realestate\nRealestate->delete;\nNew Realestate\nRealestate->new;"
+                },
+                "key": "realestate",
+                "name": "Realestate"
+            }
+        ],
+        "vendorName": "DanLundgren"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2017-06-13 07:08",
+        "extension_builder_version": "8.6.0",
+        "be_user": " (1)"
+    }
+}

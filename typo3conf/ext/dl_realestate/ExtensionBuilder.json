@@ -153,7 +153,7 @@
             "skipGenerateDocumentationTemplate": false,
             "sourceLanguage": "en",
             "state": "alpha",
-            "targetVersion": "8.6.0-8.6.99",
+            "targetVersion": "8.7.0-8.7.99",
             "version": "1.0.0"
         },
         "extensionKey": "dl_realestate",
@@ -175,16 +175,27 @@
                     "noncacheableActions": "Realestate=>create,update,delete,list,show",
                     "switchableActions": "Show Realestate\nRealestate->show;\nList Realestate\nRealestate->list;\nCreate Realestate\nRealestate->create;\nUpdate Realestate\nRealestate->update;\nDelete Realestate\nRealestate->delete;\nNew Realestate\nRealestate->new;"
                 },
+                "description": "",
                 "key": "realestate",
                 "name": "Realestate"
+            },
+            {
+                "actions": {
+                    "controllerActionCombinations": "AjaxRequest => getJson",
+                    "noncacheableActions": "AjaxRequest => getJson",
+                    "switchableActions": "Display Items\nAjaxRequest -> getJson;"
+                },
+                "description": "",
+                "key": "ajaxrequest",
+                "name": "Ajax Request"
             }
         ],
         "vendorName": "DanLundgren"
     },
     "wires": [],
     "log": {
-        "last_modified": "2017-06-13 07:08",
-        "extension_builder_version": "8.6.0",
+        "last_modified": "2017-09-27 03:39",
+        "extension_builder_version": "8.7.0",
         "be_user": " (1)"
     }
 }

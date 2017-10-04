@@ -1,3 +1,98 @@
+
+/*
+@media (min-width: 1200px) {
+	.container {
+	    width: 980px;
+	}
+}
+*/
+@media (min-width: 992px) {
+	.navbar-fixed-top.navbar-default-transition + a + .carousel, .navbar-fixed-top.navbar-inverse-transition + a + .carousel, .navbar-fixed-top.navbar-default-transition + a + a + .carousel, .navbar-fixed-top.navbar-inverse-transition + a + a + .carousel, .navbar-fixed-top.navbar-default-transition + .main-section > a + .carousel, .navbar-fixed-top.navbar-inverse-transition + .main-section > a + .carousel, .navbar-fixed-top.navbar-default-transition + .main-section > a + a + .carousel, .navbar-fixed-top.navbar-inverse-transition + .main-section > a + a + .carousel {
+		margin-top: auto;
+	}
+	.carousel .item {
+	    height: 500px;
+	}	
+	.footer-left {
+		.frame {
+		    text-align: left;
+		}
+	}
+	.footer-right {
+
+	}
+}
+
+.section {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.footer-section {
+    background: #3c3c3b;    
+}
+
+.footer-section h3 {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 1.4em;
+	text-align:left;
+	padding: 0 0 7px 0px;
+	border-bottom:1px solid #f18800;
+}
+
+.footer-left {
+	padding-left: 50px;
+}
+
+p {
+    margin: 0 0 0px;
+}
+
+h1, h2 , h3, h4 , h5, p, a {
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+h3 {
+	font-family: 'Roboto Condensed', sans-serif;
+	padding: 0 50px;
+    font-weight: bold;
+    color: #575757;
+    text-align: center;
+}
+h4 {
+	font-family: 'Roboto Condensed', sans-serif;
+	padding: 0 50px;
+	color: #f18800;
+	font-style: italic;
+    font-size: 1.9em;
+    font-weight: bold;
+    text-align: center;
+}
+
+body, .htmlarea-content-body {
+	line-height: 1.2;
+}
+.carousel .item h1.awesome {
+	color:#f18800;
+	font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 4em;
+    /*text-shadow: 0 0 0.2em #FFFFFF, 0 0 0.2em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff;*/
+    text-shadow: 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff, 0 0 0.9em #ffffff;
+}
+.carousel .item h4.awesome {
+	font-style:normal;
+	letter-spacing: 1px;
+	font-family: 'Roboto Condensed', sans-serif;
+	margin-top: 16px;
+	color: #ffffff;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 0 0 0.2em #000000, 0 0 0.2em #000000;
+}
+.section.section-light {
+	padding-top: 0;
+}
 [name="tx_kesearch_pi1[sword]"] {
 	padding-left:5px;
 }

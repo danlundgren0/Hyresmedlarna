@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-09-21T19:25:01Z" product-name="dl_emailregistration">
+		<header/>
+		<body>
+			<trans-unit id="email_address.description">
+				<source>emailAddress</source>
+			</trans-unit>
+			<trans-unit id="is_landlord.description">
+				<source>isLandlord</source>
+			</trans-unit>
+			<trans-unit id="is_tenant.description">
+				<source>isTenant</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

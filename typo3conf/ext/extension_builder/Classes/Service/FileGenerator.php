@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace EBT\ExtensionBuilder\Service;
 
 /*
@@ -37,9 +38,13 @@ class FileGenerator
      */
     protected $roundTripService = null;
     /**
-     * @var string
+     * @var array
      */
-    protected $codeTemplateRootPath = '';
+    protected $codeTemplateRootPaths = [];
+    /**
+     * @var array
+     */
+    protected $codeTemplatePartialPaths = [];
     /**
      * @var \EBT\ExtensionBuilder\Domain\Model\Extension
      */
@@ -137,10 +142,15 @@ class FileGenerator
             $this->roundTripEnabled = true;
             $this->roundTripService->initialize($extension);
         }
-        if (isset($this->settings['codeTemplateRootPath'])) {
-            $this->codeTemplateRootPath = $this->settings['codeTemplateRootPath'];
+        if (isset($this->settings['codeTemplateRootPaths.'])) {
+            $this->codeTemplateRootPaths = $this->settings['codeTemplateRootPaths.'];
         } else {
             throw new \Exception('No codeTemplateRootPath configured');
+        }
+        if (isset($this->settings['codeTemplatePartialPaths.'])) {
+            $this->codeTemplatePartialPaths = $this->settings['codeTemplatePartialPaths.'];
+        } else {
+            throw new \Exception('No codeTemplatePartialPaths configured');
         }
         // Base directory already exists at this point
         $this->extensionDirectory = $this->extension->getExtensionDir();
@@ -289,7 +299,7 @@ class FileGenerator
             }
             $domainObjectsNeedingOverrides = array();
             foreach ($this->extension->getDomainObjectsInHierarchicalOrder() as $domainObject) {
-                if ($domainObject->isMappedToExistingTable() || $domainObject->getHasChildren()) {
+                if ($domainObject->needsTcaOverride()) {
                     if (!isset($domainObjectsNeedingOverrides[$domainObject->getDatabaseTableName()])) {
                         $domainObjectsNeedingOverrides[$domainObject->getDatabaseTableName()] = array();
                     }
@@ -324,7 +334,7 @@ class FileGenerator
             $fileContents = $this->generateLocallangFileContent('_db');
             $this->writeFile($this->languageDirectory . 'locallang_db.xlf', $fileContents);
             if ($this->extension->hasBackendModules()) {
-                /** @var $backendModule \EBT\ExtensionBuilder\Domain\Model\Plugin */
+                /** @var $backendModule \EBT\ExtensionBuilder\Domain\Model\BackendModule */
                 foreach ($this->extension->getBackendModules() as $backendModule) {
                     $fileContents = $this->generateLocallangFileContent('_mod', 'backendModule', $backendModule);
                     $this->writeFile(
@@ -366,7 +376,7 @@ class FileGenerator
                  * @var \EBT\ExtensionBuilder\Domain\Model\DomainObject\Action $action
                  */
                 if ($action->getNeedsTemplate()
-                    && file_exists($this->codeTemplateRootPath . $templateRootFolder . 'Templates/' . $action->getName() . '.htmlt')
+                    && $this->templateExists($templateRootFolder . 'Templates/' . $action->getName() . '.htmlt')
 
                 ) {
                     $hasTemplates = true;
@@ -417,6 +427,30 @@ class FileGenerator
             $this->mkdir_deep($absoluteTemplateRootFolder, 'Layouts');
             $layoutsDirectory = $absoluteTemplateRootFolder . 'Layouts/';
             $this->writeFile($layoutsDirectory . 'Default.html', $this->generateLayout($templateRootFolder . 'Layouts/'));
+        }
+    }
+
+    /**
+     * get template file according to configured template root paths
+     * @param $fileName
+     * @return string
+     */
+    protected function getTemplatePath($fileName) {
+        foreach(array_reverse($this->codeTemplateRootPaths) as $rootPath) {
+            $path = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($rootPath);
+            if (file_exists($path . $fileName)) {
+                return $path . $fileName;
+            }
+        }
+        throw new \Exception('template not found: ' . $fileName);
+    }
+
+    protected function templateExists($fileName) {
+        try {
+            $this->getTemplatePath($fileName);
+            return true;
+        } catch(\Exception $e) {
+            return false;
         }
     }
 
@@ -570,12 +604,6 @@ class FileGenerator
             } catch (\Exception $e) {
                 throw new \Exception('Could not generate domain templates, error: ' . $e->getMessage());
             }
-
-            try {
-                $settings = $this->extension->getSettings();
-            } catch (\Exception $e) {
-                throw new \Exception('Could not generate ext_autoload.php, error: ' . $e->getMessage());
-            }
         } else {
             GeneralUtility::devLog(
                 'No domainObjects in this extension',
@@ -631,7 +659,7 @@ class FileGenerator
             if ($this->extension->hasBackendModules()) {
                 foreach ($this->extension->getBackendModules() as $backendModule) {
                     $this->upload_copy_move(
-                        $this->codeTemplateRootPath . 'Resources/Public/Icons/user_extension.svg',
+                        $this->getTemplatePath('Resources/Public/Icons/user_extension.svg'),
                         $this->iconsDirectory . 'user_mod_' . $backendModule->getKey() . '.svg'
                     );
                 }
@@ -639,7 +667,7 @@ class FileGenerator
             if ($this->extension->hasPlugins()) {
                 foreach ($this->extension->getPlugins() as $plugin) {
                     $this->upload_copy_move(
-                        $this->codeTemplateRootPath . 'Resources/Public/Icons/user_extension.svg',
+                        $this->getTemplatePath('Resources/Public/Icons/user_extension.svg'),
                         $this->iconsDirectory . 'user_plugin_' . $plugin->getKey() . '.svg'
                     );
                 }
@@ -668,7 +696,7 @@ class FileGenerator
             if (is_dir($docFile)) {
                 $this->mkdir_deep(
                     $this->extensionDirectory,
-                    'Documentation.tmpl/' . str_replace($this->codeTemplateRootPath . 'Documentation.tmpl/', '', $docFile)
+                    'Documentation.tmpl/' . str_replace($this->getTemplatePath('Documentation.tmpl/'), '', $docFile)
                 );
             } elseif (strpos($docFile, '.rstt') === false && strpos($docFile, '.ymlt') === false) {
                 $this->upload_copy_move(
@@ -698,10 +726,10 @@ class FileGenerator
         $variables['settings'] = $this->settings;
         /* @var \TYPO3\CMS\Fluid\View\StandaloneView $standAloneView */
         $standAloneView = $this->objectManager->get('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
-        $standAloneView->setLayoutRootPaths(array($this->codeTemplateRootPath));
-        $standAloneView->setPartialRootPaths(array($this->codeTemplateRootPath . 'Partials'));
+        $standAloneView->setLayoutRootPaths($this->codeTemplateRootPaths);
+        $standAloneView->setPartialRootPaths($this->codeTemplatePartialPaths);
         $standAloneView->setFormat('txt');
-        $templatePathAndFilename = $this->codeTemplateRootPath . $filePath;
+        $templatePathAndFilename = $this->getTemplatePath($filePath);
         $standAloneView->setTemplatePathAndFilename($templatePathAndFilename);
         $standAloneView->assignMultiple($variables);
         $renderedContent = $standAloneView->render();
@@ -719,7 +747,7 @@ class FileGenerator
     public function generateActionControllerCode(
         \EBT\ExtensionBuilder\Domain\Model\DomainObject $domainObject)
     {
-        $controllerTemplateFilePath = $this->codeTemplateRootPath . 'Classes/Controller/Controller.phpt';
+        $controllerTemplateFilePath = $this->getTemplatePath('Classes/Controller/Controller.phpt');
         $existingClassFileObject = null;
         if ($this->roundTripEnabled) {
             $existingClassFileObject = $this->roundTripService->getControllerClassFile($domainObject);
@@ -747,7 +775,7 @@ class FileGenerator
      */
     public function generateDomainObjectCode(\EBT\ExtensionBuilder\Domain\Model\DomainObject $domainObject)
     {
-        $modelTemplateClassPath = $this->codeTemplateRootPath . 'Classes/Domain/Model/Model.phpt';
+        $modelTemplateClassPath = $this->getTemplatePath('Classes/Domain/Model/Model.phpt');
         $existingClassFileObject = null;
         if ($this->roundTripEnabled) {
             $existingClassFileObject = $this->roundTripService->getDomainModelClassFile($domainObject);
@@ -787,7 +815,7 @@ class FileGenerator
      */
     public function generateDomainRepositoryCode(\EBT\ExtensionBuilder\Domain\Model\DomainObject $domainObject)
     {
-        $repositoryTemplateClassPath = $this->codeTemplateRootPath . 'Classes/Domain/Repository/Repository.phpt';
+        $repositoryTemplateClassPath = $this->getTemplatePath('Classes/Domain/Repository/Repository.phpt');
         $existingClassFileObject = null;
         if ($this->roundTripEnabled) {
             $existingClassFileObject = $this->roundTripService->getRepositoryClassFile($domainObject);

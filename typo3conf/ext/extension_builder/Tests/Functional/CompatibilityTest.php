@@ -37,12 +37,6 @@ class CompatibilityTest extends \EBT\ExtensionBuilder\Tests\BaseFunctionalTest
      */
     protected $extensionSchemaBuilder = null;
 
-    /**
-     * @test
-     */
-    public function checkRequirements()
-    {
-    }
 
     /**
      * This test creates an extension based on a JSON file, generated
@@ -75,14 +69,15 @@ class CompatibilityTest extends \EBT\ExtensionBuilder\Tests\BaseFunctionalTest
         $this->extension = $this->extensionSchemaBuilder->build($extensionConfigurationJSON);
         $this->fileGenerator->setSettings(
             array(
-                'codeTemplateRootPath' => PATH_typo3conf . 'ext/extension_builder/Resources/Private/CodeTemplates/Extbase/',
+                'codeTemplateRootPaths.' => [PATH_typo3conf . 'ext/extension_builder/Resources/Private/CodeTemplates/Extbase/'],
+                'codeTemplatePartialPaths.' => [PATH_typo3conf . 'ext/extension_builder/Resources/Private/CodeTemplates/Extbase/Partials'],
                 'extConf' => array(
                     'enableRoundtrip' => '0'
                 )
             )
         );
-        $newExtensionDir = vfsStream::url('testDir') . '/';
-        $this->extension->setExtensionDir($newExtensionDir . 'test_extension/');
+
+        $this->extension->setExtensionDir('test_extension/');
 
         $this->fileGenerator->build($this->extension);
 

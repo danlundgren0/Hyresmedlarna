@@ -54,6 +54,10 @@ class RealestateTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getTypeReturnsInitialValueForInt()
     {
+        self::assertSame(
+            0,
+            $this->subject->getType()
+        );
     }
 
     /**
@@ -61,6 +65,13 @@ class RealestateTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setTypeForIntSetsType()
     {
+        $this->subject->setType(12);
+
+        self::assertAttributeEquals(
+            12,
+            'type',
+            $this->subject
+        );
     }
 
     /**

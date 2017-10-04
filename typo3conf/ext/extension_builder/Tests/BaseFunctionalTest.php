@@ -18,7 +18,7 @@ use org\bovigo\vfs\vfsStream;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\UnknownClassException;
 
-abstract class BaseFunctionalTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase
+abstract class BaseFunctionalTest extends \TYPO3\TestingFramework\Core\Functional\FunctionalTestCase
 {
     /**
      * @var bool
@@ -69,6 +69,12 @@ abstract class BaseFunctionalTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCa
      * @var \EBT\ExtensionBuilder\Service\FileGenerator
      */
     protected $fileGenerator = null;
+
+    /**
+     * @var \org\bovigo\vfs\vfsStreamDirectory
+     */
+     protected $testDir = NULL;
+
     protected $testExtensionsToLoad = array('typo3conf/ext/extension_builder');
 
     protected function setUp()
@@ -81,23 +87,32 @@ abstract class BaseFunctionalTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCa
         }
         $this->fixturesPath = __DIR__ . '/Fixtures/';
 
-        $testTargetDir = 'testDir';
-        vfsStream::setup($testTargetDir);
-        $dummyExtensionDir = vfsStream::url($testTargetDir) . '/';
+        $rootDir = vfsStream::setup('root');
+        $this->testDir = \org\bovigo\vfs\vfsStream::newDirectory('testDir');
+        $rootDir->addChild($this->testDir);
+
+        $fixturesDir = \org\bovigo\vfs\vfsStream::newDirectory('Fixtures');
+        $rootDir->addChild($fixturesDir);
+
+        vfsStream::copyFromFileSystem($this->fixturesPath, $fixturesDir, 1024*1024);
 
         $yamlParser = new \EBT\ExtensionBuilder\Utility\SpycYAMLParser();
         $settings = $yamlParser->YAMLLoadString(file_get_contents($this->fixturesPath . 'Settings/settings1.yaml'));
 
-        $this->extension = $this->getMock(\EBT\ExtensionBuilder\Domain\Model\Extension::class, array('getExtensionDir'));
+        $this->extension = $this->getMockBuilder(\EBT\ExtensionBuilder\Domain\Model\Extension::class)
+            ->enableProxyingToOriginalMethods()
+            ->getMock();
         $this->extension->setVendorName('EBT');
         $this->extension->setExtensionKey('dummy');
+        $dummyExtensionDir = 'dummy';
         $this->extension->expects(
             self::any())
             ->method('getExtensionDir')
             ->will(self::returnValue($dummyExtensionDir));
         if (is_dir($dummyExtensionDir)) {
-            GeneralUtility::mkdir($dummyExtensionDir, true);
+           GeneralUtility::mkdir($dummyExtensionDir, true);
         }
+
         $this->extension->setSettings($settings);
 
         // get instances to inject in Mocks
@@ -128,13 +143,16 @@ abstract class BaseFunctionalTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCa
 
         $this->fileGenerator->setSettings(
             array(
-                'codeTemplateRootPath' => $this->codeTemplateRootPath,
+                'codeTemplateRootPaths.' => [PATH_typo3conf . 'ext/extension_builder/Resources/Private/CodeTemplates/Extbase/'],
+                'codeTemplatePartialPaths.' => [PATH_typo3conf . 'ext/extension_builder/Resources/Private/CodeTemplates/Extbase/Partials'],
                 'extConf' => array(
                     'enableRoundtrip' => '1'
                 )
             )
         );
-        $this->fileGenerator->_set('codeTemplateRootPath', __DIR__ . '/../Resources/Private/CodeTemplates/Extbase/');
+        // needed when sub routines in file generator are called without an initial setup
+        $this->fileGenerator->_set('codeTemplateRootPaths', [PATH_typo3conf . 'ext/extension_builder/Resources/Private/CodeTemplates/Extbase/']);
+        $this->fileGenerator->_set('codeTemplatePartialPaths', [PATH_typo3conf . 'ext/extension_builder/Resources/Private/CodeTemplates/Extbase/Partials']);
         $this->fileGenerator->_set('enableRoundtrip', true);
         $this->fileGenerator->_set('extension', $this->extension);
     }
@@ -204,4 +222,5 @@ abstract class BaseFunctionalTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCa
         }
         self::assertFalse(file_exists($this->extension->getExtensionDir() . $this->modelClassDir . $modelName . '.php'), 'Dummy files could not be removed:' . $this->extension->getExtensionDir() . $this->modelClassDir . $modelName . '.php');
     }
+
 }

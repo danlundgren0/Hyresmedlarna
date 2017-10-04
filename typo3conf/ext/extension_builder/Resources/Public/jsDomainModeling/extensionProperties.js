@@ -15,9 +15,9 @@ extbaseModeling_wiringEditorLanguage.propertiesFields =
 			name: "vendorName",
 			label: TYPO3.settings.extensionBuilder._LOCAL_LANG.vendorName,
 			placeholder: TYPO3.settings.extensionBuilder._LOCAL_LANG.vendorName,
-			value: '',
+			helpLink: 'https://docs.typo3.org/typo3cms/CoreApiReference/ApiOverview/Namespaces/#usage-in-extensions',
 			ucFirst: true,
-            regexp: /^[A-Z]/,
+            regexp: /^[A-Za-z]/,
             minLength: 2,
 			forceAlphaNumeric: true,
 			cols: 30,
@@ -30,10 +30,11 @@ extbaseModeling_wiringEditorLanguage.propertiesFields =
 		inputParams: {
 			name: "extensionKey",
 			label: TYPO3.settings.extensionBuilder._LOCAL_LANG.key,
+			helpLink: 'https://docs.typo3.org/typo3cms/CoreApiReference/ExtensionArchitecture/ExtensionKey/',
 			typeInvite: TYPO3.settings.extensionBuilder._LOCAL_LANG.extensionKey,
+			helpLink: 'https://docs.typo3.org/typo3cms/CoreApiReference/ExtensionArchitecture/ExtensionKey/',
 			forceLowerCase: true,
 			forceAlphaNumericUnderscore: true,
-            regexp: /^[a-z]/,
             minLength: 3,
             maxLength: 30,
 			cols: 30,
@@ -171,10 +172,10 @@ extbaseModeling_wiringEditorLanguage.propertiesFields =
                             label: TYPO3.settings.extensionBuilder._LOCAL_LANG.target_version,
                             description: TYPO3.settings.extensionBuilder._LOCAL_LANG.descr_target_version,
                             selectOptions: [
-								'TYPO3 v 8.6'
+								'TYPO3 v 8.7'
                             ],
-                            selectValues: ["8.6.0-8.6.99"],
-							value: '8.6.0-8.6.99'
+                            selectValues: ["8.7.0-8.7.99"],
+							value: '8.7.0-8.7.99'
                         }
                     },
 					{
@@ -186,7 +187,7 @@ extbaseModeling_wiringEditorLanguage.propertiesFields =
 							description: TYPO3.settings.extensionBuilder._LOCAL_LANG.descr_dependsOn,
 							cols:20,
 							rows:6,
-							value : "typo3 => 8.6.0-8.6.99\n"
+							value : "typo3 => 8.7.0-8.7.99\n"
 						}
 					}
 			]
@@ -270,6 +271,16 @@ extbaseModeling_wiringEditorLanguage.propertiesFields =
 								forceAlphaNumeric: true,
 								noSpaces: true,
 								description: TYPO3.settings.extensionBuilder._LOCAL_LANG.uniqueInThisModel
+							}
+						},
+						{
+							type: 'text',
+							inputParams: {
+								name: "description",
+								label: TYPO3.settings.extensionBuilder._LOCAL_LANG.description,
+								required: false,
+								cols:20,
+								rows:6
 							}
 						},
 						{
