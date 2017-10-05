@@ -32,7 +32,17 @@ class EmailregistrationController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
      */
     public function landlordregAction()
     {
+        $pidList = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK)['persistence']['storagePid'];
+
+        if(strlen($pidList)>0) {
+            $pidListArr = explode(',',$pidList);
+            $pid = $pidListArr[0];
+        }
+        else {
+            $pid = 0;
+        }
         $this->view->assign('regtype', 'landlord');
+        $this->view->assign('pid', $pid);
     }
 
     /**
@@ -42,7 +52,16 @@ class EmailregistrationController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
      */
     public function tenantregAction()
     {
+        $pidList = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK)['persistence']['storagePid'];
+        if(strlen($pidList)>0) {
+            $pidListArr = explode(',',$pidList);
+            $pid = $pidListArr[0];
+        }
+        else {
+            $pid = 0;
+        }
         $this->view->assign('regtype', 'tenant');
+        $this->view->assign('pid', $pid);
     }
 
     /**

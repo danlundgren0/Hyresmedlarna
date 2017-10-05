@@ -15,12 +15,14 @@ DanL.EmailReg = {
         var alertsContainer = $(this).closest('.sendmail');
         var type = $(this).attr('data-type');
         var status = $(this).attr('data-status');
+        var pid = $(this).attr('data-pid');
         var email = $(this).closest('.tx-dl-emailregistration').find('input').val();
         DanL.ajax.fetch({
             command: 'registerEmail',
             arguments: {
                 type: type,
                 status: status,
+                pid: pid,
                 email: email
             }
         }).done(function(data, textStatus, jqXHR) {

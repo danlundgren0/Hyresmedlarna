@@ -102,9 +102,8 @@ class AjaxRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 		$type = $this->arguments['type'];
 		$status = $this->arguments['status'];
 		$email = $this->arguments['email'];
-
-		$emailregistration = $this->emailregistrationRepository->findByEmailAddress($email);
-
+		$pid = $this->arguments['pid'];
+		$emailregistration = $this->emailregistrationRepository->findByEmail($email, $pid);
 		$isAlreadyRegistered = count($emailregistration);
 		$this->data['success'] = -1;
 		$this->data['message'] = 'Ett fel uppstod';
@@ -113,6 +112,7 @@ class AjaxRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 			$emailregistration->setIsTenant(($type == 'tenant')?true:false);
 			$emailregistration->setIsLandlord(($type == 'landlord')?true:false);
 			$emailregistration->setEmailAddress($email);
+			$emailregistration->setPid($pid);
             $this->emailregistrationRepository->add($emailregistration);
             $this->persistenceManager->persistAll();
             $this->data['success'] = 1;

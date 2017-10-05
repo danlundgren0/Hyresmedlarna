@@ -14,8 +14,9 @@
     }
 }
 [data-status="disabled"] {
-	opacity:0.5;
+	/*opacity:0.5;*/
 	cursor: no-drop;
+    color:#b1d69c;
 }
 .sendmail [type="button"] {
 	padding: 3px 8px;

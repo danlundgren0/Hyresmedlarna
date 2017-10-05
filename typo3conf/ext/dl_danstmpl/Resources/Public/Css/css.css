@@ -112,3 +112,8 @@ body, .htmlarea-content-body {
 .pagelevel-0 .searchbox-container .glyphicon {
 	color:#ffffff;
 }
+@media (max-width: 767px) {
+	h4 {
+		padding:0 0;
+	}
+}

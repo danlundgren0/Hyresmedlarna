@@ -9,7 +9,7 @@ plugin.tx_dlemailregistration_emailregistration {
         layoutRootPaths.1 = {$plugin.tx_dlemailregistration_emailregistration.view.layoutRootPath}
     }
     persistence {
-        storagePid = {$plugin.tx_dlemailregistration_emailregistration.persistence.storagePid}
+        #storagePid = {$plugin.tx_dlemailregistration_emailregistration.persistence.storagePid}
         #recursive = 1
     }
     features {
