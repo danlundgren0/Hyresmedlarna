@@ -1,0 +1,316 @@
+renderingOptions:
+  submitButtonLabel: Skicka
+identifier: landlordform
+label: Landlordform
+type: Form
+prototypeName: standard
+finishers:
+  -
+    options:
+      subject: 'Your message: {message}'
+      recipientAddress: danlundgren0@gmail.com
+      recipientName: Hyresmedlarna
+      senderAddress: '{email}'
+      senderName: '{first_name} {last_name}'
+      replyToAddress: ''
+      carbonCopyAddress: ''
+      blindCarbonCopyAddress: ''
+      format: html
+      attachUploads: 'true'
+      translation:
+        language: ''
+    identifier: EmailToReceiver
+  -
+    options:
+      pageUid: '68'
+      additionalParameters: ''
+    identifier: Redirect
+renderables:
+  -
+    renderingOptions:
+      previousButtonLabel: 'previous Page'
+      nextButtonLabel: 'next Page'
+    identifier: page-1
+    label: 'Ange dina personuppgifter'
+    type: Page
+    renderables:
+      -
+        defaultValue: ''
+        identifier: first_name
+        label: Förnamn
+        type: Text
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: Förnamn
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        identifier: last_name
+        label: Efternamn
+        type: Text
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: Efternamn
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: address
+        label: Gatuadress
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: Gatuadress
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: zip
+        label: Postnr
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: Postnr
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+          -
+            identifier: Integer
+      -
+        defaultValue: ''
+        type: Text
+        identifier: city
+        label: Stad
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: Stad
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        identifier: email
+        label: 'E-post adress'
+        type: Text
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'E-post adress'
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+          -
+            identifier: EmailAddress
+      -
+        defaultValue: ''
+        type: Text
+        identifier: telephone
+        label: Telefonnummer
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: Telefonnummer
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: social_security_number
+        label: Personnummer
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: Personnummer
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: rent
+        label: 'Hyra'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Hyra'
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: text-6
+        label: 'Önskad bostadsyta'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Önskad bostadsyta'
+      -
+        defaultValue: ''
+        type: Text
+        identifier: text-7
+        label: 'Önskat antal rum'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Önskat antal rum'
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: rent_from
+        label: 'Uthyres från'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Ange datum eller snarast möjligt'
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: rent_to
+        label: 'Uthyres till'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Ange datum eller tills vidare'
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: district
+        label: 'Stadsdel'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Stadsdel'
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: street
+        label: 'Gata'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Gata'
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: street_no
+        label: 'Gatunummer'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Gatunummer'
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: number_of_rooms
+        label: 'Antal rum'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Antal rum'
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: living_area
+        label: 'Bostadsyta'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Bostadsyta'
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        type: Checkbox
+        identifier: furnished
+        label: Möblerad
+      -
+        type: Checkbox
+        identifier: handicap
+        label: Handikappanpassad
+      -
+        type: Checkbox
+        identifier: elevator
+        label: Hiss
+      -
+        type: Checkbox
+        identifier: animals_permitted
+        label: Djur tillåtet
+      -
+        defaultValue: ''
+        identifier: message
+        label: Övrigt
+        type: Textarea
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: ''
+      -
+        properties:
+          saveToFileMount: '1:/user_upload/'
+          allowedMimeTypes:
+            - image/jpeg
+            - image/png
+        type: ImageUpload
+        identifier: imageupload-1
+        label: 'Ladda upp bilder'
+      -
+        properties:
+          saveToFileMount: '1:/user_upload/'
+          allowedMimeTypes:
+            - image/jpeg
+            - image/png
+        type: ImageUpload
+        identifier: imageupload-2
+        label: 'Ladda upp bilder'
+      -
+        properties:
+          saveToFileMount: '1:/user_upload/'
+          allowedMimeTypes:
+            - image/jpeg
+            - image/png
+        type: ImageUpload
+        identifier: imageupload-3
+        label: 'Ladda upp bilder'
+      -
+        properties:
+          saveToFileMount: '1:/user_upload/'
+          allowedMimeTypes:
+            - image/jpeg
+            - image/png
+        type: ImageUpload
+        identifier: imageupload-4
+        label: 'Ladda upp bilder'
+  -
+    renderingOptions:
+      previousButtonLabel: 'Föregående sida'
+      nextButtonLabel: 'Nästa sida'
+    identifier: summarypage
+    label: 'Översikt'
+    type: SummaryPage
