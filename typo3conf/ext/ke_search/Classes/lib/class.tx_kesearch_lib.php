@@ -106,6 +106,11 @@ class tx_kesearch_lib extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
     public $div;
 
     /**
+     * @var TypoScriptService
+     */
+    public $typoScriptService;
+
+    /**
      * @var user_kesearchpremium
      */
     public $user_kesearchpremium;
@@ -128,6 +133,13 @@ class tx_kesearch_lib extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
     {
         // get some helper functions
         $this->div = GeneralUtility::makeInstance('tx_kesearch_lib_div', $this);
+
+        if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) >= 8007000) {
+            $this->typoScriptService = GeneralUtility::makeInstance(TYPO3\CMS\Core\TypoScript\TypoScriptService::class);
+        }
+        else {
+            $this->typoScriptService = GeneralUtility::makeInstance(TYPO3\CMS\Extbase\Service\TypoScriptService::class);
+        }
 
         // set start of query timer
         if (!$GLOBALS['TSFE']->register['ke_search_queryStartTime']) {
@@ -166,13 +178,13 @@ class tx_kesearch_lib extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
             $this->piVars['page'] = 1;
         } else {
             // redirect ones after search submit to get nice looking url
-            if( $this->piVars['redirect'] === 0 ){
+            if ($this->piVars['redirect'] === 0) {
                 $this->piVars['redirect'] = 1;
                 $red_url = $this->pi_linkTP_keepPIvars_url();
                 HttpUtility::redirect($red_url);
             }
         }
-        if(!empty($this->conf['additionalPathForTypeIcons'])) {
+        if (!empty($this->conf['additionalPathForTypeIcons'])) {
             $this->conf['additionalPathForTypeIcons'] = rtrim($this->conf['additionalPathForTypeIcons'], '/') . '/';
         }
 
@@ -249,12 +261,6 @@ class tx_kesearch_lib extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
         if (!$this->sword && $this->piVars['sortByField'] == 'score') {
             unset($this->piVars['sortByField']);
             unset($this->piVars['sortByDir']);
-        }
-
-        // chooseBestIndex is only needed for MySQL-Search. Not for Sphinx
-        if (!$this->extConfPremium['enableSphinxSearch']) {
-            // precount results to find the best index
-            $this->db->chooseBestIndex($this->wordsAgainst, $this->tagsAgainst);
         }
 
         // perform search at this point already if we need to calculate what
@@ -743,7 +749,7 @@ class tx_kesearch_lib extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
      * creates the search result list
      * 1. does the actual searching (fetches the results to $rows)
      * 2. fills fluid variables for fluid templates to $this->fluidTemplateVariables
-
+     * @return void
      */
     public function getSearchResults()
     {
@@ -769,7 +775,7 @@ class tx_kesearch_lib extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
 
         // render "no results" text and stop here
         if ($this->numberOfResults == 0) {
-            return $this->setNoResultsText();
+            $this->setNoResultsText();
         }
 
         // set switch for too short words
@@ -780,77 +786,78 @@ class tx_kesearch_lib extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
         $this->searchResult = GeneralUtility::makeInstance('tx_kesearch_lib_searchresult', $this);
 
         $this->fluidTemplateVariables['resultrows'] = array();
+        if (is_array($rows)) {
+            foreach ($rows as $row) {
+                $this->searchResult->setRow($row);
 
-        foreach ($rows as $row) {
-            $this->searchResult->setRow($row);
+                $tempMarkerArray = array(
+                    'orig_uid' => $row['orig_uid'],
+                    'orig_pid' => $row['orig_pid'],
+                    'title' => $this->searchResult->getTitle(),
+                    'teaser' => $this->searchResult->getTeaser(),
+                );
 
-            $tempMarkerArray = array(
-                'orig_uid' => $row['orig_uid'],
-                'orig_pid' => $row['orig_pid'],
-                'title' => $this->searchResult->getTitle(),
-                'teaser' => $this->searchResult->getTeaser(),
-            );
-
-            // hook for additional markers in result row
-            if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['additionalResultMarker'])) {
-                // make curent row number available to hook
-                $this->currentRowNumber = $resultCount;
-                foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['additionalResultMarker'] as $_classRef) {
-                    $_procObj = &GeneralUtility::getUserObj($_classRef);
-                    $_procObj->additionalResultMarker($tempMarkerArray, $row, $this);
+                // hook for additional markers in result row
+                if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['additionalResultMarker'])) {
+                    // make curent row number available to hook
+                    $this->currentRowNumber = $resultCount;
+                    foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['additionalResultMarker'] as $_classRef) {
+                        $_procObj = &GeneralUtility::getUserObj($_classRef);
+                        $_procObj->additionalResultMarker($tempMarkerArray, $row, $this);
+                    }
+                    unset($this->currentRowNumber);
                 }
-                unset($this->currentRowNumber);
+
+                // add type marker
+                // for file results just use the "file" type, not the file extension (eg. "file:pdf")
+                list($type) = explode(':', $row['type']);
+                $tempMarkerArray['type'] = str_replace(' ', '_', $type);
+
+                // use the markers array as a base for the fluid template values
+                $resultrowTemplateValues = $tempMarkerArray;
+
+                // set result url
+                $resultUrl = $this->searchResult->getResultUrl($this->conf['renderResultUrlAsLink']);
+                $resultrowTemplateValues['url'] = $resultUrl;
+
+                // set result numeration
+                $resultNumber = $resultCount
+                    + ($this->piVars['page'] * $this->conf['resultsPerPage'])
+                    - $this->conf['resultsPerPage'];
+                $resultrowTemplateValues['number'] = $resultNumber;
+
+                // set score (used for plain score output and score scale)
+                $resultScore = number_format($row['score'], 2, ',', '');
+                $resultrowTemplateValues['score'] = $resultScore;
+
+                // set date (formatted and raw as a timestamp)
+                $resultDate = date($GLOBALS['TYPO3_CONF_VARS']['SYS']['ddmmyy'], $row['sortdate']);
+                $resultrowTemplateValues['date'] = $resultDate;
+                $resultrowTemplateValues['date_timestamp'] = $row['sortdate'];
+
+                // set percental score
+                $resultrowTemplateValues['percent'] = $row['percent'];
+
+                // show tags?
+                $tags = $row['tags'];
+                $tags = str_replace('#', ' ', $tags);
+                $resultrowTemplateValues['tags'] = $tags;
+
+                // set preview image
+                $renderedImage = $this->renderPreviewImageOrTypeIcon($row);
+                $resultrowTemplateValues['imageHtml'] = $renderedImage;
+
+                // set end date for cal events
+                if ($type == 'cal') {
+                    $resultrowTemplateValues['cal'] = $this->getCalEventEnddate($row['orig_uid']);
+                }
+
+                // add result row to the variables array
+                $this->fluidTemplateVariables['resultrows'][] = $resultrowTemplateValues;
+
+                // increase result counter
+                $resultCount++;
             }
-
-            // add type marker
-            // for file results just use the "file" type, not the file extension (eg. "file:pdf")
-            list($type) = explode(':', $row['type']);
-            $tempMarkerArray['type'] = str_replace(' ', '_', $type);
-
-            // use the markers array as a base for the fluid template values
-            $resultrowTemplateValues = $tempMarkerArray;
-
-            // set result url
-            $resultUrl = $this->searchResult->getResultUrl($this->conf['renderResultUrlAsLink']);
-            $resultrowTemplateValues['url'] = $resultUrl;
-
-            // set result numeration
-            $resultNumber = $resultCount
-                + ($this->piVars['page'] * $this->conf['resultsPerPage'])
-                - $this->conf['resultsPerPage'];
-            $resultrowTemplateValues['number'] = $resultNumber;
-
-            // set score (used for plain score output and score scale)
-            $resultScore = number_format($row['score'], 2, ',', '');
-            $resultrowTemplateValues['score'] = $resultScore;
-
-            // set date (formatted and raw as a timestamp)
-            $resultDate = date($GLOBALS['TYPO3_CONF_VARS']['SYS']['ddmmyy'], $row['sortdate']);
-            $resultrowTemplateValues['date'] = $resultDate;
-            $resultrowTemplateValues['date_timestamp'] = $row['sortdate'];
-
-            // set percental score
-            $resultrowTemplateValues['percent'] = $row['percent'];
-
-            // show tags?
-            $tags = $row['tags'];
-            $tags = str_replace('#', ' ', $tags);
-            $resultrowTemplateValues['tags'] = $tags;
-
-            // set preview image
-            $renderedImage = $this->renderPreviewImageOrTypeIcon($row);
-            $resultrowTemplateValues['imageHtml'] = $renderedImage;
-
-            // set end date for cal events
-            if ($type == 'cal') {
-                $resultrowTemplateValues['cal'] = $this->getCalEventEnddate($row['orig_uid']);
-            }
-
-            // add result row to the variables array
-            $this->fluidTemplateVariables['resultrows'][] = $resultrowTemplateValues;
-
-            // increase result counter
-            $resultCount++;
         }
     }
 
@@ -1218,17 +1225,17 @@ class tx_kesearch_lib extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
     {
         list($type, $filetype) = explode(':', $row['type']);
         if (in_array($filetype, $this->fileTypesWithPreviewPossible)) {
-            $imageConf = $this->conf['previewImage.'];
+            $imageConf = $this->conf['previewImage'];
 
             // if index record is of type "file" and contains an orig_uid, this is the reference
             // to a FAL record. Otherwise we use the path directly.
             /** @var $fileObject \TYPO3\CMS\Core\Resource\File */
             if ($row['orig_uid'] && ($fileObject = tx_kesearch_helper::getFile($row['orig_uid']))) {
                 $metadata = $fileObject->_getMetaData();
-                $imageConf['file'] = $fileObject->getForLocalProcessing(false);
+                $imageConf['file']['_typoScriptNodeValue'] = $fileObject->getForLocalProcessing(false);
                 $imageConf['altText'] = $metadata['alternative'];
             } else {
-                $imageConf['file'] = $row['directory'] . rawurlencode($row['title']);
+                $imageConf['file']['_typoScriptNodeValue'] = $row['directory'] . rawurlencode($row['title']);
             }
             return $this->renderPreviewImage($imageConf);
         }
@@ -1250,7 +1257,7 @@ class tx_kesearch_lib extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
     {
         $imageHtml = '';
 
-        $imageConf = $this->conf['previewImage.'];
+        $imageConf = $this->conf['previewImage'];
         $fileRepository = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\FileRepository');
         $fileObjects = $fileRepository->findByRelation($table, $fieldname, $uid);
         /** @var $fileObject \TYPO3\CMS\Core\Resource\FileReference */
@@ -1262,7 +1269,7 @@ class tx_kesearch_lib extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
             $alternative = $referenceProperties['alternative'] ?
                 $referenceProperties['alternative'] : $originalFileProperties['alternative'];
 
-            $imageConf['file'] = $fileObject->getForLocalProcessing(false);
+            $imageConf['file']['_typoScriptNodeValue'] = $fileObject->getForLocalProcessing(false);
             $imageConf['altText'] = $alternative;
             $imageHtml = $this->renderPreviewImage($imageConf);
         }
@@ -1278,12 +1285,9 @@ class tx_kesearch_lib extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
      */
     public function renderPreviewImage($imageConf)
     {
-        if (empty($imageConf['file.']['maxW'])) {
-            $imageConf['file.']['maxW'] = 150;
-        }
-        if (empty($imageConf['file.']['maxH'])) {
-            $imageConf['file.']['maxH'] = 150;
-        }
+        $imageConf['file']['maxW'] = (!empty($imageConf['file']['maxW'])) ? (int)$imageConf['file']['maxW'] : 150;
+        $imageConf['file']['maxH'] = (!empty($imageConf['file']['maxH'])) ? (int)$imageConf['file']['maxH'] : 150;
+        $imageConf = $this->typoScriptService->convertPlainArrayToTypoScriptArray($imageConf);
         $rendered = $this->cObj->cObjGetSingle('IMAGE', $imageConf);
         return $rendered;
     }
@@ -1298,12 +1302,18 @@ class tx_kesearch_lib extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
         list($type) = explode(':', $typeComplete);
         $name = str_replace(':', '_', $typeComplete);
 
-        if ($this->conf['resultListTypeIcon.'][$name . '.']) {
-            $imageConf = $this->conf['resultListTypeIcon.'][$name . '.'];
+        if ($this->conf['resultListTypeIcon'][$name]) {
+            $imageConf = $this->conf['resultListTypeIcon'][$name];
+
+            // make sure imageConf['file'] is an array
+            $imageConf['file'] = is_string($imageConf['file'])
+                ? [ '_typoScriptNodeValue' => $imageConf['file']]
+                : $imageConf['file'];
+
         } else {
             // custom image (old configuration option, only for gif images)
             if ($this->conf['additionalPathForTypeIcons']) {
-                $imageConf['file'] = str_replace(
+                $imageConf['file']['_typoScriptNodeValue'] = str_replace(
                     PATH_site,
                     '',
                     GeneralUtility::getFileAbsFileName($this->conf['additionalPathForTypeIcons'] . $name . '.gif')
@@ -1312,17 +1322,18 @@ class tx_kesearch_lib extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
         }
 
         // fallback: default image
-        if (!is_file(PATH_site . $imageConf['file'])) {
-            $imageConf['file'] = ExtensionManagementUtility::siteRelPath($this->extKey)
+        if (!is_file(PATH_site . $imageConf['file']['_typoScriptNodeValue'])) {
+            $imageConf['file']['_typoScriptNodeValue'] = ExtensionManagementUtility::siteRelPath($this->extKey)
                 . 'res/img/types/' . $name . '.gif';
 
             // fallback for file results: use default if no image for this file extension is available
             if ($type == 'file' && !is_file(PATH_site . $imageConf['file'])) {
-                $imageConf['file'] = ExtensionManagementUtility::siteRelPath($this->extKey)
+                $imageConf['file']['_typoScriptNodeValue'] = ExtensionManagementUtility::siteRelPath($this->extKey)
                     . 'res/img/types/file.gif';
             }
         }
 
+        $imageConf = $this->typoScriptService->convertPlainArrayToTypoScriptArray($imageConf);
         $rendered = $this->cObj->cObjGetSingle('IMAGE', $imageConf);
 
         return $rendered;
@@ -1393,7 +1404,8 @@ class tx_kesearch_lib extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
 
     /**
      * gets all preselected filters from flexform
-     * @return none but fills global var with needed data
+     * returns nothing but fills global var with needed data
+     * @return void
      */
     public function getFilterPreselect()
     {

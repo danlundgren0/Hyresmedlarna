@@ -1,3 +1,6 @@
+.navbar-header-main .navbar-brand {
+	z-index: 1;
+}
 .frame-type-form_formframework .form-group {
     clear: both;
 	text-align: left;
@@ -165,5 +168,17 @@ body, .htmlarea-content-body {
 @media (max-width: 767px) {
 	h4 {
 		padding:0 0;
+	}
+	.frame-type-form_formframework .control-label, .frame-type-form_formframework .input {
+		width:auto;
+		float:none;
+		padding-left: 50px;
+		padding-bottom:0;
+	}
+	.frame-type-form_formframework .form-group {
+		height:auto;
+	}
+	.frame-type-form_formframework .input.checkbox {
+		margin-left:0;
 	}
 }

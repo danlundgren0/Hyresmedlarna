@@ -6,6 +6,7 @@ $typo3InstallDir = PATH_site;
 
 return array(
     'BK2K\\BootstrapPackage\\' => array($typo3InstallDir . 'typo3conf/ext/bootstrap_package/Classes'),
+    'DanLundgren\\DlBankid\\' => array($typo3InstallDir . 'typo3conf/ext/dl_bankid/Classes'),
     'DanLundgren\\DlDanstmpl\\' => array($typo3InstallDir . 'typo3conf/ext/dl_danstmpl/Classes'),
     'DanLundgren\\DlEmailregistration\\' => array($typo3InstallDir . 'typo3conf/ext/dl_emailregistration/Classes'),
     'DanLundgren\\DlRealestate\\' => array($typo3InstallDir . 'typo3conf/ext/dl_realestate/Classes'),

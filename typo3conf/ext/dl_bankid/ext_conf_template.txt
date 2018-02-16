@@ -1,0 +1,10 @@
+# cat=basic/BankID/a; type=string; label=Path to test cert
+ftpServer =
+# cat=basic/BankID/b; type=string; label=Path to live cert
+ftpUser =
+# cat=basic/BankID/c; type=string; label=wsdlUrl
+ftpPass =
+# cat=basic/BankID/d; type=string; label=appapiUrl (https://appapi.bankid.com/rp/v4, https://appapi2.bankid.com/rp/v4)
+ftpPass =
+
+

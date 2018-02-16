@@ -1,7 +1,7 @@
 <?php
 return [
     'BE' => [
-        'debug' => true,
+        'debug' => false,
         'explicitADmode' => 'explicitAllow',
         'installToolPassword' => '$pbkdf2-sha256$25000$xgbyY/lvY4cLr.tga3oljQ$zdZstjx8Ba2XsDfq6nkt0wnjIV77cmaQr4xrAfzAVig',
         'loginSecurityLevel' => 'rsa',
@@ -23,6 +23,7 @@ return [
         'extConf' => [
             'bootstrap_grids' => 'a:1:{s:19:"enableGridSimpleRow";s:1:"0";}',
             'bootstrap_package' => 'a:7:{s:16:"disablePageTsRTE";s:1:"0";s:27:"disablePageTsBackendLayouts";s:1:"0";s:20:"disablePageTsTCEMAIN";s:1:"0";s:20:"disablePageTsTCEFORM";s:1:"0";s:30:"disablePageTsTtContentPreviews";s:1:"0";s:36:"disablePageTsNewContentElementWizard";s:1:"0";s:21:"disableLessProcessing";s:1:"0";}',
+            'dl_bankid' => 'a:0:{}',
             'dl_danstmpl' => 'a:0:{}',
             'dl_emailregistration' => 'a:0:{}',
             'dl_realestate' => 'a:0:{}',
@@ -37,7 +38,7 @@ return [
         ],
     ],
     'FE' => [
-        'debug' => true,
+        'debug' => false,
         'loginSecurityLevel' => 'rsa',
     ],
     'GFX' => [
@@ -73,15 +74,15 @@ return [
                 ],
             ],
         ],
-        'devIPmask' => '*',
-        'displayErrors' => 1,
-        'enableDeprecationLog' => 'file',
+        'devIPmask' => '',
+        'displayErrors' => 0,
+        'enableDeprecationLog' => false,
         'encryptionKey' => 'b71ae250a621d431d0c808f37c192edafbe6c8aef262f41c8b917c4601e68182630efd56f3ccc5ada1f7632dd066ede0',
-        'exceptionalErrors' => 28674,
+        'exceptionalErrors' => 20480,
         'isInitialDatabaseImportDone' => true,
         'isInitialInstallationInProgress' => false,
         'sitename' => 'Hyresmedlarna',
-        'sqlDebug' => 1,
-        'systemLogLevel' => 0,
+        'sqlDebug' => 0,
+        'systemLogLevel' => 2,
     ],
 ];

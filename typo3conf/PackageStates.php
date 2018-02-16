@@ -131,6 +131,9 @@ return [
         'introduction' => [
             'packagePath' => 'typo3conf/ext/introduction/',
         ],
+        'dl_bankid' => [
+            'packagePath' => 'typo3conf/ext/dl_bankid/',
+        ],
         'dl_danstmpl' => [
             'packagePath' => 'typo3conf/ext/dl_danstmpl/',
         ],
