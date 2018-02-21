@@ -71,6 +71,14 @@ class EmailregistrationController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
      */
     public function listAction()
     {
+\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
+ array(
+  'class' => __CLASS__,
+  'function' => __FUNCTION__,
+  'extensionConfiguration' => $extensionConfiguration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['dl_bankid']),
+  'emailregistration' => 'listAction',
+ )
+);
         $emailregistrations = $this->emailregistrationRepository->findAll();
         $this->view->assign('emailregistrations', $emailregistrations);
     }

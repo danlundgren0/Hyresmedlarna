@@ -1,15 +1,15 @@
 
-plugin.tx_dlbankid_loginform {
+plugin.tx_dlbankid_bankid {
     view {
         templateRootPaths.0 = EXT:dl_bankid/Resources/Private/Templates/
-        templateRootPaths.1 = {$plugin.tx_dlbankid_loginform.view.templateRootPath}
+        templateRootPaths.1 = {$plugin.tx_dlbankid_bankid.view.templateRootPath}
         partialRootPaths.0 = EXT:dl_bankid/Resources/Private/Partials/
-        partialRootPaths.1 = {$plugin.tx_dlbankid_loginform.view.partialRootPath}
+        partialRootPaths.1 = {$plugin.tx_dlbankid_bankid.view.partialRootPath}
         layoutRootPaths.0 = EXT:dl_bankid/Resources/Private/Layouts/
-        layoutRootPaths.1 = {$plugin.tx_dlbankid_loginform.view.layoutRootPath}
+        layoutRootPaths.1 = {$plugin.tx_dlbankid_bankid.view.layoutRootPath}
     }
     persistence {
-        storagePid = {$plugin.tx_dlbankid_loginform.persistence.storagePid}
+        storagePid = {$plugin.tx_dlbankid_bankid.persistence.storagePid}
         #recursive = 1
     }
     features {
@@ -57,3 +57,32 @@ plugin.tx_dlbankid._CSS_DEFAULT_STYLE (
         color:green;
     }
 )
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+page.includeJSFooter.dlbankid = EXT:dl_bankid/Resources/Public/Js/bankid.js
+DlBankidAjaxPrototype = PAGE
+DlBankidAjaxPrototype {
+    typeNum = 666
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+        no_cache = 1
+        additionalHeaders = Content-type:application/json
+    }
+    10 = USER_INT
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = DlBankid
+        pluginName = Ajaxrequest
+        vendorName = DanLundgren
+        controller = AjaxRequest
+        action = getJson
+        switchableControllerActions {
+            AjaxRequest {
+                1 = getJson
+            }
+        }
+    }
+}

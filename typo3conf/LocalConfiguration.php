@@ -23,7 +23,7 @@ return [
         'extConf' => [
             'bootstrap_grids' => 'a:1:{s:19:"enableGridSimpleRow";s:1:"0";}',
             'bootstrap_package' => 'a:7:{s:16:"disablePageTsRTE";s:1:"0";s:27:"disablePageTsBackendLayouts";s:1:"0";s:20:"disablePageTsTCEMAIN";s:1:"0";s:20:"disablePageTsTCEFORM";s:1:"0";s:30:"disablePageTsTtContentPreviews";s:1:"0";s:36:"disablePageTsNewContentElementWizard";s:1:"0";s:21:"disableLessProcessing";s:1:"0";}',
-            'dl_bankid' => 'a:0:{}',
+            'dl_bankid' => 'a:6:{s:8:"livecert";s:0:"";s:8:"testcert";s:0:"";s:10:"passphrase";s:13:"hR1392&MdaroS";s:13:"appapitesturl";s:33:"appapi.test.bankid.com/rp/v4?wsdl";s:13:"appapiliveurl";s:28:"appapi.bankid.com/rp/v4?wsdl";s:15:"livemodeenabled";s:0:"";}',
             'dl_danstmpl' => 'a:0:{}',
             'dl_emailregistration' => 'a:0:{}',
             'dl_realestate' => 'a:0:{}',
