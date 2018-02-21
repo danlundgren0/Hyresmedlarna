@@ -1,4 +1,3 @@
-
 renderingOptions:
   submitButtonLabel: Submit
 identifier: tenantform
@@ -151,6 +150,12 @@ renderables:
         validators:
           -
             identifier: NotEmpty
+      -
+        properties:
+          text: ''
+        type: StaticText
+        identifier: statictext-1
+        label: 'Söker objekt:'
       -
         defaultValue: ''
         type: Text
