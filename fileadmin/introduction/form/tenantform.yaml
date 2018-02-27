@@ -1,3 +1,4 @@
+
 renderingOptions:
   submitButtonLabel: Submit
 identifier: tenantform
@@ -171,22 +172,24 @@ renderables:
       -
         defaultValue: ''
         type: Text
-        identifier: desired_living_space
-        label: 'Önskad bostadsyta'
+        identifier: district
+        label: Stadsdel
         properties:
           fluidAdditionalAttributes:
-            placeholder: 'Önskad bostadsyta'
+            placeholder: Stadsdel
+            required: required
         validators:
           -
             identifier: NotEmpty
       -
         defaultValue: ''
         type: Text
-        identifier: district
-        label: Stadsdel
+        identifier: desired_living_space
+        label: 'Önskad bostadsyta'
         properties:
           fluidAdditionalAttributes:
-            placeholder: Stadsdel
+            placeholder: 'Önskad bostadsyta'
+            required: required
         validators:
           -
             identifier: NotEmpty

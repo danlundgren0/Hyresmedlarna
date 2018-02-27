@@ -1,3 +1,4 @@
+
 renderingOptions:
   submitButtonLabel: Skicka
 identifier: landlordform
@@ -29,7 +30,7 @@ renderables:
   -
     renderingOptions:
       previousButtonLabel: 'previous Page'
-      nextButtonLabel: 'next Page'
+      nextButtonLabel: 'Nästa sida'
     identifier: page-1
     label: 'Ange dina personuppgifter'
     type: Page
@@ -137,35 +138,53 @@ renderables:
       -
         defaultValue: ''
         type: Text
-        identifier: rent
-        label: 'Hyra'
+        identifier: district
+        label: Stadsdel
         properties:
           fluidAdditionalAttributes:
-            placeholder: 'Hyra'
+            placeholder: Stadsdel
             required: required
         validators:
           -
             identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: street
+        label: Gata
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: Gata
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: street_no
+        label: Gatunummer
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: Gatunummer
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        properties:
+          text: ''
+        type: StaticText
+        identifier: statictext-1
+        label: Hyresobjekt
       -
         defaultValue: ''
         type: Text
         identifier: text-6
-        label: 'Önskad bostadsyta'
+        label: Bostadsyta
         properties:
           fluidAdditionalAttributes:
-            placeholder: 'Önskad bostadsyta'
-      -
-        defaultValue: ''
-        type: Text
-        identifier: text-7
-        label: 'Önskat antal rum'
-        properties:
-          fluidAdditionalAttributes:
-            placeholder: 'Önskat antal rum'
-            required: required
-        validators:
-          -
-            identifier: NotEmpty
+            placeholder: Bostadsyta
       -
         defaultValue: ''
         type: Text
@@ -193,39 +212,6 @@ renderables:
       -
         defaultValue: ''
         type: Text
-        identifier: district
-        label: 'Stadsdel'
-        properties:
-          fluidAdditionalAttributes:
-            placeholder: 'Stadsdel'
-        validators:
-          -
-            identifier: NotEmpty
-      -
-        defaultValue: ''
-        type: Text
-        identifier: street
-        label: 'Gata'
-        properties:
-          fluidAdditionalAttributes:
-            placeholder: 'Gata'
-        validators:
-          -
-            identifier: NotEmpty
-      -
-        defaultValue: ''
-        type: Text
-        identifier: street_no
-        label: 'Gatunummer'
-        properties:
-          fluidAdditionalAttributes:
-            placeholder: 'Gatunummer'
-        validators:
-          -
-            identifier: NotEmpty
-      -
-        defaultValue: ''
-        type: Text
         identifier: number_of_rooms
         label: 'Antal rum'
         properties:
@@ -238,11 +224,11 @@ renderables:
       -
         defaultValue: ''
         type: Text
-        identifier: living_area
-        label: 'Bostadsyta'
+        identifier: rent
+        label: Hyra
         properties:
           fluidAdditionalAttributes:
-            placeholder: 'Bostadsyta'
+            placeholder: Hyra
             required: required
         validators:
           -
@@ -262,7 +248,7 @@ renderables:
       -
         type: Checkbox
         identifier: animals_permitted
-        label: Djur tillåtet
+        label: 'Djur tillåtet'
       -
         defaultValue: ''
         identifier: message
@@ -312,5 +298,5 @@ renderables:
       previousButtonLabel: 'Föregående sida'
       nextButtonLabel: 'Nästa sida'
     identifier: summarypage
-    label: 'Översikt'
+    label: Översikt
     type: SummaryPage

@@ -33,13 +33,7 @@ class BankIdController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      */
     public function mobileBankIdAction()
     {
-\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
- array(
-  'class' => __CLASS__,
-  'function' => __FUNCTION__,
-  'function' => 'mobileBankIdAction',
- )
-);
+
     }
 
     /**
@@ -50,13 +44,7 @@ class BankIdController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      */
     public function fileBankIdAction()
     {
-\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
- array(
-  'class' => __CLASS__,
-  'function' => __FUNCTION__,
-  'fileBankIdAction' => 'fileBankIdAction',
- )
-);
+
     }
 
     /**
@@ -66,13 +54,7 @@ class BankIdController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      */
     public function signAction()
     {
-\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
- array(
-  'class' => __CLASS__,
-  'function' => __FUNCTION__,
-  'signAction' => 'signAction',
- )
-);
+
     }
 
     /**
@@ -82,158 +64,137 @@ class BankIdController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      */
     public function collectAction()
     {
-\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
- array(
-  'class' => __CLASS__,
-  'function' => __FUNCTION__,
-  'collectAction' => 'collectAction',
- )
-);
+
     }
 
-    public function curlTest() {
+    public function rackfishsolution() {
+        /*
+        curl -v https://appapi2.test.bankid.com/rp/v5 --cacert /srv/sites/hyresmedlarna_dev.se/certs/bankid_cacert.crt --cert /srv/sites/hyresmedlarna_dev.se/certs/bankid_cert.crt --key /srv/sites/hyresmedlarna_dev.se/certs/bankid_cert.key
+        */
+        $url = 'https://appapi2.test.bankid.com/rp/v5/sign';
+        $caCert = '/srv/sites/hyresmedlarna_dev.se/certs/bankid_cacert.crt';
+        $cert = '/srv/sites/hyresmedlarna_dev.se/certs/bankid_cert.crt';
+        $key = '/srv/sites/hyresmedlarna_dev.se/certs/bankid_cert.key';
+        $clientIp = $this->getClientIp();
+        $userVisibleData = base64_encode('DansTest');
+        $params = 'personalNumber=195806152368&endUserIp='.$clientIp.'&userVisibleData='.$userVisibleData;
 
-        $wdsl = 'https://appapi2.test.bankid.com/rp/v4?wsdl';
-        $certPath = '/srv/sites/hmdev.se/web/mytestcert.pem';
-        $passphrase = 'XkgCQui0';
+	    $postData = array(
+	        'personalNumber' => '195806152368',
+	        'endUserIp' => $clientIp,
+	        'userVisibleData' => $userVisibleData
+	    );
+	    $postJson = json_encode($postData);
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $wdsl); //Load from datasource
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $urlWParams = $url.'?'.$params;
+        $ch = curl_init($url);
+        //curl_setopt($ch, CURLOPT_URL, $urlWParams);
+        curl_setopt($ch, CURLOPT_CAINFO, $caCert);
+        curl_setopt($ch, CURLOPT_SSLCERT, $cert);        
+        curl_setopt($ch, CURLOPT_SSLKEY, $key);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+		//curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+        //curl_setopt($ch, CURLSSH_AUTH_PUBLICKEY,$key);
+
+        //Genererar: response => TRUE om 0
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $postJson);
+
         //curl_setopt($ch, CURLOPT_HEADER, 1);
-        curl_setopt($ch, CURLINFO_HEADER_OUT, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/xml', 'SOAPAction: ""'));
-        //curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        //curl_setopt($ch, CURLINFO_HEADER_OUT, 1);
+        //curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'SOAPAction: ""'));
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+		    'Content-Type: application/json',
+		    'Content-Length: ' . strlen($postJson),
+			'SOAPAction: ""'
+		));
+        //curl_setopt($ch, CURLOPT_VERBOSE, true);
+        //curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        //curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
  
         //SSL
+        //Genererar: curl_errno=35 (Unknown SSL protocol error in connection to [secure site]:443)
         //curl_setopt($ch, CURLOPT_SSLVERSION, 3); //=3
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($ch, CURLOPT_SSLCERT, $certPath);
-        //curl_setopt($ch, CURLOPT_SSLKEY, $certPath);
-        curl_setopt($ch, CURLOPT_SSLKEYTYPE, 'PEM');
-        //curl_setopt($ch, CURLOPT_SSLKEYPASSWD, $passphrase); //Load from datasource
-        //Parse cURL response
-        $response            = curl_exec ($ch);
-        $this->curl_errorno  = curl_errno($ch);
- 
+        //curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+
+        //Genererar: response => '{"errorCode":"notFound"}'
+        //curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+/* TESTA DETTA
+curl_setopt($curl, CURLOPT_URL, $this->url);
+curl_setopt($curl, CURLOPT_HEADER, 0);
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+curl_setopt($curl, CURLOPT_SSLCERT, $this->keystore);
+curl_setopt($curl, CURLOPT_CAINFO, $this->keystore);
+curl_setopt($curl, CURLOPT_SSLKEYPASSWD, $this->keystorepassword);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+*/
+        $response = curl_exec ($ch);
+        $return = curl_getinfo($ch);
+        $this->curl_errorno = curl_errno($ch); 
         if ($this->curl_errorno == CURLE_OK) {
             $this->curl_statuscode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         }
         $this->curl_errormsg  = curl_error($ch);
-print_r($response);
- \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
-  array(
-   'class' => __CLASS__,
-   'function' => __FUNCTION__,
-   'response' => $response,
-   'curl_errorno' => $this->curl_errorno,
-   'curl_errormsg' => $this->curl_errormsg,
-  )
- );
+
+\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
+ array(
+  'class' => __CLASS__,
+  'function' => __FUNCTION__,
+  'HTTP_CLIENT_IP' => $_SERVER['HTTP_CLIENT_IP'],
+  'HTTP_X_FORWARDED_FOR' => $_SERVER['HTTP_X_FORWARDED_FOR'],
+  'REMOTE_ADDR' => $_SERVER['REMOTE_ADDR'],
+ )
+);
+
+\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
+ array(
+  'class' => __CLASS__,
+  'function' => __FUNCTION__,
+  'response' => $response,
+  'return' => $return,
+  'curl_errorno' => $this->curl_errorno,
+  'CURLINFO_HTTP_CODE' => curl_getinfo($ch, CURLINFO_HTTP_CODE),
+ )
+);
         //Close connection
        curl_close($ch);
     }
-
     /**
      * action call
-     *
      * @return void
      */
     public function callAction()
     {
-
-      //header("Cache-Control: no-cache, no-store");
-        /*
-        //THIS TEST WORKS
+        $this->rackfishsolution();
+        return;
+        //$wdsl = 'https://appapi.test.bankid.com/rp/v4?wsdl';
+        $wdsl = 'https://appapi2.bankid.com/rp/v5';
+	      $passphrase = 'XkgCQui0';
+        $certPath = '/srv/sites/hyresmedlarna_dev.se/certs/concat_cert.pem';
         $this->client = new \SoapClient(
-          "http://www.webservicex.com/CurrencyConvertor.asmx?wsdl", 
-          array("local_cert" => "FPTestcert2_20150818_102329.pfx", "passphrase" => "hR1392&MdaroS", "trace" => 1)
+            $wdsl, 
+	       array("local_cert" => $wdsl, "cache_wsdl" => 0, "trace" => 1)
         );
-        */
-        $wdsl = 'https://appapi2.test.bankid.com/rp/v4?wsdl';
-        $certPath = '/srv/sites/hmdev.se/web/mytestcert.pem';
-        $passphrase = 'XkgCQui0';
-/*        
-        $context_options = array(
-            'ssl' => array(
-                'verify_peer'   => true,
-                'cafile'        => $certPath,
-                'verify_depth'  => 5,
-                'CN_match'      => 'BankID SSL Root Certification Authority TEST',
-                'disable_compression'   => true,
-                'SNI_enabled'           => true,
-                'ciphers'               => 'ALL!EXPORT!EXPORT40!EXPORT56!aNULL!LOW!RC4'
-            )
-        );
-        $ssl_context = stream_context_create($context_options);
-\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
- array(
-  'class' => __CLASS__,
-  'function' => __FUNCTION__,
-  'ssl_context' => $ssl_context,
- )
-);
-        // Connect and store our SOAP connection.
-        $this->client = new \SOAPClient( $wdsl, array(
-            'local_cert' => $certPath,
-            'stream_context' => $ssl_context
-        ) );
-
-*/
-        /*
-        $this->client = new \SoapClient(
-          $wdsl, 
-          array("local_cert" => $certPath, "passphrase" => $passphrase, "trace" => 1)
-        );
-        */
-
-        /*        
-        $context = stream_context_create([
-            'ssl' => [
-                'verify_peer'       => false,
-                'verify_peer_name'  => false,
-                'allow_self_signed' => true,
-            ],
-        ]);
-        $options['stream_context'] = $context;
-        $this->client = new \SoapClient($wdsl, $options);
-        */
-
-        //$this->client = new SoapClient( $this->wsdl, array( "local_cert" => "/path_to_cert/certname.pem" ) );
-        try {
-          $this->client = new \SoapClient($wdsl,
-              ["local_cert" => $certPath,
-               "stream_context" => [
-                   "ssl" => [
-                       "verify_peer" => false,
-                       "verify_peer_name" => false,
-                       "allow_self_signed" => true
-                   ]
-               ]
-           ]);          
-        }
-        catch (Exception $e) {
-\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
- array(
-  'class' => __CLASS__,
-  'function' => __FUNCTION__,
-  'getMessage' => $e->getMessage(),
- )
-);
-        }
-
-        
-        $this->status = "ok";
-\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
- array(
-  'class' => __CLASS__,
-  'function' => __FUNCTION__,
-  'this->client' => $this->client,
-  'this->status' => $this->status,
- )
-);
+    }
+    private function getClientIp() {
+	    if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
+	    {
+	      $ip=$_SERVER['HTTP_CLIENT_IP'];
+	    }
+	    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
+	    {
+	      $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
+	    }
+	    else
+	    {
+	      $ip=$_SERVER['REMOTE_ADDR'];
+	    }
+	    return $ip;
     }
 }
