@@ -50,3 +50,13 @@ lib.searchbox_html.value (
   <input type="text" id="ke_search_searchfield_sword" name="tx_kesearch_pi1[sword]" placeholder="Sök" />  
 </form>
 )
+
+lib.bankidlogin = USER
+lib.bankidlogin {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = DlBankid
+    pluginName = BankId
+    vendorName = DanLundgren
+    controller = BankId
+    action = loginbox
+}

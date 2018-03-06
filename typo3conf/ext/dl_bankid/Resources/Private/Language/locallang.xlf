@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2018-02-16T17:08:26Z" product-name="dl_bankid">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-01T21:40:21Z" product-name="dl_bankid">
 		<header/>
 		<body>
 			<trans-unit id="tx_dlbankid_domain_model_bankid">

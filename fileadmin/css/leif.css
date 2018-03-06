@@ -1,0 +1,31 @@
+h1 {font-size: 36px; 
+   font-style: bold;
+   color:#f18800; }
+h2 {font-size: 30px;
+   font-style: bold;
+   color:#f18800; }
+h3 {font-size: 24px; 
+   font-style: bold;
+   color:#f18800; }
+h4 {font-size: 36px;
+   font-style: italic; 
+   color:#575757; }
+h5 {font-size: 30px;
+   font-style: italic; 
+   color:#575757; }
+h6 {font-size: 24px;
+   font-style: italic; 
+   color:#575757; }
+p {
+  text-align:left;
+}
+.bullet .frame {
+  padding-top:0;
+}
+.bullet-text {
+  padding-left:0;
+}
+.bullet-text h3 {
+  padding:0;
+  text-align: left;
+}

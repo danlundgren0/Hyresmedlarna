@@ -24,6 +24,31 @@ plugin.tx_dlbankid_bankid {
     }
 }
 
+plugin.tx_dlbankid_ajaxrequest {
+    view {
+        templateRootPaths.0 = EXT:dl_bankid/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_dlbankid_ajaxrequest.view.templateRootPath}
+        partialRootPaths.0 = EXT:dl_bankid/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_dlbankid_ajaxrequest.view.partialRootPath}
+        layoutRootPaths.0 = EXT:dl_bankid/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_dlbankid_ajaxrequest.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_dlbankid_ajaxrequest.persistence.storagePid}
+        #recursive = 1
+    }
+    features {
+        #skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 0
+        # Should be on by default, but can be disabled if all action in the plugin are uncached
+        requireCHashArgumentForActionArguments = 1
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+}
+
 # these classes are only used in auto-generated templates
 plugin.tx_dlbankid._CSS_DEFAULT_STYLE (
     textarea.f3-form-error {
@@ -59,6 +84,7 @@ plugin.tx_dlbankid._CSS_DEFAULT_STYLE (
 )
 
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+page.includeJSFooter.formator = EXT:dl_bankid/Resources/Public/Js/formator.min.js
 page.includeJSFooter.dlbankid = EXT:dl_bankid/Resources/Public/Js/bankid.js
 DlBankidAjaxPrototype = PAGE
 DlBankidAjaxPrototype {
@@ -86,3 +112,12 @@ DlBankidAjaxPrototype {
         }
     }
 }
+#lib.bankidlogin = USER
+#lib.bankidlogin {
+#    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+#    extensionName = DlBankid
+#    pluginName = BankId
+#    vendorName = DanLundgren
+#    controller = BankId
+#    action = loginbox
+#}

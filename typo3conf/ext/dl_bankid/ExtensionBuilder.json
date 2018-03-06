@@ -16,10 +16,9 @@
                     "_default3_edit_update": false,
                     "_default4_delete": false,
                     "customActions": [
-                        "mobileBankId",
-                        "fileBankId",
-                        "sign",
-                        "collect",
+                        "loginbox",
+                        "loginok",
+                        "loginfail",
                         "call"
                     ]
                 },
@@ -76,8 +75,8 @@
         "plugins": [
             {
                 "actions": {
-                    "controllerActionCombinations": "BankId=> call,collect,sign,mobileBankId,fileBankId",
-                    "noncacheableActions": "BankId=> call,collect,sign,mobileBankId,fileBankId",
+                    "controllerActionCombinations": "BankId=> loginbox, loginok, loginfail,call",
+                    "noncacheableActions": "BankId=> loginbox, loginok, loginfail,call",
                     "switchableActions": ""
                 },
                 "description": "",
@@ -99,7 +98,7 @@
     },
     "wires": [],
     "log": {
-        "last_modified": "2018-02-16 05:08",
+        "last_modified": "2018-03-01 09:40",
         "extension_builder_version": "8.7.0",
         "be_user": " (1)"
     }

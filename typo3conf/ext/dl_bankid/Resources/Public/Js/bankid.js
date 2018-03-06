@@ -1,4 +1,4 @@
-/*var DanLBankId = DanLBankId || {};
+var DanLBankId = DanLBankId || {};
 var DanLAction = DanLAction || {};
 DanLBankId.ajax = {
 	fetch: function(params){
@@ -27,8 +27,28 @@ DanLAction.command = {
         });
         
     },
+    verifyPersonalNumber: function() {
+        var input = $(this).val();
+        var format = 'DEFAULT';        
+        if (input.length < 1) { return; }
+        
+        var res = formator.personalid(input, format);
+        if(res) {
+            console.log('Valid');
+            console.log(res);
+            $(this).closest('.tx-dl-emailregistration').find('button').attr('data-status','enabled');
+            $(this).closest('.tx-dl-emailregistration').find('[data-status="enabled"]').off();
+            //$(this).closest('.tx-dl-emailregistration').find('[data-status="enabled"]').on('click', DanL.EmailReg.tryRegisterEmail);
+        }
+        else {
+            console.log('NOT Valid');
+            console.log(res);
+            $(this).closest('.tx-dl-emailregistration').find('button').attr('data-status','disabled');
+            //$('[data-status="disabled"]').off();    
+        }
+    }
 }
-$(function() { 
-   DanLAction.command.trySign();
+$(function() {
+    $('[data-action="validate-pn"]').on('input', DanLAction.command.verifyPersonalNumber);
+   //DanLAction.command.trySign();
 });
-*/
