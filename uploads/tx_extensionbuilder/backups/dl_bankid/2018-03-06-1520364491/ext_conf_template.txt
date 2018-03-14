@@ -1,0 +1,13 @@
+# cat=basic/BankID/a; type=string; label=Path to live cert
+livecert =
+# cat=basic/BankID/b; type=string; label=Path to test cert
+testcert =
+# cat=basic/BankID/c; type=string; label=passphrase
+passphrase = hR1392&MdaroS
+# cat=basic/BankID/d; type=string; label=appapiTestUrl
+appapitesturl = appapi.test.bankid.com/rp/v4?wsdl
+# cat=basic/BankID/e; type=string; label=appapiLiveUrl
+appapiliveurl = appapi.bankid.com/rp/v4?wsdl
+# cat=basic/BankID/f; type=boolean; label=Live mode enabled
+livemodeenabled =
+

@@ -1,0 +1,105 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    380,
+                    153
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": false,
+                    "_default1_show": false,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": [
+                        "loginbox",
+                        "loginok",
+                        "loginfail",
+                        "call"
+                    ]
+                },
+                "name": "BankId",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "769983054516"
+                },
+                "propertyGroup": {
+                    "properties": []
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [],
+        "description": "",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 8.7.0-8.7.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "8.7.0-8.7.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "dl_bankid",
+        "name": "BankID",
+        "originalExtensionKey": "dl_bankid",
+        "originalVendorName": "DanLundgren",
+        "persons": [
+            {
+                "company": "Dan Lundgren",
+                "email": "danlundgren0@gmail.com",
+                "name": "Dan Lundgren",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "BankId => loginbox, loginok, loginfail,call",
+                    "noncacheableActions": "BankId => loginbox, loginok, loginfail,call",
+                    "switchableActions": ""
+                },
+                "description": "",
+                "key": "bankid",
+                "name": "BankId"
+            },
+            {
+                "actions": {
+                    "controllerActionCombinations": "AjaxRequest => getJson",
+                    "noncacheableActions": "AjaxRequest => getJson",
+                    "switchableActions": "Display Items\nAjaxRequest -> getJson;"
+                },
+                "description": "",
+                "key": "ajaxrequest",
+                "name": "Ajax Request"
+            }
+        ],
+        "vendorName": "DanLundgren"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2018-03-06 08:07",
+        "extension_builder_version": "8.7.0",
+        "be_user": " (1)"
+    }
+}

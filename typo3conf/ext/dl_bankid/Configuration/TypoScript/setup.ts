@@ -84,6 +84,14 @@ plugin.tx_dlbankid._CSS_DEFAULT_STYLE (
 )
 
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+plugin.tx_dlbankid_bankid.settings {
+    cacert = {$plugin.tx_dlbankid_bankid.settings.cacert}
+    localcert = {$plugin.tx_dlbankid_bankid.settings.localcert}
+    prikey = {$plugin.tx_dlbankid_bankid.settings.prikey}
+    uservisibledata = {$plugin.tx_dlbankid_bankid.settings.uservisibledata}
+    feusergroupsuid = {$plugin.tx_dlbankid_bankid.settings.feusergroupsuid}
+    feuserlandingpage = {$plugin.tx_dlbankid_bankid.settings.feuserlandingpage}
+}
 page.includeJSFooter.formator = EXT:dl_bankid/Resources/Public/Js/formator.min.js
 page.includeJSFooter.dlbankid = EXT:dl_bankid/Resources/Public/Js/bankid.js
 DlBankidAjaxPrototype = PAGE

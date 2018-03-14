@@ -30,3 +30,17 @@ plugin.tx_dlbankid_ajaxrequest {
 }
 
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+plugin.tx_dlbankid_bankid.settings {
+    # cat=plugin.tx_dlbankid_bankid/a; type=string; label=Path to public certificate    
+    cacert = 
+    # cat=plugin.tx_dlbankid_bankid/b; type=string; label=Path to local certificate 
+    localcert = 
+    # cat=plugin.tx_dlbankid_bankid/c; type=string; label=Path to private key   
+    prikey = 
+    # cat=plugin.tx_dlbankid_bankid/d; type=string; label=Your message to feuser    
+    uservisibledata = 
+    # cat=plugin.tx_dlbankid_bankid/e; type=string; label=commaseparated list if uids    
+    feusergroupsuid = 
+    # cat=plugin.tx_dlbankid_bankid/f; type=string; label=feuserlandingpage
+    feuserlandingpage = 
+}

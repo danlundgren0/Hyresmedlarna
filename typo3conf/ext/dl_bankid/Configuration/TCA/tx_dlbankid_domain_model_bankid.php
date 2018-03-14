@@ -2,7 +2,7 @@
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:dl_bankid/Resources/Private/Language/locallang_db.xlf:tx_dlbankid_domain_model_bankid',
-        'label' => 'uid',
+        'label' => 'live_mode_enabled',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -16,14 +16,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => '',
+        'searchFields' => 'live_mode_enabled,ca_cert,local_cert,pri_key,appapi_url,personal_number,user_visible_data,curl_init,order_ref,auto_start_token,status',
         'iconfile' => 'EXT:dl_bankid/Resources/Public/Icons/tx_dlbankid_domain_model_bankid.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, ',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, live_mode_enabled, ca_cert, local_cert, pri_key, appapi_url, personal_number, user_visible_data, curl_init, order_ref, auto_start_token, status',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, , --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, live_mode_enabled, ca_cert, local_cert, pri_key, appapi_url, personal_number, user_visible_data, curl_init, order_ref, auto_start_token, status, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -108,6 +108,110 @@ return [
             ],
         ],
 
+        'live_mode_enabled' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:dl_bankid/Resources/Private/Language/locallang_db.xlf:tx_dlbankid_domain_model_bankid.live_mode_enabled',
+            'config' => [
+                'type' => 'check',
+                'items' => [
+                    '1' => [
+                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
+                    ]
+                ],
+                'default' => 0,
+            ]
+        ],
+        'ca_cert' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:dl_bankid/Resources/Private/Language/locallang_db.xlf:tx_dlbankid_domain_model_bankid.ca_cert',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'local_cert' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:dl_bankid/Resources/Private/Language/locallang_db.xlf:tx_dlbankid_domain_model_bankid.local_cert',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'pri_key' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:dl_bankid/Resources/Private/Language/locallang_db.xlf:tx_dlbankid_domain_model_bankid.pri_key',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'appapi_url' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:dl_bankid/Resources/Private/Language/locallang_db.xlf:tx_dlbankid_domain_model_bankid.appapi_url',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'personal_number' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:dl_bankid/Resources/Private/Language/locallang_db.xlf:tx_dlbankid_domain_model_bankid.personal_number',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'user_visible_data' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:dl_bankid/Resources/Private/Language/locallang_db.xlf:tx_dlbankid_domain_model_bankid.user_visible_data',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'curl_init' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:dl_bankid/Resources/Private/Language/locallang_db.xlf:tx_dlbankid_domain_model_bankid.curl_init',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'order_ref' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:dl_bankid/Resources/Private/Language/locallang_db.xlf:tx_dlbankid_domain_model_bankid.order_ref',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'auto_start_token' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:dl_bankid/Resources/Private/Language/locallang_db.xlf:tx_dlbankid_domain_model_bankid.auto_start_token',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'status' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:dl_bankid/Resources/Private/Language/locallang_db.xlf:tx_dlbankid_domain_model_bankid.status',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+    
     ],
 ];
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder

@@ -1,0 +1,21 @@
+# cat=basic/BankID/a; type=string; label=Path to live public certificate
+livecacert =
+# cat=basic/BankID/b; type=string; label=Path to live local certificate
+livelocalcert =
+# cat=basic/BankID/c; type=string; label=Path to live private key
+liveprikey =
+# cat=basic/BankID/d; type=string; label=Path to test public certificate
+testcacert =
+# cat=basic/BankID/e; type=string; label=Path to test local certificate
+testlocalcert =
+# cat=basic/BankID/f; type=string; label=Path to test private key
+testprikey =
+# cat=basic/BankID/g; type=string; label=appapiLiveUrl
+appapiliveurl = appapi2.bankid.com/rp/v5/
+# cat=basic/BankID/h; type=string; label=appapiTestUrl
+appapitesturl = appapi2.test.bankid.com/rp/v5/
+# cat=basic/BankID/i; type=string; label=uservisibledata
+uservisibledata = Your message to feuser
+# cat=basic/BankID/j; type=boolean; label=Live mode enabled
+livemodeenabled =
+

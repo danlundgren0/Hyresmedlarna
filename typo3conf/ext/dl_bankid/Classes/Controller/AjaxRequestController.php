@@ -90,39 +90,32 @@ class AjaxRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 	protected $asJson = TRUE;
 
 	/**
-	 * liveCert
+	 * caCert
 	 *
 	 * @var string
 	 */
-	protected $liveCert = "mittcertifikat.pem";
+	protected $caCert = "";
 
 	/**
-	 * testCert
+	 * localCert
 	 *
 	 * @var string
 	 */
-	protected $testCert = "mittcertifikat.pem";
+	protected $localCert = "";
 
 	/**
-	 * passPhrase
+	 * priKey
 	 *
 	 * @var string
 	 */
-	protected $passPhrase = "lösenord du angav i java-appen";
+	protected $priKey = "";
 
 	/**
-	 * appapiTestUrl
+	 * appapiUrl
 	 *
 	 * @var string
 	 */
-	protected $appapiTestUrl = "";
-
-	/**
-	 * appapiLiveUrl
-	 *
-	 * @var string
-	 */
-	protected $appapiLiveUrl = "";
+	protected $appapiUrl = "";
 
 	/**
 	 * liveModeEnabled
@@ -130,6 +123,27 @@ class AjaxRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 	 * @var boolean
 	 */
 	protected $liveModeEnabled = FALSE;
+
+	/**
+	 * userVisibleData
+	 *
+	 * @var string
+	 */
+	protected $userVisibleData = "";
+
+	/**
+	 * personalNumber
+	 *
+	 * @var string
+	 */
+	protected $personalNumber = "";
+
+	/**
+	 * userVisibleData
+	 *
+	 * @var mixed
+	 */	
+	private $curlInit = NULL;
 
 
 	/**
@@ -140,28 +154,58 @@ class AjaxRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 	protected $fileCollectionRepository;
 
 	public function trySign() {
-		//CertName
-		//FPTestcert2_20150818_102329.pfx
-        $extensionConfiguration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['dl_bankid']);
-        //$backendConfiguration = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'];
-		//$backendConfiguration = (bool)\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class)->get('dl_bankid');
-        $this->liveModeEnabled = $extensionConfiguration['livemodeenabled'];
-        $this->liveCert = $extensionConfiguration['livecert'];
-        $this->testCert = $extensionConfiguration['testcert'];
-        $this->passPhrase = $extensionConfiguration['passphrase'];
-        $this->appapiTestUrl = $extensionConfiguration['appapitesturl'];
-        $this->appapiLiveUrl = $extensionConfiguration['appapiliveurl'];
-
+		$personalNumber = $this->arguments['pn'];
+		$bankId = new \DanLundgren\DlBankid\Domain\Model\BankId('sign','195806152368');
+		$response = $bankId->sign();
+		$this->data['response'] = $response;
 		$mess = $this->arguments['mess'].' på dig också';
-		$this->data['livemodeenabled'] = $this->liveModeEnabled;
-		$this->data['liveCert'] = $this->liveCert;
-		$this->data['testCert'] = $this->testCert;
-		$this->data['passPhrase'] = $this->passPhrase;
-		$this->data['appapiTestUrl'] = $this->appapiTestUrl;
-		$this->data['appapiLiveUrl'] = $this->appapiLiveUrl;
-
         $this->data['message'] = $mess;
         $this->data['success'] = 1;
+	}
+	public function tryLogin() {
+		$orderRef = $this->arguments['or'];
+		$bankId = new \DanLundgren\DlBankid\Domain\Model\BankId('collect', $orderRef);
+		$response = $bankId->collect();
+		$this->data['response'] = $response;
+		$mess = $this->arguments['mess'].' på dig också';
+        $this->data['message'] = $mess;
+        $this->data['success'] = 1;
+	}
+	private function sign() {
+		if($this->curlInit==NULL) {
+			$this->initConnection();
+		}
+	}
+	private function initConnection() {
+        $postData = [
+            'personalNumber' => $this->personalNumber,
+            'endUserIp' => $this->getClientIp(),
+            'userVisibleData' => $this->userVisibleData
+        ];
+        $postJson = json_encode($postData);
+        $this->curlInit = curl_init($this->appapiUrl.'sign');
+        curl_setopt($this->curlInit, CURLOPT_CAINFO, $this->caCert);
+        curl_setopt($this->curlInit, CURLOPT_SSLCERT, $this->localCert);
+        curl_setopt($this->curlInit, CURLOPT_SSLKEY, $this->priKey);
+        curl_setopt($this->curlInit, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($this->curlInit, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($this->curlInit, CURLOPT_RETURNTRANSFER, true);
+        //curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($this->curlInit, CURLOPT_POSTFIELDS, $postJson);
+        curl_setopt($this->curlInit, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($postJson),
+            'SOAPAction: ""'
+        ]);
+        $response = curl_exec($this->curlInit);        
+        return json_decode($response);
+	}
+
+	private function collect() {
+		if($this->curlInit==NULL) {
+			$this->initConnection();
+		}
+
 	}
 
 	/**
@@ -196,4 +240,15 @@ class AjaxRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 				'message' => $this->message,
 		));
 	}
+    private function getClientIp()
+    {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
+    }
 }
