@@ -1,0 +1,68 @@
+@media (min-width: 1200px) {
+	.emailreg1 {
+
+	}
+	.emailreg2 {
+		
+	}
+}
+@media (min-width: 992px) {
+    .frame {
+        padding-top: 1em;
+        padding-bottom: 0em;
+        text-align: center;
+    }
+}
+[data-status="disabled"] {
+	/*opacity:0.5;*/
+	cursor: no-drop;
+    color:#b1d69c;
+}
+.sendmail [type="button"] {
+	padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid #000000;
+    background-color: #65B335;
+}
+.sendmail {
+    margin-top: 10px;
+    text-align: left;
+}
+.tx-dl-emailregistration .alert {
+    border-radius: 15px;
+    text-align: center;	
+}
+.tenant {
+	background-color: #f18800;
+    border: 1px solid #f18800;
+    margin-bottom: 0;
+}
+.landlord {
+	background-color: #ffb10a;
+    border: 1px solid #ffb10a;
+    margin-bottom: 0;
+}
+.tx-dl-emailregistration h5 {
+	font-weight: bold;
+    font-size: 1.8em;    
+    color: #ffffff;
+}
+[placeholder="Skriv in din e-postadress"] {
+	width:100%;
+}
+.hide {
+    display:none;
+}
+.tx-dl-emailregistration .sendmail .alert {
+    display: inline;
+    float: right;
+    border-radius: 6px;
+    padding: 3px 8px;    
+}
+.tx-dl-emailregistration .glyphicon {    
+    word-spacing: -13px;
+}
+.tx-dl-emailregistration .glyphicon:before {
+    padding-right: 6px;
+    vertical-align: middle;
+}

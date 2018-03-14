@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2017-09-21T19:39:37Z" product-name="dl_emailregistration">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-14T07:03:25Z" product-name="dl_emailregistration">
 		<header/>
 		<body>
 			<trans-unit id="tx_dlemailregistration_domain_model_emailregistration">

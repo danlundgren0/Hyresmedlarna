@@ -1,0 +1,216 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    521,
+                    24
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": false,
+                    "_default1_show": false,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": [
+                        "loginbox",
+                        "loginok",
+                        "loginfail",
+                        "call"
+                    ]
+                },
+                "name": "BankId",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "ValueObject",
+                    "uid": "769983054516"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Check this in extension conf",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "liveModeEnabled",
+                            "propertyType": "Boolean",
+                            "uid": "969886639750"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "public certificate",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "caCert",
+                            "propertyType": "String",
+                            "uid": "156730146492"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "local certificate",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "localCert",
+                            "propertyType": "String",
+                            "uid": "748218942332"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "private key",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "priKey",
+                            "propertyType": "String",
+                            "uid": "231247961407"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "appapiUrl",
+                            "propertyType": "String",
+                            "uid": "952928992256"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "personalNumber",
+                            "propertyType": "String",
+                            "uid": "1094808914871"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "userVisibleData",
+                            "propertyType": "String",
+                            "uid": "970378432119"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "curlInit",
+                            "propertyType": "String",
+                            "uid": "663385905460"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "orderRef",
+                            "propertyType": "String",
+                            "uid": "1165863234921"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "autoStartToken",
+                            "propertyType": "String",
+                            "uid": "571947085607"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "status",
+                            "propertyType": "String",
+                            "uid": "571650191728"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [],
+        "description": "",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 8.7.0-8.7.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "8.7.0-8.7.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "dl_bankid",
+        "name": "BankID",
+        "originalExtensionKey": "dl_bankid",
+        "originalVendorName": "DanLundgren",
+        "persons": [
+            {
+                "company": "Dan Lundgren",
+                "email": "danlundgren0@gmail.com",
+                "name": "Dan Lundgren",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "BankId => loginbox, loginok, loginfail,call",
+                    "noncacheableActions": "BankId => loginbox, loginok, loginfail,call",
+                    "switchableActions": ""
+                },
+                "description": "",
+                "key": "bankid",
+                "name": "BankId"
+            },
+            {
+                "actions": {
+                    "controllerActionCombinations": "AjaxRequest => getJson",
+                    "noncacheableActions": "AjaxRequest => getJson",
+                    "switchableActions": "Display Items\nAjaxRequest -> getJson;"
+                },
+                "description": "",
+                "key": "ajaxrequest",
+                "name": "Ajax Request"
+            }
+        ],
+        "vendorName": "DanLundgren"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2018-03-07 06:28",
+        "extension_builder_version": "8.7.0",
+        "be_user": " (1)"
+    }
+}

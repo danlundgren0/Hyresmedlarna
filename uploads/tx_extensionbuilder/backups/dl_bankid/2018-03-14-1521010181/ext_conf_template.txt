@@ -1,0 +1,2 @@
+# cat=basic/BankID/a; type=string; label=appapiurl
+appapiurl = appapi2.test.bankid.com/rp/v5/

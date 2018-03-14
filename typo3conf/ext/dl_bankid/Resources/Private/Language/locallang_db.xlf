@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-07T06:28:06Z" product-name="dl_bankid">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-14T07:02:17Z" product-name="dl_bankid">
 		<header/>
 		<body>
 			<trans-unit id="tx_dlbankid_domain_model_bankid">
@@ -50,6 +50,15 @@
 			</trans-unit>
 			<trans-unit id="tx_dl_bankid_ajaxrequest.description">
 				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_feusergroup">
+				<source>Fe User Group</source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_feuser">
+				<source>Fe User</source>
+			</trans-unit>
+			<trans-unit id="fe_groups.tx_extbase_type.Tx_DlBankid_FeUser">
+				<source>BankID FeUser</source>
 			</trans-unit>
 			<trans-unit id="tx_dlbankid_domain_model_loginform">
 				<source>Login Form</source>

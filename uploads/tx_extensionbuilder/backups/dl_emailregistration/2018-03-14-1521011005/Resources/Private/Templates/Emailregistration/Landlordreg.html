@@ -1,0 +1,29 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<div class="alert alert-info landlord" role="alert">
+	<h5>Hyr ut bostad</h5>
+	<input data-action="validate" type="text" placeholder="Skriv in din e-postadress" />
+	<div class="sendmail">
+		<button data-pid="{pid}" data-type="{regtype}" data-status="disabled" type="button" class="btn btn-success">Skicka >></button>
+		<div class="alert alert-success reg-ok hide" role="alert"><span class="glyphicon glyphicon-ok" aria-hidden="true">fsdffdg</span></div>
+		<div class="alert alert-danger reg-error hide" role="alert"><span class="glyphicon glyphicon-remove" aria-hidden="true">fsdffdg</span></div>
+	</div>
+</div>
+
+<f:flashMessages />
+
+</f:section>
+</html>

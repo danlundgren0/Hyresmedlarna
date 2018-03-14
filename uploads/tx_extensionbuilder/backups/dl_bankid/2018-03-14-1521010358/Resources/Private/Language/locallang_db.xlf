@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-14T06:49:52Z" product-name="dl_bankid">
+		<header/>
+		<body>
+			<trans-unit id="tx_dlbankid_domain_model_bankid">
+				<source>Bank Id</source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_bankid.live_mode_enabled">
+				<source>Live Mode Enabled</source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_bankid.ca_cert">
+				<source>Ca Cert</source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_bankid.local_cert">
+				<source>Local Cert</source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_bankid.pri_key">
+				<source>Pri Key</source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_bankid.appapi_url">
+				<source>Appapi Url</source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_bankid.personal_number">
+				<source>Personal Number</source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_bankid.user_visible_data">
+				<source>User Visible Data</source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_bankid.curl_init">
+				<source>Curl Init</source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_bankid.order_ref">
+				<source>Order Ref</source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_bankid.auto_start_token">
+				<source>Auto Start Token</source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_bankid.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_feuser">
+				<source>Fe User</source>
+			</trans-unit>
+			<trans-unit id="fe_groups.tx_extbase_type.Tx_DlBankid_FeUser">
+				<source>BankID FeUser</source>
+			</trans-unit>
+			<trans-unit id="tx_dl_bankid_bankid.name">
+				<source>BankId</source>
+			</trans-unit>
+			<trans-unit id="tx_dl_bankid_bankid.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dl_bankid_ajaxrequest.name">
+				<source>Ajax Request</source>
+			</trans-unit>
+			<trans-unit id="tx_dl_bankid_ajaxrequest.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dlbankid_domain_model_loginform">
+				<source>Login Form</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
