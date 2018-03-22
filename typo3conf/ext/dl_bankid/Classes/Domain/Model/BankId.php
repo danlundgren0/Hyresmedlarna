@@ -130,7 +130,7 @@ class BankId extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
             $this->initConnection('collect');
         }
     }
-
+    
     private function createOrLoginFeUser($userData){
         $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
         $persistenceManager = $objectManager->get('TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface');

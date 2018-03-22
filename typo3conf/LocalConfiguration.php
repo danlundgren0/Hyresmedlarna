@@ -1,7 +1,7 @@
 <?php
 return [
     'BE' => [
-        'debug' => true,
+        'debug' => false,
         'explicitADmode' => 'explicitAllow',
         'installToolPassword' => '$pbkdf2-sha256$25000$xgbyY/lvY4cLr.tga3oljQ$zdZstjx8Ba2XsDfq6nkt0wnjIV77cmaQr4xrAfzAVig',
         'loginSecurityLevel' => 'rsa',
@@ -26,8 +26,9 @@ return [
             'dl_bankid' => 'a:1:{s:9:"appapiurl";s:38:"https://appapi2.test.bankid.com/rp/v5/";}',
             'dl_danstmpl' => 'a:0:{}',
             'dl_emailregistration' => 'a:0:{}',
+            'dl_mobilebankid' => 'a:1:{s:9:"appapiurl";s:38:"https://appapi2.test.bankid.com/rp/v5/";}',
             'dl_realestate' => 'a:0:{}',
-            'extension_builder' => 'a:3:{s:15:"enableRoundtrip";s:1:"1";s:15:"backupExtension";s:1:"1";s:9:"backupDir";s:35:"uploads/tx_extensionbuilder/backups";}',
+            'extension_builder' => 'a:3:{s:15:"enableRoundtrip";s:1:"1";s:15:"backupExtension";s:1:"1";s:9:"backupDir";s:0:"";}',
             'gridelements' => 'a:2:{s:20:"additionalStylesheet";s:0:"";s:19:"nestingInListModule";s:1:"0";}',
             'introduction' => 'a:0:{}',
             'ke_search' => 'a:11:{s:20:"multiplyValueToTitle";s:1:"1";s:16:"searchWordLength";s:1:"4";s:16:"enablePartSearch";s:1:"1";s:17:"enableExplicitAnd";s:1:"0";s:18:"finishNotification";s:1:"0";s:21:"notificationRecipient";s:0:"";s:18:"notificationSender";s:19:"no_reply@domain.com";s:19:"notificationSubject";s:32:"[KE_SEARCH INDEXER NOTIFICATION]";s:13:"pathPdftotext";s:9:"/usr/bin/";s:11:"pathPdfinfo";s:9:"/usr/bin/";s:10:"pathCatdoc";s:9:"/usr/bin/";}',
@@ -38,7 +39,7 @@ return [
         ],
     ],
     'FE' => [
-        'debug' => true,
+        'debug' => false,
         'loginSecurityLevel' => 'rsa',
     ],
     'GFX' => [
@@ -74,15 +75,15 @@ return [
                 ],
             ],
         ],
-        'devIPmask' => '*',
-        'displayErrors' => 1,
-        'enableDeprecationLog' => 'file',
+        'devIPmask' => '',
+        'displayErrors' => 0,
+        'enableDeprecationLog' => false,
         'encryptionKey' => 'b71ae250a621d431d0c808f37c192edafbe6c8aef262f41c8b917c4601e68182630efd56f3ccc5ada1f7632dd066ede0',
-        'exceptionalErrors' => 28674,
+        'exceptionalErrors' => 20480,
         'isInitialDatabaseImportDone' => true,
         'isInitialInstallationInProgress' => false,
         'sitename' => 'Hyresmedlarna',
-        'sqlDebug' => 1,
-        'systemLogLevel' => 0,
+        'sqlDebug' => 0,
+        'systemLogLevel' => 2,
     ],
 ];

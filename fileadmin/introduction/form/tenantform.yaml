@@ -53,6 +53,56 @@ renderables:
     renderables:
       -
         defaultValue: ''
+        identifier: email
+        label: 'E-post adress'
+        type: Text
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Du loggar in med din e-post adress'
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+          -
+            identifier: EmailAddress
+      -
+        defaultValue: ''
+        type: Password
+        identifier: password-1
+        label: 'Ange ditt lösenord'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Minst 8 tecken'
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Password
+        identifier: password-2
+        label: 'Ange ditt lösenord igen'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Ange ditt lösenord igen'
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Text
+        identifier: social_security_number
+        label: Personnummer
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: ÅÅÅÅMMDDXXXX
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
         identifier: first_name
         label: Förnamn
         type: Text
@@ -115,38 +165,12 @@ renderables:
             identifier: NotEmpty
       -
         defaultValue: ''
-        identifier: email
-        label: 'E-post adress'
-        type: Text
-        properties:
-          fluidAdditionalAttributes:
-            placeholder: 'E-post adress'
-            required: required
-        validators:
-          -
-            identifier: NotEmpty
-          -
-            identifier: EmailAddress
-      -
-        defaultValue: ''
         type: Text
         identifier: telephone
         label: Mobilnummer
         properties:
           fluidAdditionalAttributes:
             placeholder: Mobilnummer
-            required: required
-        validators:
-          -
-            identifier: NotEmpty
-      -
-        defaultValue: ''
-        type: Text
-        identifier: social_security_number
-        label: Personnummer
-        properties:
-          fluidAdditionalAttributes:
-            placeholder: Personnummer
             required: required
         validators:
           -
@@ -165,10 +189,6 @@ renderables:
         properties:
           fluidAdditionalAttributes:
             placeholder: 'Önskad ort'
-            required: required
-        validators:
-          -
-            identifier: NotEmpty
       -
         defaultValue: ''
         type: Text
@@ -177,10 +197,6 @@ renderables:
         properties:
           fluidAdditionalAttributes:
             placeholder: Stadsdel
-            required: required
-        validators:
-          -
-            identifier: NotEmpty
       -
         defaultValue: ''
         type: Text
@@ -189,10 +205,6 @@ renderables:
         properties:
           fluidAdditionalAttributes:
             placeholder: 'Önskad bostadsyta'
-            required: required
-        validators:
-          -
-            identifier: NotEmpty
       -
         defaultValue: ''
         type: Text
@@ -201,10 +213,6 @@ renderables:
         properties:
           fluidAdditionalAttributes:
             placeholder: 'Antal rum (minimum)'
-            required: required
-        validators:
-          -
-            identifier: NotEmpty
       -
         defaultValue: ''
         type: Text
@@ -213,10 +221,6 @@ renderables:
         properties:
           fluidAdditionalAttributes:
             placeholder: 'Antal rum (maximum)'
-            required: required
-        validators:
-          -
-            identifier: NotEmpty
       -
         type: Checkbox
         identifier: handicap

@@ -4,7 +4,7 @@
 .frame-type-form_formframework .form-group {
     clear: both;
 	text-align: left;
-	height: 53px;
+	/*height: 53px;*/
 }
 body .frame-type-form_formframework {
 	background-color: #EEEEEE;

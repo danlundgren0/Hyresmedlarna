@@ -131,14 +131,14 @@ return [
         'introduction' => [
             'packagePath' => 'typo3conf/ext/introduction/',
         ],
-        'dl_bankid' => [
-            'packagePath' => 'typo3conf/ext/dl_bankid/',
-        ],
         'dl_danstmpl' => [
             'packagePath' => 'typo3conf/ext/dl_danstmpl/',
         ],
         'dl_emailregistration' => [
             'packagePath' => 'typo3conf/ext/dl_emailregistration/',
+        ],
+        'dl_mobilebankid' => [
+            'packagePath' => 'typo3conf/ext/dl_mobilebankid/',
         ],
         'dl_realestate' => [
             'packagePath' => 'typo3conf/ext/dl_realestate/',

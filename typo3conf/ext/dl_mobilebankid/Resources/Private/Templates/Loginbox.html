@@ -1,0 +1,286 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<div class="frame frame-default frame-type-form_formframework">
+	<h5>Logga in med Bankid</h5>
+	<f:form 
+		additionalAttributes="{foo: 'bar'}" 
+		data="{foo: 'bar'}" 
+		action="NULL" 
+		arguments="{foo: 'bar'}" 
+		controller="NULL" 
+		extensionName="dlmobilebankid" 
+		pluginName="mobilebankid" 
+		pageUid="123" 
+		pageType="123" 
+		additionalParams="{foo: 'bar'}" 
+		actionUri="NULL"
+		method="NULL" 
+		name="reg-form" 
+		class="NULL" 
+		id="reg-form" 
+	>		
+		<f:form.hidden name="bi_name" id="bi_name" value="" />
+		<div class="form-group">
+			<label class="control-label" for="email">E-post adress
+				<span class="required">*</span>
+			</label>
+			<div class="input">
+				<f:form.textfield 
+					data="{action: 'validate-email'}" 
+					required="1" 
+					type="email" 
+					name="email" 
+					value="" 
+					autofocus="true" 
+					placeholder="Du loggar in med din e-post adress" 
+					errorClass="'email-error'" 
+					class="form-control" 
+					id="email"
+					tabindex="1"
+				>
+			</div>
+			<!-- tag content - may be ignored! -->
+			</f:form.textfield>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="pw">Lösenord
+				<span class="required">*</span>
+			</label>
+			<div class="input">
+				<f:form.textfield 
+					data="{action: 'validate-pw'}" 
+					required="1" 
+					type="password" 
+					name="pw" 
+					value="" 
+					autofocus="false" 
+					placeholder="Minst 8 tecken" 
+					errorClass="'pw-error'" 
+					class="form-control" 
+					id="pw"
+					tabindex="2"
+				>
+			</div>
+			<!-- tag content - may be ignored! -->
+			</f:form.textfield>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="pw2">Bekräfta lösenord
+				<span class="required">*</span>
+			</label>
+			<div class="input">
+				<f:form.textfield 
+					data="{action: 'validate-pw2'}" 
+					required="1" 
+					type="password" 
+					name="pw2" 
+					value="" 
+					autofocus="false" 
+					placeholder="Upprepa lösenord" 
+					errorClass="'pw2-error'" 
+					class="form-control" 
+					id="pw2"
+					tabindex="3"
+				>
+			</div>
+			<!-- tag content - may be ignored! -->
+			</f:form.textfield>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="pn">Personnummer
+				<span class="required">*</span>
+			</label>
+			<div class="input">
+				<f:form.textfield 
+					data="{action: 'validate-pn'}" 
+					required="1" 
+					type="number" 
+					name="pn" 
+					value="" 
+					autofocus="false" 
+					placeholder="Skriv in ditt personnummer" 
+					errorClass="'pn-error'" 
+					class="form-control" 
+					id="pn"
+					tabindex="4"
+				>
+			</div>
+			<!-- tag content - may be ignored! -->
+			</f:form.textfield>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="fn">Förnamn
+				<span class="required">*</span>
+			</label>
+			<div class="input">
+				<f:form.textfield 
+					data="{action: 'validate-fn'}" 
+					required="1" 
+					type="text" 
+					name="fn" 
+					value="" 
+					autofocus="false" 
+					placeholder="Skriv in ditt förnamn" 
+					errorClass="'fn-error'" 
+					class="form-control" 
+					id="fn"
+					tabindex="5"
+				>
+			</div>
+			<!-- tag content - may be ignored! -->
+			</f:form.textfield>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="ln">Efternamn
+				<span class="required">*</span>
+			</label>
+			<div class="input">
+				<f:form.textfield 
+					data="{action: 'validate-ln'}" 
+					required="1" 
+					type="text" 
+					name="ln" 
+					value="" 
+					autofocus="false" 
+					placeholder="Skriv in ditt efternamn" 
+					errorClass="'ln-error'" 
+					class="form-control" 
+					id="ln"
+					tabindex="6"
+				>
+			</div>
+			<!-- tag content - may be ignored! -->
+			</f:form.textfield>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="sa">Gatuadress 
+				<span class="required">*</span>
+			</label>
+			<div class="input">
+				<f:form.textfield 
+					data="{action: 'validate-sa'}" 
+					required="1" 
+					type="text" 
+					name="sa" 
+					value="" 
+					autofocus="false" 
+					placeholder="Skriv in din Gatuadress" 
+					errorClass="'sa-error'" 
+					class="form-control" 
+					id="sa"
+					tabindex="7"
+				>
+			</div>
+			<!-- tag content - may be ignored! -->
+			</f:form.textfield>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="zip">Postnr 
+				<span class="required">*</span>
+			</label>
+			<div class="input">
+				<f:form.textfield 
+					data="{action: 'validate-zip'}" 
+					required="1" 
+					type="number" 
+					name="zip" 
+					value="" 
+					autofocus="false" 
+					placeholder="Skriv in ditt Postnr" 
+					errorClass="'zip-error'" 
+					class="form-control" 
+					id="zip"
+					tabindex="8"
+				>
+			</div>
+			<!-- tag content - may be ignored! -->
+			</f:form.textfield>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="city">Stad  
+				<span class="required">*</span>
+			</label>
+			<div class="input">
+				<f:form.textfield 
+					data="{action: 'validate-city'}" 
+					required="1" 
+					type="text" 
+					name="city" 
+					value="" 
+					autofocus="false" 
+					placeholder="Skriv in Stad " 
+					errorClass="'city-error'" 
+					class="form-control" 
+					id="city"
+					tabindex="9"
+				>
+			</div>
+			<!-- tag content - may be ignored! -->
+			</f:form.textfield>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="mobile">Telefon  
+				<span class="required">*</span>
+			</label>
+			<div class="input">
+				<f:form.textfield 
+					data="{action: 'validate-mobile'}" 
+					required="1" 
+					type="number" 
+					name="mobile" 
+					value="" 
+					autofocus="false" 
+					placeholder="Skriv in telefonnummer " 
+					errorClass="'mobile-error'" 
+					class="form-control" 
+					id="mobile"
+					tabindex="10"
+				>
+			</div>
+			<!-- tag content - may be ignored! -->
+			</f:form.textfield>
+		</div>
+		<div class="form-group">
+			<div class="control-label"></div>
+			<div class="input">
+				<f:form.submit 
+					additionalAttributes="{foo: 'bar'}" 
+					data="{type: 'pn', status: 'disabled', pid: '61'}" 
+					name="submit" 
+					value="Skicka" 
+					class="btn btn-success" 
+					id="submit" 
+					tabindex="123" 
+				>
+				</f:form.submit>
+			</div>
+		</div>
+		<f:comment>
+		<input data-action="validate-pn" type="text" placeholder="Skriv in ditt personnummer">
+		<div class="sendmail">
+			<button data-pid="61" data-type="pn" data-status="disabled" type="button" class="btn btn-success">Skicka &gt;&gt;</button>
+			<div class="alert alert-success reg-ok hide" role="alert">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true">fsdffdg</span>
+			</div>
+			<div class="alert alert-danger reg-error hide" role="alert">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true">fsdffdg</span>
+			</div>
+		</div>
+		</f:comment>
+	</f:form>
+</div>
+</f:section>
+</html>
