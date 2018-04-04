@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-14T07:16:16Z" product-name="dl_bankid">
+		<header/>
+		<body>
+			<trans-unit id="live_mode_enabled.description">
+				<source>Check this in extension conf</source>
+			</trans-unit>
+			<trans-unit id="ca_cert.description">
+				<source>public certificate</source>
+			</trans-unit>
+			<trans-unit id="local_cert.description">
+				<source>local certificate</source>
+			</trans-unit>
+			<trans-unit id="pri_key.description">
+				<source>private key</source>
+			</trans-unit>
+			<trans-unit id="appapi_url.description">
+				<source>appapiUrl</source>
+			</trans-unit>
+			<trans-unit id="personal_number.description">
+				<source>personalNumber</source>
+			</trans-unit>
+			<trans-unit id="user_visible_data.description">
+				<source>userVisibleData</source>
+			</trans-unit>
+			<trans-unit id="curl_init.description">
+				<source>curlInit</source>
+			</trans-unit>
+			<trans-unit id="order_ref.description">
+				<source>orderRef</source>
+			</trans-unit>
+			<trans-unit id="auto_start_token.description">
+				<source>autoStartToken</source>
+			</trans-unit>
+			<trans-unit id="status.description">
+				<source>status</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

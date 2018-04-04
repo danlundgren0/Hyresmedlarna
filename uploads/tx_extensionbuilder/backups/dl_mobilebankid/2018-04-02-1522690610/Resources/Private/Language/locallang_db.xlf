@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-26T17:27:19Z" product-name="dl_mobilebankid">
+		<header/>
+		<body>
+			<trans-unit id="tx_dlmobilebankid_domain_model_mobilebankid">
+				<source>Mobile Bank Id</source>
+			</trans-unit>
+			<trans-unit id="tx_dlmobilebankid_domain_model_customfrontenduser">
+				<source>Custom Frontend User</source>
+			</trans-unit>
+			<trans-unit id="tx_dlmobilebankid_domain_model_customfrontenduser.personal_number">
+				<source>Personal Number</source>
+			</trans-unit>
+			<trans-unit id="tx_dlmobilebankid_domain_model_customfrontenduser.bank_id_name">
+				<source>Bank Id Name</source>
+			</trans-unit>
+			<trans-unit id="fe_users.tx_extbase_type.Tx_DlMobilebankid_CustomFrontendUser">
+				<source>MobileBankId CustomFrontendUser</source>
+			</trans-unit>
+			<trans-unit id="tx_dlmobilebankid_domain_model_customfrontendusergroup">
+				<source>Custom Frontend User Group</source>
+			</trans-unit>
+			<trans-unit id="tx_dlmobilebankid_domain_model_customfrontendusergroup.user_type">
+				<source>User Type</source>
+			</trans-unit>
+			<trans-unit id="fe_groups.tx_extbase_type.Tx_DlMobilebankid_CustomFrontendUserGroup">
+				<source>MobileBankId CustomFrontendUserGroup</source>
+			</trans-unit>
+			<trans-unit id="tx_dl_mobilebankid_mobilebankid.name">
+				<source>MobileBankId</source>
+			</trans-unit>
+			<trans-unit id="tx_dl_mobilebankid_mobilebankid.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dl_mobilebankid_ajaxrequest.name">
+				<source>Ajax Request</source>
+			</trans-unit>
+			<trans-unit id="tx_dl_mobilebankid_ajaxrequest.description">
+				<source></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

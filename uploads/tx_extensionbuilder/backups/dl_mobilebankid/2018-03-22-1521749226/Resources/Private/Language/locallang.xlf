@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-20T04:55:36Z" product-name="dl_mobilebankid">
+		<header/>
+		<body>
+			<trans-unit id="tx_dlmobilebankid_domain_model_mobilebankid">
+				<source>Mobile Bank Id</source>
+			</trans-unit>
+			<trans-unit id="tx_dlmobilebankid_domain_model_customfrontenduser">
+				<source>Custom Frontend User</source>
+			</trans-unit>
+			<trans-unit id="tx_dlmobilebankid_domain_model_customfrontenduser.personal_number">
+				<source>Personal Number</source>
+			</trans-unit>
+			<trans-unit id="tx_dlmobilebankid_domain_model_customfrontendusergroup">
+				<source>Custom Frontend User Group</source>
+			</trans-unit>
+			<trans-unit id="tx_dlmobilebankid_domain_model_customfrontendusergroup.user_type">
+				<source>User Type</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

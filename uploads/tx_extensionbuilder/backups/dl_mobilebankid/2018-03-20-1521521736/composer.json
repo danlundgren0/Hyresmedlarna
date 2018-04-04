@@ -1,0 +1,19 @@
+{
+    "name": "danlundgren/dl-mobilebankid",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "authors": [
+        {
+            "name": "Dan Lundgren",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^8.7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "DanLundgren\\DlMobilebankid\\": "Classes"
+        }
+    }
+}

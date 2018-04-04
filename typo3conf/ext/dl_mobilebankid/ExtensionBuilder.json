@@ -18,7 +18,9 @@
                     "customActions": [
                         "loginbox",
                         "loginok",
-                        "loginfail"
+                        "loginfail",
+                        "createUser",
+                        "loginboxLandlord"
                     ]
                 },
                 "name": "MobileBankId",
@@ -85,6 +87,16 @@
                             "propertyName": "personalNumber",
                             "propertyType": "String",
                             "uid": "498468206119"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "bankIdName",
+                            "propertyType": "String",
+                            "uid": "690610590339"
                         }
                     ]
                 },
@@ -174,9 +186,9 @@
         "plugins": [
             {
                 "actions": {
-                    "controllerActionCombinations": "MobileBankId => loginbox, loginok, loginfail",
-                    "noncacheableActions": "MobileBankId => loginbox, loginok, loginfail",
-                    "switchableActions": ""
+                    "controllerActionCombinations": "MobileBankId => loginbox, loginok, loginfail,createUser",
+                    "noncacheableActions": "MobileBankId => loginbox, loginok, loginfail,createUser",
+                    "switchableActions": "Register tenant\nMobileBankId->loginbox\nRegister landlord\nMobileBankId->loginboxLandlord\nRegister landlord\nMobileBankId->createUser"
                 },
                 "description": "",
                 "key": "mobilebankid",
@@ -197,7 +209,7 @@
     },
     "wires": [],
     "log": {
-        "last_modified": "2018-03-20 04:55",
+        "last_modified": "2018-04-02 05:36",
         "extension_builder_version": "8.7.0",
         "be_user": " (1)"
     }

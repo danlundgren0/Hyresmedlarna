@@ -1,0 +1,36 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Function</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<switchableControllerActions>
+						<TCEforms>
+							<label>Select function</label>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">Register tenant</numIndex>
+										<numIndex index="1">MobileBankId-&gt;loginbox</numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">Register landlord</numIndex>
+										<numIndex index="1">MobileBankId-&gt;loginboxLandlord</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">Create user</numIndex>
+										<numIndex index="1">MobileBankId-&gt;createUser</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

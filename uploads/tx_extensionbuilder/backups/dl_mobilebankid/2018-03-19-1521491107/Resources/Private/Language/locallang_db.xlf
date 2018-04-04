@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-19T20:12:33Z" product-name="dl_mobilebankid">
+		<header/>
+		<body>
+			<trans-unit id="tx_dlmobilebankid_domain_model_mobilebankid">
+				<source>Mobile Bank Id</source>
+			</trans-unit>
+			<trans-unit id="tx_dl_mobilebankid_mobilebankid.name">
+				<source>MobileBankId</source>
+			</trans-unit>
+			<trans-unit id="tx_dl_mobilebankid_mobilebankid.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dl_mobilebankid_ajaxrequest.name">
+				<source>Ajax Request</source>
+			</trans-unit>
+			<trans-unit id="tx_dl_mobilebankid_ajaxrequest.description">
+				<source></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

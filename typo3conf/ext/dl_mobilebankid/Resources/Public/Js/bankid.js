@@ -22,6 +22,9 @@ DanLBankId.ajax = {
 }
 DanLAction.command = {
     trySign: function() {
+        if($('.modal-backdrop').hasClass('hideme')) {
+            $('.modal-backdrop').removeClass('hideme');
+        }
         DanLBankId.ajax.fetch({
             command: 'trySign',
             arguments: {
@@ -36,6 +39,7 @@ DanLAction.command = {
                 DanLAction.command.tryLogin(data.data.response['orderRef']);
             }
         }).fail(function( jqXHR, textStatus, errorThrown ) {
+            $('.modal-backdrop').removeClass('hideme');
             console.log('trySign failed: ' + textStatus);
         });
         
@@ -51,80 +55,68 @@ DanLAction.command = {
         }).done(function(data, textStatus, jqXHR) {
             if(data && data.data && data.data.response && !data.data.response['errorCode']) {
                 if(data.data.response['status'].length>0 && data.data.response['status']=='pending') {
+                    console.log('Status: '+data.data.response['status']);
                     setTimeout( DanLAction.command.tryLogin, 3000, or);
                 }
                 else if(data.data.response['status'].length>0 && data.data.response['status']=='complete') {
                     $('#bi_name').val(data.data.response.completionData.user['name']);
-                    //$('#reg-form').submit();
+                    console.log('Status: '+data.data.response['status']);
+                    console.log('BEFORE Form submit');
+                    $('#reg-form').submit();                    
+                    console.log('AFTER Form submit');
                 }
                 console.log('data');
                 console.log(data);
             }
             else {
+                $('.modal-backdrop').removeClass('hideme');
                 console.log('login failed');   
             }
         }).fail(function( jqXHR, textStatus, errorThrown ) {
-            console.log('trySign failed: ' + textStatus);
+            $('.modal-backdrop').removeClass('hideme');
+            console.log('tryLogin failed: ' + textStatus);
         });
     },
     verifyPersonalNumber: function() {
         var textfield = $(this).get(0);
-        textfield.setCustomValidity('');
+        //textfield.setCustomValidity('');
         var input = $(this).val();
         var format = 'DEFAULT';        
         if (input.length < 1) { return; }
         
         var res = formator.personalid(input, format);
         if(res) {
-            console.log('Valid');
-            console.log(res);
             personalNumberIsValid = true;
-            $('[name="tx_form_formframework[tenantform][__currentPage]"]').off('click');
-            $(this).closest('.tx-dl-bankid').find('button').attr('data-status','enabled');
-            $(this).closest('.tx-dl-bankid').find('[data-status="enabled"]').off();
-            $(this).closest('.tx-dl-bankid').find('[data-status="enabled"]').on('click', DanLAction.command.trySign);
+            textfield.setCustomValidity('');
         }
         else {
             textfield.setCustomValidity('Felaktigt personnummer');
-            console.log('NOT Valid');
-            console.log(res);
-            personalNumberIsValid = false;
-            $('[name="tx_form_formframework[tenantform][__currentPage]"]').on('click', function (event) { event.preventDefault(); });
-            $(this).closest('.tx-dl-bankid').find('button').attr('data-status','disabled');
-            $('[data-status="disabled"]').off();    
+            personalNumberIsValid = false;            
         }
+        textfield.reportValidity();
     },
     verifyEmailAddress: function() {
-        /*var textfield = $(this).get(0);
-        textfield.setCustomValidity('');
-        if (!textfield.validity.valid) {
-          textfield.setCustomValidity('Lütfen işaretli yerleri doldurunuz');  
-        }*/
-        var textfield = $(this).get(0);
-        textfield.setCustomValidity('');
         var inputVal = $(this).val();
-        var format = 'DEFAULT';        
-        if (inputVal.length < 1) { return; }        
-        var res = formator.email(inputVal, format);        
-        if(res) {
-            emailIsValid = true;
-            $('[name="tx_form_formframework[tenantform][__currentPage]"]').off('click');
-            $(this).closest('.tx-dl-bankid').find('button').attr('data-status','enabled');
-            $(this).closest('.tx-dl-bankid').find('[data-status="enabled"]').off();
-            $(this).closest('.tx-dl-bankid').find('[data-status="enabled"]').on('click', DanLAction.command.trySign);
+        var textfield = $(this).get(0);
+        if(!formator.email(inputVal)) {
+            emailIsValid = false;
+            textfield.setCustomValidity('Din email adress är felaktig');            
         }
         else {
-            textfield.setCustomValidity('Din email adress är felaktig');
-            emailIsValid = false;
-            $('[name="tx_form_formframework[tenantform][__currentPage]"]').on('click', function (event) { event.preventDefault(); });
-            $(this).closest('.tx-dl-bankid').find('button').attr('data-status','disabled');
-            $('[data-status="disabled"]').off();    
+            emailIsValid = true;
+            textfield.setCustomValidity('');
         }
+        textfield.reportValidity();
+        //var textfield = $(this).get(0);
+
+        //textfield.setCustomValidity('');
+
     },
     verifyFirstName: function() {
         var textfield = $(this).get(0);
-        textfield.setCustomValidity('');
+        //textfield.setCustomValidity('');
         var inputVal = $(this).val();
+        textfield.setCustomValidity('');
         if(inputVal.length==0) {
         	firstName = false;
             textfield.setCustomValidity('Fältet får inte vara tomt');
@@ -132,11 +124,12 @@ DanLAction.command = {
         else {
         	firstName = true;
         }
+        textfield.reportValidity();
     },
     verifyLastName: function() {
         var textfield = $(this).get(0);
-        textfield.setCustomValidity('');
         var inputVal = $(this).val();
+        textfield.setCustomValidity('');
         if(inputVal.length==0) {
         	lastName = false;
             textfield.setCustomValidity('Fältet får inte vara tomt');
@@ -144,11 +137,12 @@ DanLAction.command = {
         else {
         	lastName = true;
         }
+        textfield.reportValidity();
     },
     verifyStreetAddress: function() {
         var textfield = $(this).get(0);
-        textfield.setCustomValidity('');
         var inputVal = $(this).val();
+        textfield.setCustomValidity('');
         if(inputVal.length==0) {
         	streetAddress = false;
             textfield.setCustomValidity('Fältet får inte vara tomt');
@@ -156,6 +150,7 @@ DanLAction.command = {
         else {
         	streetAddress = true;
         }
+        textfield.reportValidity();
     },
     verifyCity: function() {
         var textfield = $(this).get(0);
@@ -168,6 +163,7 @@ DanLAction.command = {
         else {
         	city = true;
         }
+        textfield.reportValidity();
     },
     verifyZip: function() {
         var textfield = $(this).get(0);
@@ -180,6 +176,7 @@ DanLAction.command = {
         else {
         	zip = true;
         }
+        textfield.reportValidity();
     },
     verifyTelephone: function() {
         var textfield = $(this).get(0);
@@ -192,12 +189,13 @@ DanLAction.command = {
         else {
         	telephone = true;
         }
+        textfield.reportValidity();
     },
     verifyEqualPasswords: function(el1, el2) {
         var textfield1 = $(el1).get(0);
         var textfield2 = $(el2).get(0);
         textfield1.setCustomValidity('');
-        textfield2.setCustomValidity('');
+        //textfield2.setCustomValidity('');
         var p1 = $(el1).val();
         var p2 = $(el2).val();
         var format = 'DEFAULT';        
@@ -207,25 +205,20 @@ DanLAction.command = {
         //var res = p1==p2 && p1.length>7 && p2.length>7;
         if(isPwEqual && isPwLen8) {
             pwValid = true;
-            $('[name="tx_form_formframework[tenantform][__currentPage]"]').off('click');
-            $(this).closest('.tx-dl-bankid').find('button').attr('data-status','enabled');
-            $(this).closest('.tx-dl-bankid').find('[data-status="enabled"]').off();
-            $(this).closest('.tx-dl-bankid').find('[data-status="enabled"]').on('click', DanLAction.command.trySign);
         }
         else {
             if(!isPwEqual) {
                 textfield1.setCustomValidity('Lösenorden stämmer inte överens');
-                textfield2.setCustomValidity('Lösenorden stämmer inte överens');
             }
             else if(!isPwLen8) {
                 textfield1.setCustomValidity('Lösenordet måste vara minst 8 tecken');
-                textfield2.setCustomValidity('Lösenordet måste vara minst 8 tecken');
             }
             pwValid = false;
-            $('[name="tx_form_formframework[tenantform][__currentPage]"]').on('click', function (event) { event.preventDefault(); });
-            $(this).closest('.tx-dl-bankid').find('button').attr('data-status','disabled');
-            $('[data-status="disabled"]').off();    
+            //$('[name="tx_form_formframework[tenantform][__currentPage]"]').on('click', function (event) { event.preventDefault(); });
+            //$(this).closest('.tx-dl-bankid').find('button').attr('data-status','disabled');
+            //$('[data-status="disabled"]').off();    
         }
+        textfield1.reportValidity();
     },
     isAllFieldsOk: function() {
         if(
@@ -255,14 +248,18 @@ DanLAction.command = {
         	console.log('city: '+city); 
         	console.log('telephone: '+telephone); 
         	console.log('zip: '+zip); 
-           console.log('Some fields not valid'); 
-           return false;
+            console.log('Some fields not valid'); 
+            return false;
         }
     },
-    submitForm: function(event) {
+    submitForm: function() {
     	event.preventDefault();
-    	console.log(DanLAction.command.isAllFieldsOk());
+    	//$('#reg-form').submit();
+    	
     	if(DanLAction.command.isAllFieldsOk()) {
+            console.log('submitForm isAllFieldsOk');
+            //$(this).closest('form').submit();
+            //$('#reg-form').submit();
     		DanLAction.command.trySign();
     	}
     	else {
@@ -279,29 +276,48 @@ $(function() {
     });
     */
     //$('#tenantform-email').on('input', DanLAction.command.verifyEmailAddress);
-    $('#reg-form').submit(DanLAction.command.submitForm);
+    $('#send').on('click', DanLAction.command.submitForm);
+    /*$('#reg-form').submit(function(event){
+      event.preventDefault();
+    });*/
+    //$('#reg-form').submit(DanLAction.command.submitForm);
     //$('#submit').on('click', DanLAction.command.submitForm);
-    $('#email').on('input', DanLAction.command.verifyEmailAddress);
+/*
+    DanLAction.command.verifyEmailAddress($('#email'));
+    DanLAction.command.verifyFirstName($('#fn'));
+    DanLAction.command.verifyLastName($('#ln'));
+    DanLAction.command.verifyStreetAddress($('#sa'));
+    DanLAction.command.verifyCity($('#city'));
+    DanLAction.command.verifyZip($('#zip'));
+    DanLAction.command.verifyTelephone($('#mobile'));
+    DanLAction.command.verifyPersonalNumber($('#pn'));
+    DanLAction.command.verifyEqualPasswords($('#pw'));
+    DanLAction.command.verifyEqualPasswords($('#pw2'));
+    DanLAction.command.verifyTelephone($('#mobile'));
+*/
+
+    //document.getElementById('emailEl').addEventListener('change', DanLAction.command.verifyEmailAddress, true);
+    $('#emailEl').on('input', DanLAction.command.verifyEmailAddress);
     $('#fn').on('input', DanLAction.command.verifyFirstName);
     $('#ln').on('input', DanLAction.command.verifyLastName);
     $('#sa').on('input', DanLAction.command.verifyStreetAddress);
     $('#city').on('input', DanLAction.command.verifyCity);
     $('#zip').on('input', DanLAction.command.verifyZip);
     $('#mobile').on('input', DanLAction.command.verifyTelephone);
-    
+    /*
     $('[type="text"],#zip,#mobile').on('change invalid', function() {
         var textfield = $(this).get(0);
-        textfield.setCustomValidity('');
+        //textfield.setCustomValidity('');
         if (!textfield.validity.valid) {
           textfield.setCustomValidity('Fältet får inte vara tomt');  
         }
     });
-    
+    */
     $('#pn').on('input', DanLAction.command.verifyPersonalNumber);
-    $('#pw').on('input', function () {
+    $('#pw').on('change', function () {
         DanLAction.command.verifyEqualPasswords($(this), $('#pw2'));
     });
-    $('#pw2').on('input', function () {
+    $('#pw2').on('change', function () {
         DanLAction.command.verifyEqualPasswords($(this), $('#pw'));
     });
 

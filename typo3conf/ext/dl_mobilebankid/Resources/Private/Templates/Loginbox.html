@@ -13,26 +13,28 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
+
+<div class="modal-backdrop hideme">
+	<div class="backdrop-container">
+		<h4 class="backdrop-text">Starta din bankid app</h4>
+		<div class="loader"></div>
+	</div>
+</div>
+
 <div class="frame frame-default frame-type-form_formframework">
 	<h5>Logga in med Bankid</h5>
 	<f:form 
-		additionalAttributes="{foo: 'bar'}" 
-		data="{foo: 'bar'}" 
-		action="NULL" 
-		arguments="{foo: 'bar'}" 
-		controller="NULL" 
+		action="createUser" 
+		controller="MobileBankId" 
 		extensionName="dlmobilebankid" 
 		pluginName="mobilebankid" 
-		pageUid="123" 
-		pageType="123" 
-		additionalParams="{foo: 'bar'}" 
-		actionUri="NULL"
-		method="NULL" 
+		pageUid="{registerSuccessPID}" 
 		name="reg-form" 
-		class="NULL" 
 		id="reg-form" 
 	>		
 		<f:form.hidden name="bi_name" id="bi_name" value="" />
+		<f:form.hidden name="tenantGroupuid" id="tenantGroupuid" value="{tenantGroupuid}" />
+		<f:form.hidden name="feUserStoragePID" id="feUserStoragePID" value="{feUserStoragePID}" />
 		<div class="form-group">
 			<label class="control-label" for="email">E-post adress
 				<span class="required">*</span>
@@ -42,18 +44,17 @@ Otherwise your changes will be overwritten the next time you save the extension 
 					data="{action: 'validate-email'}" 
 					required="1" 
 					type="email" 
-					name="email" 
+					name="emailEl" 
 					value="" 
 					autofocus="true" 
 					placeholder="Du loggar in med din e-post adress" 
 					errorClass="'email-error'" 
 					class="form-control" 
-					id="email"
+					id="emailEl"
 					tabindex="1"
-				>
+				>			
+				</f:form.textfield>
 			</div>
-			<!-- tag content - may be ignored! -->
-			</f:form.textfield>
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="pw">Lösenord
@@ -73,9 +74,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
 					id="pw"
 					tabindex="2"
 				>
+				</f:form.textfield>
 			</div>
-			<!-- tag content - may be ignored! -->
-			</f:form.textfield>
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="pw2">Bekräfta lösenord
@@ -95,9 +95,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
 					id="pw2"
 					tabindex="3"
 				>
+				</f:form.textfield>
 			</div>
-			<!-- tag content - may be ignored! -->
-			</f:form.textfield>
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="pn">Personnummer
@@ -111,15 +110,14 @@ Otherwise your changes will be overwritten the next time you save the extension 
 					name="pn" 
 					value="" 
 					autofocus="false" 
-					placeholder="Skriv in ditt personnummer" 
+					placeholder="ÅÅÅÅMMDDXXXX" 
 					errorClass="'pn-error'" 
 					class="form-control" 
 					id="pn"
 					tabindex="4"
 				>
+				</f:form.textfield>
 			</div>
-			<!-- tag content - may be ignored! -->
-			</f:form.textfield>
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="fn">Förnamn
@@ -139,9 +137,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
 					id="fn"
 					tabindex="5"
 				>
+				</f:form.textfield>
 			</div>
-			<!-- tag content - may be ignored! -->
-			</f:form.textfield>
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="ln">Efternamn
@@ -161,9 +158,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
 					id="ln"
 					tabindex="6"
 				>
+				</f:form.textfield>
 			</div>
-			<!-- tag content - may be ignored! -->
-			</f:form.textfield>
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="sa">Gatuadress 
@@ -183,9 +179,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
 					id="sa"
 					tabindex="7"
 				>
+				</f:form.textfield>
 			</div>
-			<!-- tag content - may be ignored! -->
-			</f:form.textfield>
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="zip">Postnr 
@@ -205,9 +200,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
 					id="zip"
 					tabindex="8"
 				>
+				</f:form.textfield>
 			</div>
-			<!-- tag content - may be ignored! -->
-			</f:form.textfield>
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="city">Stad  
@@ -227,9 +221,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
 					id="city"
 					tabindex="9"
 				>
+				</f:form.textfield>
 			</div>
-			<!-- tag content - may be ignored! -->
-			</f:form.textfield>
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="mobile">Telefon  
@@ -249,37 +242,31 @@ Otherwise your changes will be overwritten the next time you save the extension 
 					id="mobile"
 					tabindex="10"
 				>
+				</f:form.textfield>
 			</div>
-			<!-- tag content - may be ignored! -->
-			</f:form.textfield>
 		</div>
 		<div class="form-group">
-			<div class="control-label"></div>
+			<div class="control-label"></div>			
 			<div class="input">
-				<f:form.submit 
-					additionalAttributes="{foo: 'bar'}" 
-					data="{type: 'pn', status: 'disabled', pid: '61'}" 
-					name="submit" 
+				<f:comment>
+				<input type="button" 
 					value="Skicka" 
 					class="btn btn-success" 
-					id="submit" 
-					tabindex="123" 
+					id="send" 
+					tabindex="11" 
+				/>
+				</f:comment>
+				<f:form.submit 
+					name="send" 
+					value="Skicka" 
+					class="btn btn-primary" 
+					id="send" 
+					tabindex="11" 
 				>
-				</f:form.submit>
+				</f:form.submit>				
 			</div>
 		</div>
-		<f:comment>
-		<input data-action="validate-pn" type="text" placeholder="Skriv in ditt personnummer">
-		<div class="sendmail">
-			<button data-pid="61" data-type="pn" data-status="disabled" type="button" class="btn btn-success">Skicka &gt;&gt;</button>
-			<div class="alert alert-success reg-ok hide" role="alert">
-				<span class="glyphicon glyphicon-ok" aria-hidden="true">fsdffdg</span>
-			</div>
-			<div class="alert alert-danger reg-error hide" role="alert">
-				<span class="glyphicon glyphicon-remove" aria-hidden="true">fsdffdg</span>
-			</div>
-		</div>
-		</f:comment>
+		<div style="clear:both;"></div>
 	</f:form>
 </div>
 </f:section>

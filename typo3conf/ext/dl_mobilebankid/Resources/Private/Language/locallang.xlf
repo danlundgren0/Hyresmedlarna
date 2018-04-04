@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-20T04:55:36Z" product-name="dl_mobilebankid">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-02T17:36:51Z" product-name="dl_mobilebankid">
 		<header/>
 		<body>
 			<trans-unit id="tx_dlmobilebankid_domain_model_mobilebankid">
@@ -11,6 +11,9 @@
 			</trans-unit>
 			<trans-unit id="tx_dlmobilebankid_domain_model_customfrontenduser.personal_number">
 				<source>Personal Number</source>
+			</trans-unit>
+			<trans-unit id="tx_dlmobilebankid_domain_model_customfrontenduser.bank_id_name">
+				<source>Bank Id Name</source>
 			</trans-unit>
 			<trans-unit id="tx_dlmobilebankid_domain_model_customfrontendusergroup">
 				<source>Custom Frontend User Group</source>

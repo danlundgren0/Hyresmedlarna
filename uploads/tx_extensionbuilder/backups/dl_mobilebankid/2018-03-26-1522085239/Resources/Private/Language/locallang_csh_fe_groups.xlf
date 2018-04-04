@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-25T17:36:07Z" product-name="dl_mobilebankid">
+		<header/>
+		<body>
+			<trans-unit id="user_type.description">
+				<source>userType</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+	<file t3:id="1415814821" source-language="en" datatype="plaintext" original="messages" date="2011-10-17T20:22:32Z" product-name="felogin">
+		<header/>
+		<body>
+			<trans-unit id="ll_welcome_header">
+				<source>Här kan du logga in</source>
+			</trans-unit>
+			<trans-unit id="ll_welcome_message">
+				<source>Ange ditt användarnamn och lösenord för att logga in</source>
+			</trans-unit>
+			<trans-unit id="ll_logout_header">
+				<source>Du är utloggad</source>
+			</trans-unit>
+			<trans-unit id="ll_logout_message">
+				<source>Du är nu utloggad</source>
+			</trans-unit>
+			<trans-unit id="ll_error_header">
+				<source>Login misslyckades</source>
+			</trans-unit>
+			<trans-unit id="ll_error_message" xml:space="preserve">
+				<source>Ett fel uppstod. Felaktigt användarnamn eller lösenord.</source>
+			</trans-unit>
+			<trans-unit id="ll_success_header">
+				<source>Du är nu inloggad</source>
+			</trans-unit>
+			<trans-unit id="ll_success_message">
+				<source>Du är inloggad som '###USER###'</source>
+			</trans-unit>
+			<trans-unit id="ll_status_header">
+				<source>Nuvarande status: </source>
+			</trans-unit>
+			<trans-unit id="ll_status_message">
+				<source>Detta är din status:</source>
+			</trans-unit>
+			<trans-unit id="cookie_warning">
+				<source>Varning för kakor</source>
+			</trans-unit>
+			<trans-unit id="username">
+				<source>Användarnamn:</source>
+			</trans-unit>
+			<trans-unit id="password">
+				<source>Lösenord:</source>
+			</trans-unit>
+			<trans-unit id="login">
+				<source>Logga in</source>
+			</trans-unit>
+			<trans-unit id="permalogin">
+				<source>Fortsätt vara inloggad:</source>
+			</trans-unit>
+			<trans-unit id="logout">
+				<source>Logga ut</source>
+			</trans-unit>
+			<trans-unit id="send_password">
+				<source>Skicka lösenord</source>
+			</trans-unit>
+			<trans-unit id="reset_password">
+				<source>Återställ lösenord</source>
+			</trans-unit>
+			<trans-unit id="ll_change_password_header">
+				<source>Byt lösenord</source>
+			</trans-unit>
+			<trans-unit id="ll_change_password_message">
+				<source>Skriv in ditt lösenord med minst 8 tecken</source>
+			</trans-unit>
+			<trans-unit id="ll_change_password_nolinkprefix_message">
+				<source>Error: there is no prefix for the link. Please set one of the following in your typoscript template: plugin.tx_felogin_pi1.feloginBaseURL = http://yourdomain/, config.baseURL = http://yourdomain/, config.absRefPrefix = /</source>
+			</trans-unit>
+			<trans-unit id="ll_change_password_notvalid_message">
+				<source>The link you clicked is not valid. Please repeat the forgot password procedure.</source>
+			</trans-unit>
+			<trans-unit id="ll_change_password_notequal_message">
+				<source>Lösenorden stämmer ej. Ange samma lösenord 2 gången med minst 8 tecken.</source>
+			</trans-unit>
+			<trans-unit id="ll_change_password_tooshort_message">
+				<source>Lösenordet är för kort</source>
+			</trans-unit>
+			<trans-unit id="ll_change_password_done_message">
+				<source>Ditt nya lösen är sparat och du kan nu logga in.</source>
+			</trans-unit>
+			<trans-unit id="change_password">
+				<source>Byt lösenord</source>
+			</trans-unit>
+			<trans-unit id="newpassword_label1">
+				<source>Ange nytt lösenord</source>
+			</trans-unit>
+			<trans-unit id="newpassword_label2">
+				<source>Upprepa lösenord</source>
+			</trans-unit>
+			<trans-unit id="your_email">
+				<source>Din e-post adress:</source>
+			</trans-unit>
+			<trans-unit id="ll_forgot_header">
+				<source>Glömt ditt lösenord?</source>
+			</trans-unit>
+			<trans-unit id="ll_forgot_email_password" xml:space="preserve">
+				<source>Ditt lösenord
+Hej %s
+
+Ditt användarnamn är "%s"
+Ditt lösenord är "%s"</source>
+			</trans-unit>
+			<trans-unit id="ll_forgot_email_nopassword" xml:space="preserve">
+				<source>Ditt lösenord
+Hej %s
+
+Detta användarnam finns ej registrerat. Har du angett fel e-post adress eller är du kanske inte registrerad än?</source>
+			</trans-unit>
+			<trans-unit id="ll_forgot_validate_reset_password" xml:space="preserve">
+				<source>Ditt nya lösenord
+Hej %s,
+
+Di har begärt ändring av ditt lösenord, vänligen klicka på länken nedan, 
+%s
+
+För din säkerhet är denna länk endast aktiv till %s. Om du inte klickar på den före detta datum kommer den att avaktiveras</source>
+			</trans-unit>
+			<trans-unit id="ll_forgot_message">
+				<source>Please enter the email address by which you registered your user account. Then press "Send password" and your password will immediately be emailed to you. Make sure to spell your email address correctly.</source>
+			</trans-unit>
+			<trans-unit id="ll_forgot_message_emailSent">
+				<source>Your password has now been sent to the email address %s</source>
+			</trans-unit>
+			<trans-unit id="ll_forgot_reset_message">
+				<source>Please enter your username or email address. Instructions for resetting the password will be immediately emailed to you.</source>
+			</trans-unit>
+			<trans-unit id="ll_forgot_reset_message_emailSent">
+				<source>Ett mejl har skickats till din e-post adress. Om du inte får detta mejl, har du kanske skrivit in fel adress eller är inte registrerad</source>
+			</trans-unit>
+			<trans-unit id="ll_forgot_reset_message_error">
+				<source>Ditt konto eller e-post finns ej registrerat.</source>
+			</trans-unit>
+			<trans-unit id="ll_forgot_header_backToLogin">
+				<source>Återgå till login formuläret</source>
+			</trans-unit>
+			<trans-unit id="ll_enter_your_data">
+				<source>Användarnamn (e-post):</source>
+			</trans-unit>
+			<trans-unit id="noValidRedirectUrl">
+				<source>Url "%s" for redirect was not accepted!</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
