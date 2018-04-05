@@ -140,6 +140,9 @@ return [
         'dl_mobilebankid' => [
             'packagePath' => 'typo3conf/ext/dl_mobilebankid/',
         ],
+        'dl_personalinformation' => [
+            'packagePath' => 'typo3conf/ext/dl_personalinformation/',
+        ],
         'dl_realestate' => [
             'packagePath' => 'typo3conf/ext/dl_realestate/',
         ],
