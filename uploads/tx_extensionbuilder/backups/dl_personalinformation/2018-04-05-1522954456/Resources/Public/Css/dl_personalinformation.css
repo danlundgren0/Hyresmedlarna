@@ -1,0 +1,42 @@
+.tx-dl-personalinformation h4 {
+	font-style: normal;
+	text-align: left;
+	padding: 0;
+}
+.feuser {
+	
+}
+.info-box  {
+	clear:left;
+}
+.info-box .col-md-3, .info-box .col-md-2 {
+	padding-left:0;
+	text-align: left;
+}
+.info-box .type {
+
+}
+.info-box .info {
+	font-weight: 600;
+}
+
+.button.orange {
+    float: left;
+    display: inline-block;
+    background-color: #f18800;
+    clear: both;
+    padding: 11px;
+    border-radius: 7px;
+    color: #ffffff;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.link.red {
+    font-weight: 600;
+    float: left;
+    color: #DE121C;
+    margin-top: 20px;
+}
+.clear-both {
+	clear:both;
+}

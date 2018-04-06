@@ -1,0 +1,11 @@
+.button.green {
+    float: left;
+    display: inline-block;
+    background-color: #96c21e;
+    clear: both;
+    padding: 11px;
+    border-radius: 7px;
+    color: #ffffff;
+    margin-top: 20px;
+    cursor: pointer;
+}
