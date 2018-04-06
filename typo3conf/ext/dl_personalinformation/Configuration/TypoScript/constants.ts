@@ -13,3 +13,13 @@ plugin.tx_dlpersonalinformation_personalinformation {
         storagePid =
     }
 }
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+plugin.tx_dlpersonalinformation_personalinformation.settings {
+    # cat=plugin.tx_dlpersonalinformation_personalinformation/a; type=string; label=Update Landlord Info PID    
+    updateLandlordPID = 
+    # cat=plugin.tx_dlpersonalinformation_personalinformation/b; type=string; label=Update Tenant Info PID    
+    updateTenantPID = 
+    # cat=plugin.tx_dlpersonalinformation_personalinformation/c; type=string; label=Delete account PID
+    deleteFeuserPID = 
+}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2017-09-27T15:39:18Z" product-name="dl_realestate">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-06T17:51:48Z" product-name="dl_realestate">
 		<header/>
 		<body>
 			<trans-unit id="tx_dlrealestate_domain_model_realestate">

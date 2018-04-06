@@ -12,9 +12,10 @@ return array(
     'DanLundgren\\DlPersonalinformation\\' => array($typo3InstallDir . 'typo3conf/ext/dl_personalinformation/Classes'),
     'DanLundgren\\DlRealestate\\' => array($typo3InstallDir . 'typo3conf/ext/dl_realestate/Classes'),
     'DmitryDulepov\\Realurl\\' => array($typo3InstallDir . 'typo3conf/ext/realurl/Classes'),
-    'EBT\\ExtensionBuilder\\' => array($typo3InstallDir . 'typo3conf/ext/extension_builder_old/Classes'),
+    'EBT\\ExtensionBuilder\\' => array($typo3InstallDir . 'typo3conf/ext/extension_builder/Classes'),
+    'FluidTYPO3\\Vhs\\' => array($typo3InstallDir . 'typo3conf/ext/vhs/Classes'),
     'GridElementsTeam\\Gridelements\\' => array($typo3InstallDir . 'typo3conf/ext/gridelements/Classes'),
     'Laxap\\BootstrapGrids\\' => array($typo3InstallDir . 'typo3conf/ext/bootstrap_grids/Classes'),
-    'PhpParser\\' => array($typo3InstallDir . 'typo3conf/ext/extension_builder_old/Resources/Private/PHP/PHP-Parser/lib/PhpParser'),
+    'PhpParser\\' => array($typo3InstallDir . 'typo3conf/ext/extension_builder/Resources/Private/PHP/PHP-Parser/lib/PhpParser'),
     'TeaminmediasPluswerk\\KeSearch\\' => array($typo3InstallDir . 'typo3conf/ext/ke_search/Classes'),
 );

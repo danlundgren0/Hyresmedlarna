@@ -9,11 +9,11 @@ call_user_func(
             'DanLundgren.DlRealestate',
             'Realestate',
             [
-                'Realestate' => 'create, update, delete, list, show'
+                'Realestate' => 'create, update, delete, list, show, new'
             ],
             // non-cacheable actions
             [
-                'Realestate' => 'create, update, delete, list, show'
+                'Realestate' => 'create, update, delete, list, show, new'
             ]
         );
 

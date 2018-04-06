@@ -111,3 +111,11 @@ DanLAjaxPrototype {
         }
     }
 }
+page.includeJSFooter.dl_realestate = EXT:dl_realestate/Resources/Public/Js/dl_realestate.js
+page.includeCSS.dl_realestate = EXT:dl_realestate/Resources/Public/Css/dl_realestate.css
+
+#plugin.tx_dlpersonalinformation_personalinformation.settings {
+#    updateLandlordPID = {$plugin.tx_dlpersonalinformation_personalinformation.settings.updateLandlordPID}
+#    updateTenantPID = {$plugin.tx_dlpersonalinformation_personalinformation.settings.updateTenantPID}
+#    deleteFeuserPID = {$plugin.tx_dlpersonalinformation_personalinformation.settings.deleteFeuserPID}
+#}

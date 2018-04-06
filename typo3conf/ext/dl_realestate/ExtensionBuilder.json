@@ -171,9 +171,9 @@
         "plugins": [
             {
                 "actions": {
-                    "controllerActionCombinations": "Realestate=>create,update,delete,list,show",
-                    "noncacheableActions": "Realestate=>create,update,delete,list,show",
-                    "switchableActions": "Show Realestate\nRealestate->show;\nList Realestate\nRealestate->list;\nCreate Realestate\nRealestate->create;\nUpdate Realestate\nRealestate->update;\nDelete Realestate\nRealestate->delete;\nNew Realestate\nRealestate->new;"
+                    "controllerActionCombinations": "Realestate=>create,update,delete,list,show,new",
+                    "noncacheableActions": "Realestate=>create,update,delete,list,show,new",
+                    "switchableActions": "Show Realestate\nRealestate->show;\nList Realestate\nRealestate->list;\nNew Realestate\nRealestate->new;\nEdit Realestate\nRealestate->edit;"
                 },
                 "description": "",
                 "key": "realestate",
@@ -194,7 +194,7 @@
     },
     "wires": [],
     "log": {
-        "last_modified": "2017-09-27 03:39",
+        "last_modified": "2018-04-06 05:51",
         "extension_builder_version": "8.7.0",
         "be_user": " (1)"
     }

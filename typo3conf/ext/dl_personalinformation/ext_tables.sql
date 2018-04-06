@@ -35,3 +35,5 @@ CREATE TABLE tx_dlpersonalinformation_domain_model_personalinformation (
 	KEY language (l10n_parent,sys_language_uid)
 
 );
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder

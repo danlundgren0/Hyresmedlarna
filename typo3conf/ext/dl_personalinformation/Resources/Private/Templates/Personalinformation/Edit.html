@@ -17,11 +17,13 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:flashMessages />
 
+<h1>TODO: Formulär för att ändra användarinfo</h1>
+<f:comment>
 <f:render partial="FormErrors" arguments="{object:Personalinformation}" />
-
 <f:form action="update" name="personalinformation" object="{personalinformation}" >
 <f:render partial="Personalinformation/FormFields" arguments="{personalinformation:personalinformation}" />
 <f:form.submit value="Save" />
 </f:form>
+</f:comment>
 </f:section>
 </html>

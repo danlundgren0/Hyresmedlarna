@@ -54,7 +54,13 @@ class RealestateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      */
     public function newAction()
     {
-
+        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
+            [
+                'class' => __CLASS__,
+                'function' => __FUNCTION__,
+                'ACTION' => 'NEW ACTION'
+            ]
+        );
     }
 
     /**

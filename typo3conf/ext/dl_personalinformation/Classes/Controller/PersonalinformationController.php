@@ -32,29 +32,32 @@ class PersonalinformationController extends \TYPO3\CMS\Extbase\Mvc\Controller\Ac
      */
     public function listAction()
     {
-        if($GLOBALS['TSFE']->fe_user && $GLOBALS['TSFE']->fe_user->user && (int)$GLOBALS['TSFE']->fe_user->user['uid']>0) {
-            $uid = (int)$GLOBALS['TSFE']->fe_user->user['uid'];
+        $updateLandlordPID = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_dlpersonalinformation_personalinformation.']['settings.']['updateLandlordPID'];
+        $updateTenantPID = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_dlpersonalinformation_personalinformation.']['settings.']['updateTenantPID'];
+        $deleteFeuserPID = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_dlpersonalinformation_personalinformation.']['settings.']['deleteFeuserPID'];
+        if ($GLOBALS['TSFE']->fe_user && $GLOBALS['TSFE']->fe_user->user && (int) $GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
+            $uid = (int) $GLOBALS['TSFE']->fe_user->user['uid'];
             $feUserStoragePID = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_felogin_pi1.']['storagePid'];
             $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
             $persistenceManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\PersistenceManagerInterface');
             $customFrontendUserRepository = $objectManager->get('TYPO3\\CMS\\Extbase\\Domain\\Repository\\FrontendUserRepository');
             $frontendUser = $customFrontendUserRepository->findByUid($uid);
-            $this->view->assign('frontendUser', $frontendUser);    
+            $this->view->assign('frontendUser', $frontendUser);
+        } else {
+            $this->view->assign('error', 'Du är inte inloggad');
         }
-        else {
-            $this->view->assign('error', 'Du är inte inloggad');    
-        }
-
-
-\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
- array(
-  'class' => __CLASS__,
-  'function' => __FUNCTION__,
-  'user' => $GLOBALS['TSFE']->fe_user->user,
-  'frontendUser' => $frontendUser,
- )
-);
-
+        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
+            [
+                'class' => __CLASS__,
+                'function' => __FUNCTION__,
+                'user' => $GLOBALS['TSFE']->fe_user->user,
+                'frontendUser' => $frontendUser
+            ]
+        );
+        $this->view->assign('updateLandlordPID', $updateLandlordPID);
+        $this->view->assign('updateTenantPID', $updateTenantPID);
+        $this->view->assign('deleteFeuserPID', $deleteFeuserPID);
+        
         $personalinformations = $this->personalinformationRepository->findAll();
         $this->view->assign('personalinformations', $personalinformations);
     }

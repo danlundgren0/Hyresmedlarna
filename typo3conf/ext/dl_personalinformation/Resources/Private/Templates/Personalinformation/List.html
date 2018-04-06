@@ -1,4 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
 <f:layout name="Default" />
 
 This Template is responsible for creating a table of domain objects.
@@ -44,12 +45,18 @@ Otherwise your changes will be overwritten the next time you save the extension 
 		<div class="col-md-2 type">Personnummer</div><div class="col-md-3 info">{frontendUser.personalNumber}</div>
 	</div>
 </div>
-<a href="#" class="button orange">
-	Ändra mina person- och kontaktuppgifter >>
-</a>
+<div class="clear-both">
+	<f:link.page pageUid="{updateLandlordPID}" class="button orange">
+		Ändra mina person- och kontaktuppgifter >>
+	</f:link.page>
+</div>
+<div class="clear-both">
+	<f:link.page pageUid="{deleteFeuserPID}" class="link red">
+		Avsluta konto >>
+	</f:link.page>
+</div>
 <div class="clear-both"></div>
-<a href="#" class="link red">
-	Avsluta konto >>
-</a>
+<hr />
+
 </f:section>
 </html>

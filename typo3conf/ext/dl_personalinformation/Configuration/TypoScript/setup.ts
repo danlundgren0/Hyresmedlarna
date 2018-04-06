@@ -61,3 +61,9 @@ plugin.tx_dlpersonalinformation._CSS_DEFAULT_STYLE (
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
 page.includeJSFooter.dl_personalinformation = EXT:dl_personalinformation/Resources/Public/Js/dl_personalinformation.js
 page.includeCSS.dl_personalinformation = EXT:dl_personalinformation/Resources/Public/Css/dl_personalinformation.css
+
+plugin.tx_dlpersonalinformation_personalinformation.settings {
+    updateLandlordPID = {$plugin.tx_dlpersonalinformation_personalinformation.settings.updateLandlordPID}
+    updateTenantPID = {$plugin.tx_dlpersonalinformation_personalinformation.settings.updateTenantPID}
+    deleteFeuserPID = {$plugin.tx_dlpersonalinformation_personalinformation.settings.deleteFeuserPID}
+}
