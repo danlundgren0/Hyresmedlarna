@@ -1,0 +1,43 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<h1>Edit Realestate</h1>
+
+<f:flashMessages />
+
+<f:render partial="FormErrors" arguments="{object:Realestate}" />
+<div class="frame frame-default frame-type-form_formframework">
+	<f:form action="create"  name="newRealestate" object="{newRealestate}" pageUid="78">				
+		<f:render partial="Realestate/FormFields" arguments="{_all}" />
+		<div class="form-group">
+			<label class="control-label"></label>
+			<div class="input">
+				<f:form.submit value="Skapa annons" class="btn btn-primary real-estate-submit" />
+			</div>
+		</div>
+
+	<div style="clear:both;"></div>
+	</f:form>
+</div>
+
+<f:comment>
+<f:render partial="FormErrors" arguments="{object:Realestate}" />
+<f:form action="update" name="realestate" object="{realestate}" >
+<f:render partial="Realestate/FormFields" arguments="{realestate:realestate}" />
+<f:form.submit value="Save" />
+</f:form>
+</f:comment>
+</f:section>
+</html>

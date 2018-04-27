@@ -60,5 +60,5 @@ plugin.tx_dlemailregistration._CSS_DEFAULT_STYLE (
 
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
 page.includeCSS.css = EXT:dl_emailregistration/Resources/Public/Css/css.css
-page.includeJSFooter.realestate = EXT:dl_realestate/Resources/Public/Js/js.js
+page.includeJSFooter.realestate = EXT:dl_realestate/Resources/Public/Js/dl_realestate.js
 page.includeJSFooter.emailreg = EXT:dl_emailregistration/Resources/Public/Js/js.js

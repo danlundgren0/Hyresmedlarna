@@ -18,10 +18,27 @@ Otherwise your changes will be overwritten the next time you save the extension 
 <f:flashMessages />
 
 <f:render partial="FormErrors" arguments="{object:Realestate}" />
+<div class="frame frame-default frame-type-form_formframework">
+	<f:comment>TODO: page uid in constants</f:comment>
+	<f:form action="update"  name="realestate" object="{realestate}" pageUid="81" enctype="multipart/form-data">				
+		<f:render partial="Realestate/FormFields" arguments="{realestate:realestate}" />
+		<div class="form-group">
+			<label class="control-label"></label>
+			<div class="input">
+				<f:form.submit value="Spara annons" class="btn btn-primary real-estate-submit" />
+			</div>
+		</div>
 
+	<div style="clear:both;"></div>
+	</f:form>
+</div>
+
+<f:comment>
+<f:render partial="FormErrors" arguments="{object:Realestate}" />
 <f:form action="update" name="realestate" object="{realestate}" >
 <f:render partial="Realestate/FormFields" arguments="{realestate:realestate}" />
 <f:form.submit value="Save" />
 </f:form>
+</f:comment>
 </f:section>
 </html>

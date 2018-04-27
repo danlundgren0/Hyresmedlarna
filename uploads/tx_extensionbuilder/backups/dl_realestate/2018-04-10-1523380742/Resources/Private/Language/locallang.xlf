@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-10T17:15:10Z" product-name="dl_realestate">
+		<header/>
+		<body>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate">
+				<source>Lägg till nytt objekt</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.residential_area">
+				<source>Bostadsyta</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.rent_from">
+				<source>Uthyres från</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.rent_to">
+				<source>Uthyres till</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.no_of_rooms">
+				<source>Antal rum</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.rent">
+				<source>Hyra</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.furnitured">
+				<source>Möblerad</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.handicap_adapted">
+				<source>Handikappanpassad</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.elevator">
+				<source>Hiss</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.animals_allowed">
+				<source>Djur tillåtet</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.other">
+				<source>Övrigt</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.upload_images1">
+				<source>Ladda upp bild</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.upload_images2">
+				<source>Ladda upp bild</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.upload_images3">
+				<source>Ladda upp bild</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.upload_images4">
+				<source>Ladda upp bild</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.upload_images5">
+				<source>Ladda upp bild</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.name">
+				<source>Namn</source>
+			</trans-unit>
+			<trans-unit id="tx_dlrealestate_domain_model_realestate.description">
+				<source>Beskrivning</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

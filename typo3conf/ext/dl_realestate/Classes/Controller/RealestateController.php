@@ -32,8 +32,24 @@ class RealestateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      */
     public function listAction()
     {
+        $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+        $frontendUserGroupRepository = $objectManager->get('TYPO3\\CMS\\Extbase\\Domain\\Repository\\FrontendUserGroupRepository');
+        //$frontendUserGroupRepository = $objectManager->get('DanLundgren\DlMobilebankid\Domain\Repository\CustomFrontendUserGroupRepository');
+        //DanLundgren\DlMobilebankid\Domain\Repository
+        $usergroupId = $GLOBALS['TSFE']->fe_user->user['usergroup'];
+        $frontendUserGroup = $frontendUserGroupRepository->findByUid($usergroupId);
+        $userType = $frontendUserGroup->getUserType();
+        $updateLandlordPID = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_dlpersonalinformation_personalinformation.']['settings.']['updateLandlordPID'];
+        $isTenant = ($frontendUserGroup->getUserType()==1)?TRUE:FALSE;
+        $isLandlord = ($frontendUserGroup->getUserType()==2)?TRUE:FALSE;       
+        $cacheManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Core\Cache\CacheManager');
+        $cacheManager->flushCaches();
+        //$cacheManager->getCache('cache_pages')->flushByTag('tx_dlrealestate_domain_model_realestate');
+        //$cacheManager->getCache('cache_pagesection')->flushByTag('tx_dlrealestate_domain_model_realestate');        
         $realestates = $this->realestateRepository->findAll();
         $this->view->assign('realestates', $realestates);
+        $this->view->assign('isTenant', $isTenant);
+        $this->view->assign('isLandlord', $isLandlord);
     }
 
     /**
@@ -54,26 +70,30 @@ class RealestateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      */
     public function newAction()
     {
-        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
-            [
-                'class' => __CLASS__,
-                'function' => __FUNCTION__,
-                'ACTION' => 'NEW ACTION'
-            ]
-        );
+        $feuser = $GLOBALS['TSFE']->fe_user->user['uid'];
+        $this->view->assign('feuser', $feuser);
+    }
+
+    /**
+     * Set TypeConverter option for image upload
+     */
+    public function initializeCreateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('realestate');
     }
 
     /**
      * action create
      *
-     * @param \DanLundgren\DlRealestate\Domain\Model\Realestate $newRealestate
+     * @param \DanLundgren\DlRealestate\Domain\Model\Realestate $realestate
      * @return void
      */
-    public function createAction(\DanLundgren\DlRealestate\Domain\Model\Realestate $newRealestate)
+    public function createAction(\DanLundgren\DlRealestate\Domain\Model\Realestate $realestate)
     {
-        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
-        $this->realestateRepository->add($newRealestate);
-        $this->redirect('list');
+        $this->addFlashMessage('Er bostad är nu skapad', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->realestateRepository->add($realestate);
+        //TODO: set pid as constant
+        $this->redirect('list', null, null, null, 72, 10);
     }
 
     /**
@@ -89,6 +109,14 @@ class RealestateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     }
 
     /**
+     * Set TypeConverter option for image upload
+     */
+    public function initializeUpdateAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('realestate');
+    }
+
+    /**
      * action update
      *
      * @param \DanLundgren\DlRealestate\Domain\Model\Realestate $realestate
@@ -96,9 +124,11 @@ class RealestateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      */
     public function updateAction(\DanLundgren\DlRealestate\Domain\Model\Realestate $realestate)
     {
-        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->addFlashMessage('Bostaden '. $realestate->getName() .' är uppdaterad', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->realestateRepository->update($realestate);
-        $this->redirect('list');
+        //TODO: set pid as constant
+        $this->redirect('list', null, null, null, 72, 10);
+        //$this->redirect('list');
     }
 
     /**
@@ -109,8 +139,33 @@ class RealestateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      */
     public function deleteAction(\DanLundgren\DlRealestate\Domain\Model\Realestate $realestate)
     {
-        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->addFlashMessage('Bostaden '. $realestate->getName() .' är borttagen', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->realestateRepository->remove($realestate);
-        $this->redirect('list');
+        //TODO: set pid as constant
+        $this->redirect('list', null, null, null, 72, 10);
     }
+
+    /**
+     *
+     */
+    protected function setTypeConverterConfigurationForImageUpload($argumentName)
+    {
+        $uploadConfiguration = [
+            \DanLundgren\DlRealestate\Property\TypeConverter\UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
+            \DanLundgren\DlRealestate\Property\TypeConverter\UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER => '1:/content/',
+        ];
+        /** @var PropertyMappingConfiguration $newExampleConfiguration */
+        $newExampleConfiguration = $this->arguments[$argumentName]->getPropertyMappingConfiguration();
+        $newExampleConfiguration->forProperty('image')
+            ->setTypeConverterOptions(
+                'DanLundgren\\DlRealestate\\Property\\TypeConverter\\UploadedFileReferenceConverter',
+                $uploadConfiguration
+            );
+        $newExampleConfiguration->forProperty('imageCollection.0')
+            ->setTypeConverterOptions(
+                'DanLundgren\\DlRealestate\\Property\\TypeConverter\\UploadedFileReferenceConverter',
+                $uploadConfiguration
+            );
+    }
+
 }

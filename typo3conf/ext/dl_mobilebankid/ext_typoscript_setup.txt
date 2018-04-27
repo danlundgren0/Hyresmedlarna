@@ -2,7 +2,6 @@
 config.tx_extbase {
   persistence {
     classes {
-
       TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
         subclasses {
           Tx_DlMobilebankid_CustomFrontendUser = DanLundgren\DlMobilebankid\Domain\Model\CustomFrontendUser
@@ -15,7 +14,17 @@ config.tx_extbase {
           recordType = Tx_DlMobilebankid_CustomFrontendUser
         }
       }
-
+      TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup {
+        subclasses {
+            Tx_DlMobilebankid_CustomFrontendUserGroup = DanLundgren\DlMobilebankid\Domain\Model\CustomFrontendUserGroup
+        }
+      }
+      DanLundgren\DlMobilebankid\Domain\Model\CustomFrontendUserGroup {
+        mapping {
+          tableName = fe_groups
+          recordType = Tx_DlMobilebankid_CustomFrontendUserGroup
+        }
+      }
     }
   }
 }

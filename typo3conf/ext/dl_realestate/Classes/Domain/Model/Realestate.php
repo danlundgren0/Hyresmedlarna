@@ -18,71 +18,33 @@ namespace DanLundgren\DlRealestate\Domain\Model;
 class Realestate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * title
+     * name
      *
      * @var string
      * @validate NotEmpty
      */
-    protected $title = '';
-
-    /**
-     * type
-     *
-     * @var int
-     * @validate NotEmpty
-     */
-    protected $type = 0;
-
-    /**
-     * teaser
-     *
-     * @var string
-     */
-    protected $teaser = '';
+    protected $name = '';
 
     /**
      * description
      *
      * @var string
-     * @validate NotEmpty
      */
     protected $description = '';
 
     /**
-     * images
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     * @cascade remove
-     */
-    protected $images = null;
-
-    /**
-     * longitude
+     * streetAddress
      *
      * @var string
      */
-    protected $longitude = '';
+    protected $streetAddress = '';
 
     /**
-     * latitude
+     * district
      *
      * @var string
      */
-    protected $latitude = '';
-
-    /**
-     * street
-     *
-     * @var string
-     */
-    protected $street = '';
-
-    /**
-     * postalcode
-     *
-     * @var string
-     */
-    protected $postalcode = '';
+    protected $district = '';
 
     /**
      * city
@@ -90,6 +52,126 @@ class Realestate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $city = '';
+
+    /**
+     * residentialArea
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $residentialArea = '';
+
+    /**
+     * rentFrom
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $rentFrom = 0;
+
+    /**
+     * rentTo
+     *
+     * @var string
+     */
+    protected $rentTo = '';
+
+    /**
+     * noOfRooms
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $noOfRooms = '';
+
+    /**
+     * rent
+     *
+     * @var int
+     */
+    protected $rent = 0;
+
+    /**
+     * furnitured
+     *
+     * @var bool
+     */
+    protected $furnitured = '';
+
+    /**
+     * handicapAdapted
+     *
+     * @var bool
+     */
+    protected $handicapAdapted = '';
+
+    /**
+     * elevator
+     *
+     * @var bool
+     */
+    protected $elevator = '';
+
+    /**
+     * animalsAllowed
+     *
+     * @var bool
+     */
+    protected $animalsAllowed = '';
+
+    /**
+     * other
+     *
+     * @var string
+     */
+    protected $other = '';
+
+    /**
+     * uploadImages1
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @cascade remove
+     */
+    protected $uploadImages1 = null;
+
+    /**
+     * uploadImages2
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @cascade remove
+     */
+    protected $uploadImages2 = null;
+
+    /**
+     * uploadImages3
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @cascade remove
+     */
+    protected $uploadImages3 = null;
+
+    /**
+     * uploadImages4
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @cascade remove
+     */
+    protected $uploadImages4 = null;
+
+    /**
+     * uploadImages5
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @cascade remove
+     */
+    protected $uploadImages5 = null;
+
+    /**
+     * feuser
+     *
+     * @var int
+     */
+    protected $feuser = 0;
 
     /**
      * __construct
@@ -110,70 +192,352 @@ class Realestate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
-        $this->images = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+
     }
 
     /**
-     * Returns the title
+     * Returns the rentFrom
      *
-     * @return string $title
+     * @return string rentFrom
      */
-    public function getTitle()
+    public function getRentFrom()
     {
-        return $this->title;
+        return $this->rentFrom;
     }
 
     /**
-     * Sets the title
+     * Sets the rentFrom
      *
-     * @param string $title
+     * @param int $rentFrom
      * @return void
      */
-    public function setTitle($title)
+    public function setRentFrom($rentFrom)
     {
-        $this->title = $title;
+        $this->rentFrom = $rentFrom;
     }
 
     /**
-     * Returns the type
+     * Returns the rentTo
      *
-     * @return int $type
+     * @return string rentTo
      */
-    public function getType()
+    public function getRentTo()
     {
-        return $this->type;
+        return $this->rentTo;
     }
 
     /**
-     * Sets the type
+     * Sets the rentTo
      *
-     * @param int $type
+     * @param string $rentTo
      * @return void
      */
-    public function setType($type)
+    public function setRentTo($rentTo)
     {
-        $this->type = $type;
+        $this->rentTo = $rentTo;
     }
 
     /**
-     * Returns the teaser
+     * Returns the noOfRooms
      *
-     * @return string $teaser
+     * @return string noOfRooms
      */
-    public function getTeaser()
+    public function getNoOfRooms()
     {
-        return $this->teaser;
+        return $this->noOfRooms;
     }
 
     /**
-     * Sets the teaser
+     * Sets the noOfRooms
      *
-     * @param string $teaser
+     * @param string $noOfRooms
      * @return void
      */
-    public function setTeaser($teaser)
+    public function setNoOfRooms($noOfRooms)
     {
-        $this->teaser = $teaser;
+        $this->noOfRooms = $noOfRooms;
+    }
+
+    /**
+     * Returns the furnitured
+     *
+     * @return bool furnitured
+     */
+    public function getFurnitured()
+    {
+        return $this->furnitured;
+    }
+
+    /**
+     * Sets the furnitured
+     *
+     * @param string $furnitured
+     * @return void
+     */
+    public function setFurnitured($furnitured)
+    {
+        $this->furnitured = $furnitured;
+    }
+
+    /**
+     * Returns the handicapAdapted
+     *
+     * @return bool handicapAdapted
+     */
+    public function getHandicapAdapted()
+    {
+        return $this->handicapAdapted;
+    }
+
+    /**
+     * Sets the handicapAdapted
+     *
+     * @param string $handicapAdapted
+     * @return void
+     */
+    public function setHandicapAdapted($handicapAdapted)
+    {
+        $this->handicapAdapted = $handicapAdapted;
+    }
+
+    /**
+     * Returns the elevator
+     *
+     * @return bool elevator
+     */
+    public function getElevator()
+    {
+        return $this->elevator;
+    }
+
+    /**
+     * Sets the elevator
+     *
+     * @param string $elevator
+     * @return void
+     */
+    public function setElevator($elevator)
+    {
+        $this->elevator = $elevator;
+    }
+
+    /**
+     * Returns the animalsAllowed
+     *
+     * @return bool animalsAllowed
+     */
+    public function getAnimalsAllowed()
+    {
+        return $this->animalsAllowed;
+    }
+
+    /**
+     * Sets the animalsAllowed
+     *
+     * @param string $animalsAllowed
+     * @return void
+     */
+    public function setAnimalsAllowed($animalsAllowed)
+    {
+        $this->animalsAllowed = $animalsAllowed;
+    }
+
+    /**
+     * Returns the other
+     *
+     * @return string other
+     */
+    public function getOther()
+    {
+        return $this->other;
+    }
+
+    /**
+     * Sets the other
+     *
+     * @param string $other
+     * @return void
+     */
+    public function setOther($other)
+    {
+        $this->other = $other;
+    }
+
+    /**
+     * Returns the rent
+     *
+     * @return int $rent
+     */
+    public function getRent()
+    {
+        return $this->rent;
+    }
+
+    /**
+     * Sets the rent
+     *
+     * @param int $rent
+     * @return void
+     */
+    public function setRent($rent)
+    {
+        $this->rent = $rent;
+    }
+
+    /**
+     * Returns the uploadImages1
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages1
+     */
+    public function getUploadImages1()
+    {
+        return $this->uploadImages1;
+    }
+
+    /**
+     * Sets the uploadImages1
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages1
+     * @return void
+     */
+    public function setUploadImages1(\TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages1=NULL)
+    {
+        if($uploadImages1) {
+            $this->uploadImages1 = $uploadImages1;
+        }        
+    }
+
+    /**
+     * Returns the uploadImages2
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages2
+     */
+    public function getUploadImages2()
+    {
+        return $this->uploadImages2;
+    }
+
+    /**
+     * Sets the uploadImages2
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages2
+     * @return void
+     */
+    public function setUploadImages2(\TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages2=NULL)
+    {
+        if($uploadImages2) {
+            $this->uploadImages2 = $uploadImages2;
+        }
+    }
+
+    /**
+     * Returns the uploadImages3
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages3
+     */
+    public function getUploadImages3()
+    {
+        return $this->uploadImages3;
+    }
+
+    /**
+     * Sets the uploadImages3
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages3
+     * @return void
+     */
+    public function setUploadImages3(\TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages3=NULL)
+    {
+        if($uploadImages3) {
+            $this->uploadImages3 = $uploadImages3;
+        }        
+    }
+
+    /**
+     * Returns the uploadImages4
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages4
+     */
+    public function getUploadImages4()
+    {
+        return $this->uploadImages4;
+    }
+
+    /**
+     * Sets the uploadImages4
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages4
+     * @return void
+     */
+    public function setUploadImages4(\TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages4=NULL)
+    {
+        if($uploadImages4) {
+            $this->uploadImages4 = $uploadImages4;
+        }
+        
+    }
+
+    /**
+     * Returns the uploadImages5
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages5
+     */
+    public function getUploadImages5()
+    {
+        return $this->uploadImages5;
+    }
+
+    /**
+     * Sets the uploadImages5
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages5
+     * @return void
+     */
+    public function setUploadImages5(\TYPO3\CMS\Extbase\Domain\Model\FileReference $uploadImages5=NULL)
+    {
+        $this->uploadImages5 = $uploadImages5;
+    }
+
+    /**
+     * Returns the residentialArea
+     *
+     * @return string residentialArea
+     */
+    public function getResidentialArea()
+    {
+        return $this->residentialArea;
+    }
+
+    /**
+     * Sets the residentialArea
+     *
+     * @param string $residentialArea
+     * @return void
+     */
+    public function setResidentialArea($residentialArea)
+    {
+        $this->residentialArea = $residentialArea;
+    }
+
+    /**
+     * Returns the name
+     *
+     * @return string $name
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Sets the name
+     *
+     * @param string $name
+     * @return void
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 
     /**
@@ -198,130 +562,45 @@ class Realestate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Adds a FileReference
+     * Returns the district
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     * @return string $district
+     */
+    public function getDistrict()
+    {
+        return $this->district;
+    }
+
+    /**
+     * Sets the district
+     *
+     * @param string $district
      * @return void
      */
-    public function addImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image)
+    public function setDistrict($district)
     {
-        $this->images->attach($image);
+        $this->district = $district;
     }
 
     /**
-     * Removes a FileReference
+     * Returns the streetAddress
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove The FileReference to be removed
+     * @return string $streetAddress
+     */
+    public function getStreetAddress()
+    {
+        return $this->streetAddress;
+    }
+
+    /**
+     * Sets the streetAddress
+     *
+     * @param string $streetAddress
      * @return void
      */
-    public function removeImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove)
+    public function setStreetAddress($streetAddress)
     {
-        $this->images->detach($imageToRemove);
-    }
-
-    /**
-     * Returns the images
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
-     */
-    public function getImages()
-    {
-        return $this->images;
-    }
-
-    /**
-     * Sets the images
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
-     * @return void
-     */
-    public function setImages(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $images)
-    {
-        $this->images = $images;
-    }
-
-    /**
-     * Returns the longitude
-     *
-     * @return string $longitude
-     */
-    public function getLongitude()
-    {
-        return $this->longitude;
-    }
-
-    /**
-     * Sets the longitude
-     *
-     * @param string $longitude
-     * @return void
-     */
-    public function setLongitude($longitude)
-    {
-        $this->longitude = $longitude;
-    }
-
-    /**
-     * Returns the latitude
-     *
-     * @return string $latitude
-     */
-    public function getLatitude()
-    {
-        return $this->latitude;
-    }
-
-    /**
-     * Sets the latitude
-     *
-     * @param string $latitude
-     * @return void
-     */
-    public function setLatitude($latitude)
-    {
-        $this->latitude = $latitude;
-    }
-
-    /**
-     * Returns the street
-     *
-     * @return string $street
-     */
-    public function getStreet()
-    {
-        return $this->street;
-    }
-
-    /**
-     * Sets the street
-     *
-     * @param string $street
-     * @return void
-     */
-    public function setStreet($street)
-    {
-        $this->street = $street;
-    }
-
-    /**
-     * Returns the postalcode
-     *
-     * @return string $postalcode
-     */
-    public function getPostalcode()
-    {
-        return $this->postalcode;
-    }
-
-    /**
-     * Sets the postalcode
-     *
-     * @param string $postalcode
-     * @return void
-     */
-    public function setPostalcode($postalcode)
-    {
-        $this->postalcode = $postalcode;
+        $this->streetAddress = $streetAddress;
     }
 
     /**
@@ -343,5 +622,26 @@ class Realestate extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setCity($city)
     {
         $this->city = $city;
+    }
+
+    /**
+     * Returns the feuser
+     *
+     * @return int $feuser
+     */
+    public function getFeuser()
+    {
+        return $this->feuser;
+    }
+
+    /**
+     * Sets the feuser
+     *
+     * @param int $feuser
+     * @return void
+     */
+    public function setFeuser($feuser)
+    {
+        $this->feuser = $feuser;
     }
 }

@@ -9,11 +9,11 @@ call_user_func(
             'DanLundgren.DlRealestate',
             'Realestate',
             [
-                'Realestate' => 'create, update, delete, list, show, new'
+                'Realestate' => 'create, update, delete, list, show, new, update'
             ],
             // non-cacheable actions
             [
-                'Realestate' => 'create, update, delete, list, show, new'
+                'Realestate' => 'create, update, delete, list, show, new, update'
             ]
         );
 
@@ -74,3 +74,5 @@ call_user_func(
     }
 );
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter('DanLundgren\\DlRealestate\\Property\\TypeConverter\\UploadedFileReferenceConverter');
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter('DanLundgren\\DlRealestate\\Property\\TypeConverter\\ObjectStorageConverter');

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-10T17:33:36Z" product-name="dl_realestate">
+		<header/>
+		<body>
+			<trans-unit id="name.description">
+				<source>name</source>
+			</trans-unit>
+			<trans-unit id="description.description">
+				<source>description</source>
+			</trans-unit>
+			<trans-unit id="street_address.description">
+				<source>streetAddress</source>
+			</trans-unit>
+			<trans-unit id="district.description">
+				<source>district</source>
+			</trans-unit>
+			<trans-unit id="city.description">
+				<source>city</source>
+			</trans-unit>
+			<trans-unit id="residential_area.description">
+				<source>residentialArea</source>
+			</trans-unit>
+			<trans-unit id="rent_from.description">
+				<source>rentFrom</source>
+			</trans-unit>
+			<trans-unit id="rent_to.description">
+				<source>rentTo</source>
+			</trans-unit>
+			<trans-unit id="no_of_rooms.description">
+				<source>noOfRooms</source>
+			</trans-unit>
+			<trans-unit id="rent.description">
+				<source>rent</source>
+			</trans-unit>
+			<trans-unit id="furnitured.description">
+				<source>furnitured</source>
+			</trans-unit>
+			<trans-unit id="handicap_adapted.description">
+				<source>handicapAdapted</source>
+			</trans-unit>
+			<trans-unit id="elevator.description">
+				<source>elevator</source>
+			</trans-unit>
+			<trans-unit id="animals_allowed.description">
+				<source>animalsAllowed</source>
+			</trans-unit>
+			<trans-unit id="other.description">
+				<source>other</source>
+			</trans-unit>
+			<trans-unit id="upload_images1.description">
+				<source>uploadImages1</source>
+			</trans-unit>
+			<trans-unit id="upload_images2.description">
+				<source>uploadImages2</source>
+			</trans-unit>
+			<trans-unit id="upload_images3.description">
+				<source>uploadImages3</source>
+			</trans-unit>
+			<trans-unit id="upload_images4.description">
+				<source>uploadImages4</source>
+			</trans-unit>
+			<trans-unit id="upload_images5.description">
+				<source>uploadImages5</source>
+			</trans-unit>
+			<trans-unit id="bostadsyta.description">
+				<source>bostadsyta</source>
+			</trans-unit>
+			<trans-unit id="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="type.description">
+				<source>type</source>
+			</trans-unit>
+			<trans-unit id="teaser.description">
+				<source>teaser</source>
+			</trans-unit>
+			<trans-unit id="images.description">
+				<source>images</source>
+			</trans-unit>
+			<trans-unit id="longitude.description">
+				<source>longitude</source>
+			</trans-unit>
+			<trans-unit id="latitude.description">
+				<source>latitude</source>
+			</trans-unit>
+			<trans-unit id="street.description">
+				<source>street</source>
+			</trans-unit>
+			<trans-unit id="postalcode.description">
+				<source>postalcode</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

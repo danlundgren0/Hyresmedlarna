@@ -1,0 +1,29 @@
+
+<h4>Annonser</h4>
+<div class="estates row">
+	<f:for each="{realestates}" as="realestate">
+			<div class="col-md-6">
+				<span class="object-info">{realestate.rentFrom}</span>
+				<f:if condition="{realestate.city}">
+					<span class="object-info">{realestate.city}, </span>	
+				</f:if>
+				<f:if condition="{realestate.district}">
+					<span class="object-info">{realestate.district}, </span>
+				</f:if>
+				<f:if condition="{realestate.streetAddress}">
+					<span class="object-info">{realestate.streetAddress}, </span>
+				</f:if>
+				<f:if condition="{realestate.residentialArea}">
+					<span class="object-info">{realestate.residentialArea}, </span>
+				</f:if>
+				<f:if condition="{realestate.name}">
+					<span class="object-info">{realestate.name}
+				</f:if>
+			</div>
+			<div class="col-md-2"><f:link.action class="button green">Intresserade!!!</f:link.action></div>
+			<div class="col-md-2"><f:link.action action="edit" pageUid="80" arguments="{realestate : realestate}" class="button orange">Ändra annons</f:link.action></div>
+			<div class="col-md-2"><f:link.action action="delete" pageUid="82" arguments="{realestate : realestate}" class="button red">Ta bort annons</f:link.action></div>
+	</f:for>
+</div>
+<f:comment>TODO: pageUid as constant</f:comment>
+<f:link.action action="new" pageUid="77" class="button green">Lägg till annons/bostad</f:link.action>

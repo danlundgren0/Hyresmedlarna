@@ -1,3 +1,13 @@
+.button {
+    float: left;
+    display: inline-block;
+    clear: both;
+    padding: 11px;
+    border-radius: 7px;
+    color: #ffffff;
+    margin-top: 20px;
+    cursor: pointer;
+}
 .navbar-header-main .navbar-brand {
 	z-index: 1;
 }
@@ -45,6 +55,63 @@ body .frame-type-form_formframework {
 
 .frame-type-form_formframework .actions {
 	margin-left:30%;
+}
+
+.hideme {
+    display:none;
+}
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.backdrop-text {
+    border-radius: 30px;
+    padding: 25px 50px 25px 50px;
+    background: #ffffff;
+    position: absolute;
+    color: #f18800;
+    left: 0;
+    top: 0;
+}
+.backdrop-container {
+    left: 40%;
+    top: 40%;
+    position: relative;
+}
+.loader {
+    position: absolute;
+    top: 94px;
+    left: 146px;
+    border-radius: 50%;
+    border-top: 9px solid blue;
+    border-right: 9px solid green;
+    border-bottom: 9px solid red;
+    border-left: 9px solid pink;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.frame-type-form_formframework .btn-primary {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    border-radius: 7px;
 }
 
 /*

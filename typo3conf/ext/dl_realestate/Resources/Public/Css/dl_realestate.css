@@ -1,11 +1,34 @@
+.tx-dl-realestate h4 {
+    font-style: normal;
+    text-align: left;
+    padding: 0;
+}
 .button.green {
-    float: left;
-    display: inline-block;
     background-color: #96c21e;
-    clear: both;
-    padding: 11px;
-    border-radius: 7px;
-    color: #ffffff;
-    margin-top: 20px;
-    cursor: pointer;
+}
+.button.red {
+    background-color: #E40613;
+}
+.button.orange {
+	background-color: #f18800;
+}
+.estates.row .col-md-6 {
+    width: 64%;
+    text-align: left;
+}
+.estates.row .col-md-2 {
+    padding-left: 10px;
+    width: 12%;
+    padding-right: 10px;
+}
+.estates.row .col-md-6 .object-info:nth-child(1) {
+	margin-right: 30px;
+}
+.object-info {
+	line-height: 4.5;
+	margin-right: 2px;
+	font-weight: 600;
+}
+.estates.row div {
+	height:61px;
 }

@@ -1,42 +1,224 @@
+{namespace h=DanLundgren\DlRealestate\ViewHelpers}
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<label for="title">
-	<f:translate key="tx_dlrealestate_domain_model_realestate.title" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.textfield property="title" /><br />
-<label for="type">
-	<f:translate key="tx_dlrealestate_domain_model_realestate.type" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.textfield property="type" /><br />
-<label for="teaser">
-	<f:translate key="tx_dlrealestate_domain_model_realestate.teaser" />
-</label><br />
-	<f:form.textfield property="teaser" /><br />
-<label for="description">
-	<f:translate key="tx_dlrealestate_domain_model_realestate.description" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.textfield property="description" /><br />
-<label for="images">
-	<f:translate key="tx_dlrealestate_domain_model_realestate.images" />
-</label><br />
-	<span>File upload is not implemented!</span><br /><br />
-<label for="longitude">
-	<f:translate key="tx_dlrealestate_domain_model_realestate.longitude" />
-</label><br />
-	<f:form.textfield property="longitude" /><br />
-<label for="latitude">
-	<f:translate key="tx_dlrealestate_domain_model_realestate.latitude" />
-</label><br />
-	<f:form.textfield property="latitude" /><br />
-<label for="street">
-	<f:translate key="tx_dlrealestate_domain_model_realestate.street" />
-</label><br />
-	<f:form.textfield property="street" /><br />
-<label for="postalcode">
-	<f:translate key="tx_dlrealestate_domain_model_realestate.postalcode" />
-</label><br />
-	<f:form.textfield property="postalcode" /><br />
-<label for="city">
-	<f:translate key="tx_dlrealestate_domain_model_realestate.city" />
-</label><br />
-	<f:form.textfield property="city" /><br />
+<f:form.hidden property="feuser" value="{feuser}" />
+<div class="form-group">
+	<label class="control-label" for="name">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.name" /> <span class="required">*</span>
+	</label>
+	<div class="input">
+		<f:form.textfield property="name" value="{realestate.name}" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="description">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.description" />
+	</label>
+	<div class="input">
+		<f:form.textarea property="description" cols="40" rows="15" value="{realestate.description}" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="streetAddress">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.street_address" />
+	</label>
+	<div class="input">
+		<f:form.textarea property="streetAddress" cols="40" rows="15" value="{realestate.streetAddress}" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="district">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.district" />
+	</label>
+	<div class="input">
+		<f:form.textfield property="district" value="{realestate.district}" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="city">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.city" />
+	</label>
+	<div class="input">
+		<f:form.textfield property="city" value="{realestate.city}" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="residentialArea">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.residential_area" /> <span class="required">*</span>
+	</label>
+	<div class="input">
+		<f:form.textfield property="residentialArea" value="{realestate.residentialArea}" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="rentFrom">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.rent_from" /> <span class="required">*</span>
+	</label>
+	<div class="input">
+		<f:form.textfield data="{date: 'rentFrom'}" property="rentFrom" value="{realestate.rentFrom}" />
+	</div>
+</div>
+<div class="form-group">		
+	<label class="control-label" for="rentTo">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.rent_to" />
+	</label>
+	<div class="input">
+		<f:form.textfield data="{date: 'rentTo'}" property="rentTo" value="{realestate.rentTo}" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="noOfRooms">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.no_of_rooms" /> <span class="required">*</span>
+	</label>
+	<div class="input">
+		<f:form.textfield property="noOfRooms" value="{realestate.noOfRooms}" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="rent">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.rent" />
+	</label>
+	<div class="input">
+		<f:form.textfield property="rent" value="{realestate.rent}" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="furnitured">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.furnitured" />
+	</label>
+	<div class="input">
+		<f:form.checkbox property="furnitured" value="1" checked="{realestate.furnitured}" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="handicapAdapted">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.handicap_adapted" />
+	</label>
+	<div class="input">
+		<f:form.checkbox property="handicapAdapted" value="1" checked="{realestate.handicapAdapted}" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="elevator">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.elevator" />
+	</label>
+	<div class="input">
+		<f:form.checkbox property="elevator" value="1" checked="{realestate.elevator}" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="animalsAllowed">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.animals_allowed" />
+	</label>
+	<div class="input">
+		<f:form.checkbox property="animalsAllowed" value="1" checked="{realestate.animalsAllowed}" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="other">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.other" />
+	</label>
+	<div class="input">
+		<f:form.textfield property="other" value="{realestate.other}" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="uploadImages1">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.upload_images1" />
+	</label>
+	<div class="input">
+		<h:form.upload property="uploadImages1" >
+			<f:if condition="{resource}">
+				<f:image image="{resource}" alt="" width="50"/>
+			</f:if>
+		</h:form.upload>
+		<f:comment>TODO: Testa multi images</f:comment>
+		<f:comment>
+		<h:form.upload property="imageCollection.0">
+			<f:if condition="{resource}">
+				<f:image image="{resource}" alt="" width="50"/>
+			</f:if>
+		</h:form.upload>
+		</f:comment>
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="uploadImages2">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.upload_images2" />
+	</label>
+	<div class="input">
+		<h:form.upload property="uploadImages2" >
+			<f:if condition="{resource}">
+				<f:image image="{resource}" alt="" width="50"/>
+			</f:if>
+		</h:form.upload>
+		<f:comment>TODO: Testa multi images</f:comment>
+		<f:comment>
+		<h:form.upload property="imageCollection.0">
+			<f:if condition="{resource}">
+				<f:image image="{resource}" alt="" width="50"/>
+			</f:if>
+		</h:form.upload>
+		</f:comment>
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="uploadImages3">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.upload_images3" />
+	</label>
+	<div class="input">
+		<h:form.upload property="uploadImages3" >
+			<f:if condition="{resource}">
+				<f:image image="{resource}" alt="" width="50"/>
+			</f:if>
+		</h:form.upload>
+		<f:comment>TODO: Testa multi images</f:comment>
+		<f:comment>
+		<h:form.upload property="imageCollection.0">
+			<f:if condition="{resource}">
+				<f:image image="{resource}" alt="" width="50"/>
+			</f:if>
+		</h:form.upload>
+		</f:comment>
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="uploadImages4">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.upload_images4" />
+	</label>
+	<div class="input">
+		<h:form.upload property="uploadImages4" >
+			<f:if condition="{resource}">
+				<f:image image="{resource}" alt="" width="50"/>
+			</f:if>
+		</h:form.upload>
+		<f:comment>TODO: Testa multi images</f:comment>
+		<f:comment>
+		<h:form.upload property="imageCollection.0">
+			<f:if condition="{resource}">
+				<f:image image="{resource}" alt="" width="50"/>
+			</f:if>
+		</h:form.upload>
+		</f:comment>
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label" for="uploadImages5">
+		<f:translate key="tx_dlrealestate_domain_model_realestate.upload_images5" />
+	</label>
+	<div class="input">
+		<h:form.upload property="uploadImages5" >
+			<f:if condition="{resource}">
+				<f:image image="{resource}" alt="" width="50"/>
+			</f:if>
+		</h:form.upload>
+		<f:comment>TODO: Testa multi images</f:comment>
+		<f:comment>
+		<h:form.upload property="imageCollection.0">
+			<f:if condition="{resource}">
+				<f:image image="{resource}" alt="" width="50"/>
+			</f:if>
+		</h:form.upload>
+		</f:comment>
+	</div>
+</div>
 </html>

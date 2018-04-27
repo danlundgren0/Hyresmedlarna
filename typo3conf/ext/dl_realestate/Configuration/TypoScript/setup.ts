@@ -84,7 +84,11 @@ plugin.tx_dlrealestate._CSS_DEFAULT_STYLE (
 )
 
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
-page.includeJSFooter.realestate = EXT:dl_realestate/Resources/Public/Js/js.js
+plugin.tx_dlrealestate_realestate {
+    persistence {
+        recursive = 99
+    }
+}
 DanLAjaxPrototype = PAGE
 DanLAjaxPrototype {
     typeNum = 777888
@@ -112,7 +116,11 @@ DanLAjaxPrototype {
     }
 }
 page.includeJSFooter.dl_realestate = EXT:dl_realestate/Resources/Public/Js/dl_realestate.js
+page.includeJSFooter.jquery-ui = EXT:dl_realestate/Resources/Public/Js/jquery-ui.min.js
+
 page.includeCSS.dl_realestate = EXT:dl_realestate/Resources/Public/Css/dl_realestate.css
+page.includeCSS.jquery-ui = EXT:dl_realestate/Resources/Public/Css/jquery-ui.min.css
+
 
 #plugin.tx_dlpersonalinformation_personalinformation.settings {
 #    updateLandlordPID = {$plugin.tx_dlpersonalinformation_personalinformation.settings.updateLandlordPID}

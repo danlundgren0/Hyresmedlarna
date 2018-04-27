@@ -13,25 +13,12 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-<h1>Listing for Realestate</h1>
-
 <f:flashMessages />
-
-<table  class="tx_dlrealestate" >
-	<tr>
-		<th> </th>
-		<th> </th>
-	</tr>
-
-	<f:for each="{realestates}" as="realestate">
-		<tr>
-			<td><f:link.action action="edit" arguments="{realestate : realestate}">Edit</f:link.action></td>
-			<td><f:link.action action="delete" arguments="{realestate : realestate}">Delete</f:link.action></td>
-		</tr>
-	</f:for>
-</table>
-
-<f:link.action action="new" pageUid="77" class="button green">New Realestate</f:link.action>
-
+<f:if condition="{isTenant}">
+	<f:render partial="Realestate/TenantsList" arguments="{_all}" />
+</f:if>
+<f:if condition="{isLandlord}">
+	<f:render partial="Realestate/LandLordsList" arguments="{_all}" />
+</f:if>
 </f:section>
 </html>
