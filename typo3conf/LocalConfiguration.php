@@ -29,6 +29,7 @@ return [
             'dl_mobilebankid' => 'a:1:{s:9:"appapiurl";s:38:"https://appapi2.test.bankid.com/rp/v5/";}',
             'dl_personalinformation' => 'a:0:{}',
             'dl_realestate' => 'a:0:{}',
+            'dl_searchestates' => 'a:0:{}',
             'extension_builder' => 'a:3:{s:15:"enableRoundtrip";s:1:"1";s:15:"backupExtension";s:1:"1";s:9:"backupDir";s:35:"uploads/tx_extensionbuilder/backups";}',
             'gridelements' => 'a:2:{s:20:"additionalStylesheet";s:0:"";s:19:"nestingInListModule";s:1:"0";}',
             'introduction' => 'a:0:{}',

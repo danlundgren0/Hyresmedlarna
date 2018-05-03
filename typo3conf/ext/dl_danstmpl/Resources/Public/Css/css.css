@@ -1,3 +1,6 @@
+a, a:hover, a:active, a:focus {
+    color:#000000;
+}
 .button {
     float: left;
     display: inline-block;
@@ -172,6 +175,14 @@ h1, h2 , h3, h4 , h5, p, a {
 	font-family: 'Roboto Condensed', sans-serif;
 }
 
+h1 {
+    color:#575757;
+}
+
+h2 {
+    color:#575757;
+}
+
 h3 {
 	font-family: 'Roboto Condensed', sans-serif;
 	padding: 0 50px;
@@ -183,7 +194,7 @@ h4, .frame-type-form_formframework h2 {
 	font-family: 'Roboto Condensed', sans-serif;
 	padding: 0 50px;
 	color: #f18800;
-	font-style: italic;
+	/*font-style: italic;*/
     font-size: 1.9em;
     font-weight: bold;
     text-align: center;

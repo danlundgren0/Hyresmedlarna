@@ -1,0 +1,26 @@
+.search-list .col-md-3 {
+    overflow: hidden;	
+}
+.search-list .image-container img {
+	width:100%;
+	height:auto;
+}
+.search-list .search-city {
+    font-weight: 600;
+    background-color: #F59200;
+    padding: 10px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+.search-list .search-info {
+	background-color: #FFF3C3;
+	padding: 10px;
+}
+.search-list .highlight {
+    font-size: 21px;
+    color: #EA692A;
+    font-weight: 600;
+}
+.search-list .search-readmore {
+	
+}

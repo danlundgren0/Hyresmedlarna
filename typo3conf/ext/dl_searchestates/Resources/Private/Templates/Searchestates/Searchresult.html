@@ -1,0 +1,159 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<h1>Single View for Searchestates</h1>
+<f:if condition="{realestate}">
+	<div class="container">
+		<div class="detail-view row">
+			<div class="col-md-6">
+				<f:comment>TODO: Link to detail page as constant</f:comment>
+				<div class="outer-container">
+					<f:if condition="{realestate.uploadImages1}">
+						<div class="col-md-12">
+							<div class="image-container">
+								<a href="#" data-toggle="modal" data-target="#image-modal">
+									<f:image src="{realestate.uploadImages1.originalResource.publicUrl}" width="760c" height="515c"/>
+								</a>
+							</div>
+						</div>
+					</f:if>
+					<f:if condition="{realestate.uploadImages2}">
+						<div class="col-md-6">
+							<div class="image-container">
+								<a href="#" data-toggle="modal" data-target="#image-modal">
+									<f:image src="{realestate.uploadImages2.originalResource.publicUrl}" width="760c" height="515c"/>
+								</a>
+							</div>
+						</div>
+					</f:if>
+					<f:if condition="{realestate.uploadImages3}">
+						<div class="col-md-6">
+							<div class="image-container">
+								<a href="#" data-toggle="modal" data-target="#image-modal">
+									<f:image src="{realestate.uploadImages3.originalResource.publicUrl}" width="760c" height="515c"/>
+								</a>
+							</div>
+						</div>
+					</f:if>
+					<f:if condition="{realestate.uploadImages4}">
+						<div class="col-md-6">
+							<div class="image-container">
+								<a href="#" data-toggle="modal" data-target="#image-modal">
+									<f:image src="{realestate.uploadImages4.originalResource.publicUrl}" width="760c" height="515c"/>
+								</a>
+							</div>
+						</div>
+					</f:if>
+					<f:if condition="{realestate.uploadImages5}">
+						<div class="col-md-6">
+							<div class="image-container">
+								<a href="#" data-toggle="modal" data-target="#image-modal">
+									<f:image src="{realestate.uploadImages5.originalResource.publicUrl}" width="760c" height="515c"/>
+								</a>
+							</div>
+						</div>
+					</f:if>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="outer-container">
+					<h4>{realestate.city} 
+						<f:if condition="{realestate.district}">
+						, {realestate.district}
+						</f:if>
+					</h4>
+					<p class="description">
+						{realestate.description}
+					</p>
+					<div class="outer-container">
+						<div class="inner-container">
+							<span class="lbl">Ort</span>
+							<span class="data">{realestate.city} </span>
+						</div>
+						<div class="inner-container">
+							<span class="lbl">Stadsdel</span>
+							<span class="data">{realestate.district}</span>
+						</div>
+						<div class="inner-container">
+							<span class="lbl">Gata</span>
+							<span class="data">{realestate.streetAddress}</span>
+						</div>
+						<div class="inner-container">
+							<span class="lbl">Bostadsyta</span>
+							<span class="data">{realestate.residentialArea}</span>
+						</div>
+						<div class="inner-container">
+							<span class="lbl">Antal rum</span>
+							<span class="data">{realestate.noOfRooms}</span>
+						</div>
+						<div class="inner-container">
+							<span class="lbl">Möblerad</span>
+							<span class="data">{realestate.furnitured}</span>
+						</div>
+						<div class="inner-container highlight">
+							<span class="lbl">Hyra</span>
+							<span class="data">{realestate.rent}</span>
+						</div>
+						<f:comment>TODO: Länka till Anmäl intresse (Kanske AJAX eftersom det inte har någon direkt landningssida)</f:comment>
+						<a class="button orange" href="#">
+							Anmäl intresse!!!
+						</a>						
+					</div>						
+				</div>
+			</div>
+		</div>
+	</div>
+</f:if>
+<div class="modal fade" id="image-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{realestate.name}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<f:if condition="{realestate.uploadImages1}">
+			<div class="modal-image">
+				<f:image src="{realestate.uploadImages1.originalResource.publicUrl}" width="760c" height="515c"/>
+			</div>
+		</f:if>
+		<f:if condition="{realestate.uploadImages2}">
+			<div class="modal-image">
+				<f:image src="{realestate.uploadImages2.originalResource.publicUrl}" width="760c" height="515c"/>
+			</div>
+		</f:if>
+		<f:if condition="{realestate.uploadImages3}">
+			<div class="modal-image">
+				<f:image src="{realestate.uploadImages3.originalResource.publicUrl}" width="760c" height="515c"/>
+			</div>
+		</f:if>
+		<f:if condition="{realestate.uploadImages4}">
+			<div class="modal-image">
+				<f:image src="{realestate.uploadImages4.originalResource.publicUrl}" width="760c" height="515c"/>
+			</div>
+		</f:if>
+		<f:if condition="{realestate.uploadImages5}">
+			<div class="modal-image">
+				<f:image src="{realestate.uploadImages5.originalResource.publicUrl}" width="760c" height="515c"/>
+			</div>
+		</f:if>
+      </div>
+    </div>
+  </div>
+</div>
+</f:section>
+</html>

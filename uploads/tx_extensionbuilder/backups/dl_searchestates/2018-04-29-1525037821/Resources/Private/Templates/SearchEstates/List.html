@@ -1,0 +1,44 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<f:flashMessages />
+<f:debug>{realestates}</f:debug>
+<div class="container">
+	<div class="search-list row">
+		<f:for each="{realestates}" as="realestate">
+				<div class="col-md-3">
+					<f:comment>TODO: Link to detail page</f:comment>
+					<f:link.action action="edit" pageUid="80" arguments="{realestate : realestate}" class="button orange">
+						<div class="outer-container">
+							<f:if condition="{realestate.uploadImages1}">
+								<div class="image-container">
+									<f:image src="{realestate.uploadImages1.originalResource.publicUrl}" width="760"/>
+								</div>
+							</f:if>
+							<div class="search-city">{realestate.city}</div>
+							<div class="search-info">
+								<div class="normal">{realestate.district}, {realestate.noOfRooms} <f:translate key="tx_dlrealestate_domain_model_realestate.no_of_rooms" />, {realestate.residentialArea} kvm</div>
+								<div class="highlight"><f:translate key="tx_dlrealestate_domain_model_realestate.rent" /> {realestate.rent} kr</div>							
+								<div class="search-readmore">Läs mer</div>
+							</div>						
+						</div>
+					</f:link.action>
+				</div>
+		</f:for>
+	</div>
+</div>
+<f:link.action action="new">New SearchEstates</f:link.action>
+</f:section>
+</html>
